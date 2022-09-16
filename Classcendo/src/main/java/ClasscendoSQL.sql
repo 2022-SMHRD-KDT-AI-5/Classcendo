@@ -112,7 +112,7 @@ INCREMENT BY 1;
 CREATE TABLE job_tendency
 (
     job_seq          NUMBER          NOT NULL, 
-    tendency_named   VARCHAR2(20)    NOT NULL,
+    tendency_name   VARCHAR2(20)    NOT NULL,
 	CONSTRAINT jt_jobseq_fk FOREIGN KEY (job_seq) REFERENCES job_list (job_seq)
 )
 select * from user_tables
