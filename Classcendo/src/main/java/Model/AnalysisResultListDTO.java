@@ -2,6 +2,7 @@ package Model;
 
 public class AnalysisResultListDTO {
 
+	// 분석 결과 관리 DTO
 	private int arlSeq;
 	private int srSeq;
 	private int tendency1Rate;
@@ -11,6 +12,7 @@ public class AnalysisResultListDTO {
 	private String arlGraphPath;
 	private String jobsSeq;
 
+	// 생성자 메소드
 	public AnalysisResultListDTO(int arlSeq, int srSeq, int tendency1Rate, int tendency2Rate, int tendency3Rate,
 			int tendency4Rate, String arlGraphPath, String jobsSeq) {
 		this.arlSeq = arlSeq;

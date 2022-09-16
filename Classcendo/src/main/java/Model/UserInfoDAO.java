@@ -17,39 +17,39 @@ public class UserInfoDAO {
 		String sql = "";
 
 		// 데이터베이스 연결
-		public void getConn() {
-			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-
-				String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-				String user = "Clascendo";
-				String pw = "Clascendo_2022";
-
-				conn = DriverManager.getConnection(url, user, pw);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		// 임시 데이터베이스
 //		public void getConn() {
 //			try {
 //				Class.forName("oracle.jdbc.driver.OracleDriver");
-	//
-//				String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//				String user = "hr";
-//				String pw = "hr";
-	//
+//
+//				String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+//				String user = "Clascendo";
+//				String pw = "Clascendo_2022";
+//
 //				conn = DriverManager.getConnection(url, user, pw);
-	//
+//
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
 //		}
+
+		// 임시 데이터베이스
+		public void getConn() {
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+	
+				String url = "jdbc:oracle:thin:@localhost:1521:xe";
+				String user = "hr";
+				String pw = "hr";
+	
+				conn = DriverManager.getConnection(url, user, pw);
+	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		// 데이터베이스 닫기
-		public void close() {
+		public void closeConn() {
 
 			try {
 				if (rs != null) {
@@ -85,7 +85,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return dto.getUserNum();
 	}
@@ -119,7 +119,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return dto;
 	}
@@ -150,7 +150,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return row;
 	}
@@ -172,7 +172,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return row;
 	}
@@ -192,7 +192,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return row;
 	}
@@ -221,7 +221,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return result;
 	}
@@ -256,7 +256,7 @@ public class UserInfoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			closeConn();
 		}
 		return row;
 	}

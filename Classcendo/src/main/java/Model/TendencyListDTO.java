@@ -2,9 +2,11 @@ package Model;
 
 public class TendencyListDTO {
 
+	// 성향 목록 관리 DTO
 	private int tendencySeq;
 	private String tendencyName;
 
+	// 생성자 메소드
 	public TendencyListDTO(int tendencySeq, String tendencyName) {
 		this.tendencySeq = tendencySeq;
 		this.tendencyName = tendencyName;

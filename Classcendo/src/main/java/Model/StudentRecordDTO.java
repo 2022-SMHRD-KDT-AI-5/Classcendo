@@ -2,15 +2,15 @@ package Model;
 
 public class StudentRecordDTO {
 
+	// 학생기록부 관리 DTO
 	private int srSeq;
 	private int srlSeq;
 	private int stdNum;
 	private String stdName;
 	private String srContent;
 	private String srDate;
-	
-	
 
+	// 생성자 메소드
 	public StudentRecordDTO(int srSeq, int srlSeq, int stdNum, String stdName, String srContent, String srDate) {
 		this.srSeq = srSeq;
 		this.srlSeq = srlSeq;

@@ -2,11 +2,13 @@ package Model;
 
 public class JobListDTO {
 
+	// 직업 목록 관리 DTO
 	private int jouSeq;
 	private String jobName;
 	private String relationDept;
 	private String relationCert;
 
+	// 생성자 메소드
 	public JobListDTO(int jouSeq, String jobName, String relationDept, String relationCert) {
 		this.jouSeq = jouSeq;
 		this.jobName = jobName;

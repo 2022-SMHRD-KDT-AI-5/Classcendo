@@ -2,9 +2,11 @@ package Model;
 
 public class JobTendencyDTO {
 
+	// 직업 관련 성향 관리 DTO
 	private int jobSeq;
 	private String tendencyName;
 
+	// 생성자 메소드
 	public JobTendencyDTO(int jobSeq, String tendencyName) {
 		this.jobSeq = jobSeq;
 		this.tendencyName = tendencyName;
