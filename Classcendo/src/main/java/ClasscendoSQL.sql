@@ -15,12 +15,12 @@ drop sequence student_consulting_SEQ;
 
 CREATE TABLE user_info
 (
-    user_num         VARCHAR2(30)    NOT NULL, 
-    user_pw          VARCHAR2(30)    NOT NULL, 
-    user_name        VARCHAR2(20)    NOT NULL, 
-    user_email       VARCHAR2(50)    NOT NULL, 
-    user_joindate    DATE            NOT NULL, 
-    user_type        CHAR(1)         NOT NULL, 
+    user_num         VARCHAR2(30)    		NOT NULL, 
+    user_pw          VARCHAR2(30)    		NOT NULL, 
+    user_name        VARCHAR2(20)    		NOT NULL, 
+    user_email       VARCHAR2(50)    		NOT NULL, 
+    user_joindate    DATE default sysdate   NOT NULL, 
+    user_type        CHAR(1)         		NOT NULL, 
     CONSTRAINT ui_usernum_pk PRIMARY KEY (user_num)
 );
 
@@ -52,12 +52,12 @@ INCREMENT BY 1;
 
 CREATE TABLE student_record
 (
-    sr_seq        NUMBER            NOT NULL, 
-    srl_seq       NUMBER            NOT NULL, 
-    std_num       NUMBER            , 
-    std_name      VARCHAR2(20)      , 
-    sr_content    VARCHAR2(2000)    , 
-    sr_date       DATE              , 
+    sr_seq        NUMBER            	NOT NULL, 
+    srl_seq       NUMBER            	NOT NULL, 
+    std_num       NUMBER            	, 
+    std_name      VARCHAR2(20)      	, 
+    sr_content    VARCHAR2(2000)    	, 
+    sr_date       DATE default sysdate	, 
     CONSTRAINT sr_srseq_pk PRIMARY KEY (sr_seq),
 	CONSTRAINT srl_srlseq_fk FOREIGN KEY (srl_seq) REFERENCES student_record_list (srl_seq)
 )
