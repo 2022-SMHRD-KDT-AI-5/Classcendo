@@ -6,6 +6,7 @@ public class test {
 
 		System.out.println("신동익 밥");
 		System.out.println("박예림 밥");
+		System.out.println("검은무리 동익");
 	}
 
 }
