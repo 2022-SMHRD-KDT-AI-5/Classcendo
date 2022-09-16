@@ -2,7 +2,7 @@ package Model;
 
 public class StudentRecordDTO {
 
-	// 학생기록부 관리 DTO
+	// 학생기록 관리 DTO
 	private int srSeq;
 	private int srlSeq;
 	private int stdNum;
