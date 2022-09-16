@@ -15,38 +15,7 @@ public class UserInfoDAO {
 		boolean result = false;
 		int row = 0;
 		String sql = "";
-
-		// 데이터베이스 연결
-//		public void getConn() {
-//			try {
-//				Class.forName("oracle.jdbc.driver.OracleDriver");
-//
-//				String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-//				String user = "Clascendo";
-//				String pw = "Clascendo_2022";
-//
-//				conn = DriverManager.getConnection(url, user, pw);
-//
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-
-		// 임시 데이터베이스
-		public void getConn() {
-			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-	
-				String url = "jdbc:oracle:thin:@localhost:1521:xe";
-				String user = "hr";
-				String pw = "hr";
-	
-				conn = DriverManager.getConnection(url, user, pw);
-	
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		ChangeDatabase changeDatabase;
 		
 		// 데이터베이스 닫기
 		public void closeConn() {
@@ -68,7 +37,7 @@ public class UserInfoDAO {
 
 	// 회원가입
 	public String join(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 			sql = "insert into user_info values(?, ?, ?, ?, default, ?)";
@@ -93,7 +62,7 @@ public class UserInfoDAO {
 	
 	// 로그인
 	public UserInfoDTO login(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 			result = false;
@@ -126,7 +95,7 @@ public class UserInfoDAO {
 
 	// 개인정보 확인
 	public int check(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 
@@ -157,7 +126,7 @@ public class UserInfoDAO {
 
 	// 개인정보 수정
 	public int update(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 			sql = "update user_info set user_pw = ?, user_name = ?, user_email = ? where user_num = ?";
@@ -179,7 +148,7 @@ public class UserInfoDAO {
 	
 	// 비밀번호 분실 후 수정
 	public int updatepw(String id_check, String pw) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 			sql = "update user_info set user_pw = ? where user_num = ?";
@@ -200,7 +169,7 @@ public class UserInfoDAO {
 	
 	// 비밀번호 분실 시
 	public boolean findpw(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 		
 		try {
 
@@ -228,7 +197,7 @@ public class UserInfoDAO {
 
 	// 회원탈퇴
 	public int resign(UserInfoDTO dto) {
-		getConn();
+		changeDatabase.getConn();
 
 		try {
 
