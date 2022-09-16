@@ -9,5 +9,4 @@ public class test {
 		System.out.println("검은무리 동익");
 		System.out.println("검은");
 	}
-
 }
