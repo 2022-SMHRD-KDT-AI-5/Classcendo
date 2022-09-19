@@ -12,13 +12,13 @@ public class JobTendencyDAO {
 
 	// 직업 관련 성향 관리 클래스
 	// 데이터베이스에서 사용되는 객체 선언
-	Connection conn = null;
+	ChangeDatabase changeDatabase = new ChangeDatabase();
+	Connection conn = changeDatabase.getConn();
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	boolean result = false;
 	int row = 0;
 	String sql = "";
-	ChangeDatabase changeDatabase;
 
 	// 데이터베이스 닫기
 	public void closeConn() {

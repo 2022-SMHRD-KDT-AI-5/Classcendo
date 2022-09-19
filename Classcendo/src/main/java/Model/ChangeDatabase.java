@@ -7,7 +7,7 @@ public class ChangeDatabase {
 	Connection conn = null;
 	
 	// 실 데이터베이스 연결
-/*	public void getConn() {
+/*	public Connection getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -20,10 +20,11 @@ public class ChangeDatabase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return conn;
 	}*/
 
 	// 임시 데이터베이스 연결
-	public void getConn() {
+	public Connection getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -36,5 +37,6 @@ public class ChangeDatabase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return conn;
 	}
 }

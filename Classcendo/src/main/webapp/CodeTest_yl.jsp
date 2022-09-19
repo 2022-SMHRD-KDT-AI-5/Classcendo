@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- 로그인 테스트 -->
-	<form action="LoginService" method="post">
+	<form action="SignInService" method="post">
 		<input type="text" placeholder="Id" name="id" autofocus />
 		<input type="password" placeholder="Password" name="pw" />
 		<input type="submit" value="Sign in" class="btn">

@@ -7,33 +7,32 @@ import javax.servlet.http.HttpSession;
 public class UserInfoDAO {
 
 	// 회원정보를 데이터베이스에 연결하기 위한 DAO
-
 	// 데이터베이스에서 사용되는 객체 선언
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		boolean result = false;
-		int row = 0;
-		String sql = "";
-		ChangeDatabase changeDatabase;
-		
-		// 데이터베이스 닫기
-		public void closeConn() {
+	ChangeDatabase changeDatabase = new ChangeDatabase();
+	Connection conn = changeDatabase.getConn();
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	boolean result = false;
+	int row = 0;
+	String sql = "";
 
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (psmt != null) {
-					psmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+	// 데이터베이스 닫기
+	public void closeConn() {
+
+		try {
+			if (rs != null) {
+				rs.close();
 			}
+			if (psmt != null) {
+				psmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+	}
 
 	// 회원가입
 	public String join(UserInfoDTO dto) {
@@ -58,8 +57,7 @@ public class UserInfoDAO {
 		}
 		return dto.getUserNum();
 	}
-	
-	
+
 	// 로그인
 	public UserInfoDTO login(UserInfoDTO dto) {
 		changeDatabase.getConn();
@@ -145,7 +143,7 @@ public class UserInfoDAO {
 		}
 		return row;
 	}
-	
+
 	// 비밀번호 분실 후 수정
 	public int updatepw(String id_check, String pw) {
 		changeDatabase.getConn();
@@ -166,11 +164,10 @@ public class UserInfoDAO {
 		return row;
 	}
 
-	
 	// 비밀번호 분실 시
 	public boolean findpw(UserInfoDTO dto) {
 		changeDatabase.getConn();
-		
+
 		try {
 
 			result = false;
@@ -183,7 +180,7 @@ public class UserInfoDAO {
 
 			rs = psmt.executeQuery();
 
-			while(rs.next()) {
+			while (rs.next()) {
 				result = true;
 			}
 
