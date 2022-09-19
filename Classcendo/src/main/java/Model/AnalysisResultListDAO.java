@@ -1,10 +1,11 @@
 package Model;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class AnalysisResultListDAO {
 
-	// 학생기록을 관리 클래스
+	// 학생 분석 결과 목록 관리 클래스
 	// 데이터베이스에서 사용되는 객체 선언
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -31,7 +32,7 @@ public class AnalysisResultListDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 학생 분석 결과 추가
 	public boolean addAnalysisResult(AnalysisResultListDTO dto) {
 		changeDatabase.getConn();
@@ -48,12 +49,116 @@ public class AnalysisResultListDAO {
 			psmt.setString(7, dto.getJobsSeq());
 
 			row = psmt.executeUpdate();
-			if(row > 0) result = true;
+			if (row > 0)
+				result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConn();
 		}
 		return result;
+	}
+
+	// 학생 분석 결과 업데이트
+	public boolean updateAnalysisResult(AnalysisResultListDTO dto) {
+		changeDatabase.getConn();
+		result = false;
+		try {
+			sql = "update analysis_result_list set tendency_1_rate = ?, tendency_2_rate = ?, tendency_3_rate = ?, tendency_4_rate = ?, jobs_seq = ? where sr_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getTendency1Rate());
+			psmt.setInt(2, dto.getTendency2Rate());
+			psmt.setInt(3, dto.getTendency3Rate());
+			psmt.setInt(4, dto.getTendency4Rate());
+			psmt.setString(5, dto.getJobsSeq());
+			psmt.setInt(6, dto.getSrSeq());
+
+			row = psmt.executeUpdate();
+			if (row > 0)
+				result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
+	
+	// 학생 분석 결과 모두 삭제
+	public boolean deleteAllAnalysisResultList(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		try {
+			sql = "delete from analysis_result_list where srl_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			row = psmt.executeUpdate();
+			if (row > 0)
+				result = true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
+	
+	// 학생 분석 결과 삭제
+	public boolean deleteAnalysisResultList(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		try {
+			sql = "delete from analysis_result_list where sr_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			row = psmt.executeUpdate();
+			if (row > 0)
+				result = true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
+	
+	// 학생 분석 결과 불러오기
+	public ArrayList<AnalysisResultListDTO> getAnalysisResult(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		ArrayList<AnalysisResultListDTO> arlList = new ArrayList<>();
+		try {
+			sql = "select * from analysis_result_list where sr_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				result = true;
+				int arlSeq = rs.getInt(1);
+				int srSeq = rs.getInt(2);
+				int tendency1Rate = rs.getInt(3);
+				int tendency2Rate = rs.getInt(4);
+				int tendency3Rate = rs.getInt(5);
+				int tendency4Rate = rs.getInt(6);
+				String arlGraphPath = rs.getString(7);
+				String jobsSeq = rs.getString(8);
+				AnalysisResultListDTO dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
+						tendency4Rate, arlGraphPath, jobsSeq);
+				arlList.add(dto);
+			}
+			if (!result) {
+				arlList = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return arlList;
 	}
 }

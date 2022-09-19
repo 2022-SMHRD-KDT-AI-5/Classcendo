@@ -32,7 +32,7 @@ public class StudentRecordDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 학생 추가
 	public boolean addStudent(StudentRecordDTO dto) {
 		changeDatabase.getConn();
@@ -46,7 +46,8 @@ public class StudentRecordDAO {
 			psmt.setString(4, dto.getSrContent());
 
 			row = psmt.executeUpdate();
-			if(row > 0) result = true;
+			if (row > 0)
+				result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -54,7 +55,7 @@ public class StudentRecordDAO {
 		}
 		return result;
 	}
-	
+
 	// 학생기록 업데이트
 	public boolean updateStudentRecord(StudentRecordDTO dto) {
 		changeDatabase.getConn();
@@ -69,7 +70,8 @@ public class StudentRecordDAO {
 			psmt.setInt(5, dto.getSrSeq());
 
 			row = psmt.executeUpdate();
-			if(row > 0) result = true;
+			if (row > 0)
+				result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -77,7 +79,7 @@ public class StudentRecordDAO {
 		}
 		return result;
 	}
-	
+
 	// 모든 학생기록 불러오기
 	public ArrayList<StudentRecordDTO> getAllStudentRecord(int seq) {
 		changeDatabase.getConn();
@@ -87,9 +89,9 @@ public class StudentRecordDAO {
 			sql = "select * from student_record where srl_seq = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, seq);
-			
+
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				result = true;
 				int srSeq = rs.getInt(1);
 				int srlSeq = rs.getInt(2);
@@ -99,7 +101,7 @@ public class StudentRecordDAO {
 				StudentRecordDTO dto = new StudentRecordDTO(srSeq, srlSeq, stdNum, stdName, srDate);
 				srList.add(dto);
 			}
-			if(!result) {
+			if (!result) {
 				srList = null;
 			}
 		} catch (SQLException e) {
@@ -109,7 +111,7 @@ public class StudentRecordDAO {
 		}
 		return srList;
 	}
-		
+
 	// 학생기록 불러오기
 	public ArrayList<StudentRecordDTO> getStudentRecord(int seq) {
 		changeDatabase.getConn();
@@ -119,9 +121,9 @@ public class StudentRecordDAO {
 			sql = "select * from student_record where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, seq);
-			
+
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				result = true;
 				int srSeq = rs.getInt(1);
 				int srlSeq = rs.getInt(2);
@@ -132,7 +134,7 @@ public class StudentRecordDAO {
 				StudentRecordDTO dto = new StudentRecordDTO(srSeq, srlSeq, stdNum, stdName, srContent, srDate);
 				srList.add(dto);
 			}
-			if(!result) {
+			if (!result) {
 				srList = null;
 			}
 		} catch (SQLException e) {
@@ -142,9 +144,9 @@ public class StudentRecordDAO {
 		}
 		return srList;
 	}
-	
+
 	// 학생기록 삭제
-	public boolean deleteSr(StudentRecordDTO dto) {
+	public boolean deleteStudentRecord(StudentRecordDTO dto) {
 		changeDatabase.getConn();
 		result = false;
 		try {
@@ -153,7 +155,8 @@ public class StudentRecordDAO {
 			psmt.setInt(1, dto.getSrSeq());
 
 			row = psmt.executeUpdate();
-			if(row > 0) result = true;
+			if (row > 0)
+				result = true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

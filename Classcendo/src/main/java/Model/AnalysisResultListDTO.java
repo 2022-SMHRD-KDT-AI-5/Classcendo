@@ -88,5 +88,4 @@ public class AnalysisResultListDTO {
 	public void setJobsSeq(String jobsSeq) {
 		this.jobsSeq = jobsSeq;
 	}
-
 }
