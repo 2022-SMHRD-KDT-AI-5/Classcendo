@@ -46,7 +46,7 @@ public class JobListDAO {
 			for(int i = 0; i < seqList.length; i++) {
 				sql = "select * from job_list where job_seq = ?";
 				psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, Integer.parseInt(seqList[i]));
+				psmt.setInt(1, Integer.parseInt(seqList[i]) + 1);
 				
 				rs = psmt.executeQuery();
 				while (rs.next()) {
