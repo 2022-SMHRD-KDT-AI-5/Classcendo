@@ -27,7 +27,7 @@ public class UserInfoDTO {
 		this.userPw = userPw;
 	}
 
-	// 생성자 메소드 - 회원정보 수정
+	// 생성자 메소드 - 회원가입, 회원정보 수정
 	public UserInfoDTO(String userNum, String userPw, String userName, String userEmail) {
 		this.userNum = userNum;
 		this.userPw = userPw;

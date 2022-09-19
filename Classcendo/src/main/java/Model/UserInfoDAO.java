@@ -35,31 +35,31 @@ public class UserInfoDAO {
 	}
 
 	// 회원가입
-	public String join(UserInfoDTO dto) {
+	public boolean signUp(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
-			sql = "insert into user_info values(?, ?, ?, ?, default, ?)";
+			sql = "insert into user_info values(?, ?, ?, ?, default, '1')";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, dto.getUserNum());
 			psmt.setString(2, dto.getUserPw());
 			psmt.setString(3, dto.getUserName());
 			psmt.setString(4, dto.getUserEmail());
-			psmt.setString(6, dto.getUserType());
 
 			row = psmt.executeUpdate();
-
+			if (row > 0)
+				result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConn();
 		}
-		return dto.getUserNum();
+		return result;
 	}
 
 	// 로그인
-	public UserInfoDTO login(UserInfoDTO dto) {
+	public UserInfoDTO signIn(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
@@ -92,7 +92,7 @@ public class UserInfoDAO {
 	}
 
 	// 개인정보 확인
-	public int check(UserInfoDTO dto) {
+	public int infoCheck(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
@@ -123,7 +123,7 @@ public class UserInfoDAO {
 	}
 
 	// 개인정보 수정
-	public int update(UserInfoDTO dto) {
+	public int infoUpdate(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
@@ -145,7 +145,7 @@ public class UserInfoDAO {
 	}
 
 	// 비밀번호 분실 후 수정
-	public int updatepw(String id_check, String pw) {
+	public int updatePw(String id_check, String pw) {
 		changeDatabase.getConn();
 
 		try {
@@ -165,7 +165,7 @@ public class UserInfoDAO {
 	}
 
 	// 비밀번호 분실 시
-	public boolean findpw(UserInfoDTO dto) {
+	public boolean findPw(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
@@ -193,7 +193,7 @@ public class UserInfoDAO {
 	}
 
 	// 회원탈퇴
-	public int resign(UserInfoDTO dto) {
+	public int infoResign(UserInfoDTO dto) {
 		changeDatabase.getConn();
 
 		try {
