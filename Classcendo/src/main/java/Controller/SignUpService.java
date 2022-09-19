@@ -33,7 +33,7 @@ public class SignUpService extends HttpServlet {
 		// TODO 연결 페이지 변경 필요
 		if (dao.signUp(dto)) {
 			// 회원가입 성공 시
-			moveURL = "Main.jsp";
+			moveURL = "CodeTest_yl.jsp";
 		} else {
 			// 회원가입 실패 시
 			moveURL = "CodeTest_yl.jsp";

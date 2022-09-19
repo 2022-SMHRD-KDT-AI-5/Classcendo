@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>Controller.SignUpService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SignOutService</servlet-name>
+  	<display-name>SignOutService</display-name>
+  	<description></description>
+  	<servlet-class>Controller.SignOutService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>SignUpService</servlet-name>
   	<url-pattern>/SignUpService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SignOutService</servlet-name>
+  	<url-pattern>/SignOutService</url-pattern>
   </servlet-mapping>
 </web-app>
