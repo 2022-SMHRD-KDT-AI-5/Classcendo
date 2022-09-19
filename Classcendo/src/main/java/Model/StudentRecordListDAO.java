@@ -74,15 +74,45 @@ public class StudentRecordListDAO {
 		return result;
 	}
 	
-	// 학생기록부 불러오기
-	public ArrayList<StudentRecordListDTO> getStudentRecord(String num) {
+	// 모든 학생기록부 불러오기
+	public ArrayList<StudentRecordListDTO> getAllStudentRecord(String num) {
 		changeDatabase.getConn();
 		result = false;
 		ArrayList<StudentRecordListDTO> srlList = new ArrayList<>();
 		try {
-			sql = "select * from student_record where srl_seq = ?";
+			sql = "select * from student_record where user_num = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, num);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				result = true;
+				int srlSeq = rs.getInt(1);
+				String userNum = rs.getString(2);
+				String srlName = rs.getString(3);
+				StudentRecordListDTO dto = new StudentRecordListDTO(srlSeq, userNum, srlName);
+				srlList.add(dto);
+			}
+			if(!result) {
+				srlList = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return srlList;
+	}
+	
+	// 학생기록부 불러오기
+	public ArrayList<StudentRecordListDTO> getStudentRecord(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		ArrayList<StudentRecordListDTO> srlList = new ArrayList<>();
+		try {
+			sql = "select * from student_record where user_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
 			
 			rs = psmt.executeQuery();
 			while(rs.next()) {

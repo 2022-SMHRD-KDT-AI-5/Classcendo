@@ -19,6 +19,15 @@ public class StudentRecordDTO {
 		this.srContent = srContent;
 		this.srDate = srDate;
 	}
+	
+	// 생성자 메소드 - 모든 학생기록 불러오기
+	public StudentRecordDTO(int srSeq, int srlSeq, int stdNum, String stdName, String srDate) {
+		this.srSeq = srSeq;
+		this.srlSeq = srlSeq;
+		this.stdNum = stdNum;
+		this.stdName = stdName;
+		this.srDate = srDate;
+	}
 
 	public int getSrSeq() {
 		return srSeq;

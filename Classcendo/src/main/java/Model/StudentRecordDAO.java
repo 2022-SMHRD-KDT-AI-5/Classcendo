@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class StudentRecordDAO {
 
-	// 학생기록을 관리 클래스
+	// 학생기록 관리 클래스
 	// 데이터베이스에서 사용되는 객체 선언
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -78,13 +78,45 @@ public class StudentRecordDAO {
 		return result;
 	}
 	
+	// 모든 학생기록 불러오기
+	public ArrayList<StudentRecordDTO> getAllStudentRecord(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		ArrayList<StudentRecordDTO> srList = new ArrayList<>();
+		try {
+			sql = "select * from student_record where srl_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				result = true;
+				int srSeq = rs.getInt(1);
+				int srlSeq = rs.getInt(2);
+				int stdNum = rs.getInt(3);
+				String stdName = rs.getString(4);
+				String srDate = rs.getString(6);
+				StudentRecordDTO dto = new StudentRecordDTO(srSeq, srlSeq, stdNum, stdName, srDate);
+				srList.add(dto);
+			}
+			if(!result) {
+				srList = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return srList;
+	}
+		
 	// 학생기록 불러오기
 	public ArrayList<StudentRecordDTO> getStudentRecord(int seq) {
 		changeDatabase.getConn();
 		result = false;
 		ArrayList<StudentRecordDTO> srList = new ArrayList<>();
 		try {
-			sql = "select * from student_record where srl_seq = ?";
+			sql = "select * from student_record where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, seq);
 			
