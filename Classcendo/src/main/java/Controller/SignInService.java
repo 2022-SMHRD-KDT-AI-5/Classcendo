@@ -23,11 +23,10 @@ public class SignInService extends HttpServlet {
 		// memberDTO, memberDAO 호출
 		UserInfoDTO dto = new UserInfoDTO(id, pw);
 		UserInfoDAO dao = new UserInfoDAO();
-
 		UserInfoDTO info = dao.login(dto);
-
 		String moveURL = null;
 
+		// TODO 연결 페이지 변경 필요
 		if (info != null) {
 			// 로그인 성공 시
 			HttpSession session = request.getSession();
@@ -38,7 +37,5 @@ public class SignInService extends HttpServlet {
 			moveURL = "CodeTest_yl.jsp";
 		}
 		response.sendRedirect(moveURL);
-
 	}
-
 }
