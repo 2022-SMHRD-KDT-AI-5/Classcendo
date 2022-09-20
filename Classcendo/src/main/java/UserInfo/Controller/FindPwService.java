@@ -27,7 +27,7 @@ public class FindPwService extends HttpServlet {
 		UserInfoDTO dto = new UserInfoDTO(id, name, email);
 		UserInfoDAO dao = new UserInfoDAO();
 		String idCheck = null;
-
+		
 		if (dao.findPw(dto)) {
 			// 비밀번호 찾기 성공 시
 			idCheck = id;
