@@ -16,15 +16,14 @@ public class EmailDuplicateCheckService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 인코딩 작업
+		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
 		// newEmail 값 받아오기
 		String emailCheck = request.getParameter("email");
 		
-		// UserInfoDAO 호출 작업
+		// UserInfoDAO 호출
 		UserInfoDAO dao = new UserInfoDAO();
-		String moveURL = null;
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

@@ -8,19 +8,23 @@
 <title>CodeTest</title>
 </head>
 <body>
+
+
+<div class="container__form container--signup">
 	<!-- 회원가입 테스트 -->
 	<form action="SignUpService" method="post">
-		<input type="text" placeholder="Id" id="id" name="id" autofocus />
-		<input type="password" placeholder="Password" id="pw" name="pw" />
-		<input type="password" placeholder="PasswordCheck" id="pwCheck" name="pwCheck" />
-		<input type="password" placeholder="Name" id="name" name="name" />
-		<input type="text" placeholder="E-Mail" id="email" name="email" />
-		<input type="submit" value="Sign up" class="btn">
+		<p><input type="text" placeholder="Id" id="id" name="id" autofocus /></p><span id="idcheck" class="check"></span>
+		<p><input type="password" placeholder="Password" id="pw" name="pw" /></p><span id="pwcheck"></span>
+		<p><input type="password" placeholder="PasswordCheck" id="pwCheck" name="pwCheck" /></p>
+		<p><input type="password" placeholder="Name" id="name" name="name" /></p>
+		<p><input type="text" placeholder="E-Mail" id="email" name="email" /></p>
+		<p><input type="submit" value="Sign up" class="btn"></p>
 	</form>
-
+</div>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="LoginJoin.js"></script>
 	<script type="text/javascript">
+	
 		// 아이디 중복 확인
 		function idDuplicateCheck() {
 			$.ajax({

@@ -23,7 +23,6 @@ public class IdDuplicateCheckService extends HttpServlet {
 
 		// UserInfoDAO 호출
 		UserInfoDAO dao = new UserInfoDAO();
-		String moveURL = null;
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
