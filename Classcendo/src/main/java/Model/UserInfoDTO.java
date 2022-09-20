@@ -27,6 +27,13 @@ public class UserInfoDTO {
 		this.userPw = userPw;
 	}
 
+	// 생성자 메소드 - 비밀번호 찾기
+	public UserInfoDTO(String userNum, String userName, String userEmail) {
+		this.userNum = userNum;
+		this.userName = userName;
+		this.userEmail = userEmail;
+	}
+
 	// 생성자 메소드 - 회원가입, 회원정보 수정
 	public UserInfoDTO(String userNum, String userPw, String userName, String userEmail) {
 		this.userNum = userNum;

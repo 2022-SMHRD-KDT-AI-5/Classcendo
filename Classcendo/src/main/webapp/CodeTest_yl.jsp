@@ -20,6 +20,7 @@
 	if (info != null) {
 	%>
 	<a href="SignOutService"><button>Logout</button></a>
+	<a href="CodeTest_yl2.jsp"><button>비밀번호화깅ㄴ</button></a>
 	<%
 	}
 	%>

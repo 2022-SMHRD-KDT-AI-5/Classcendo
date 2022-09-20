@@ -172,11 +172,12 @@ public class UserInfoDAO {
 
 			result = false;
 
-			sql = "select * from user_info where user_num = ? and user_email = ?";
+			sql = "select * from user_info where user_num = ? and user_name = ? and user_email = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, dto.getUserNum());
-			psmt.setString(2, dto.getUserEmail());
+			psmt.setString(2, dto.getUserName());
+			psmt.setString(3, dto.getUserEmail());
 
 			rs = psmt.executeQuery();
 
