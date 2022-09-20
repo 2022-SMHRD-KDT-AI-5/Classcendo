@@ -1,6 +1,8 @@
 package UserInfo.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,18 +28,8 @@ public class SignUpService extends HttpServlet {
 		UserInfoDAO dao = new UserInfoDAO();
 		String moveURL = null;
 		
-		
-		System.out.println();
-		System.out.println(dao.signUp(dto));
-
-		// TODO 연결 페이지 변경 필요
-		if (dao.signUp(dto)) {
-			// 회원가입 성공 시
-			moveURL = "CodeTest_로그인,로그아웃.jsp";
-		} else {
-			// 회원가입 실패 시
-			moveURL = "CodeTest_로그인,로그아웃.jsp";
-		}
-		response.sendRedirect(moveURL);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(dao.signUp(dto));
 	}
 }

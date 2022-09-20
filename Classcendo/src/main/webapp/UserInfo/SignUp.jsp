@@ -20,7 +20,7 @@ body {
 </style>
 </head>
 <body>
-	<form action="../SignUpService" class="login-form">
+	<form action="#" class="login-form" id="signUpForm">
 		<img src="../Image/logo_green.png" width="500" height="65"><br><br>
 		<table>
 			<tr>
@@ -46,7 +46,7 @@ body {
 			</tr>
 			<tr>
 				<td class="textb">
-					<input type="text" class="form-control" id="name" placeholder="TEACHER NAME">
+					<input type="text" class="form-control" id="name" placeholder="TEACHER NAME" onkeyup="nameCheck()">
 				</td>
 			</tr>
 			<tr>
@@ -59,7 +59,7 @@ body {
 			</tr>
 			<tr>
 				<td class="d-grid gap-2 d-md-block">
-					<button class="btn btn-primary" type="submit">JOIN</button>
+					<button class="btn btn-primary" type="button" id="signUpBtn" onclick="signUpInfoCheck()">JOIN</button>
 				</td>
 			</tr>
 		</table>
@@ -67,6 +67,7 @@ body {
 	
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
+
 		// 아이디 중복 확인
 		function idDuplicateCheck() {
 			$.ajax({
@@ -146,16 +147,60 @@ body {
 		
 		// 회원가입 시 정보 확인
 		function signUpInfoCheck() {
-			var cnt = 0
-			if ($("#id").val() == '') cnt++;
-			if (document.getElementById("idCheckIcon").src == "../Image/check2.png") cnt++;
-			if ($("#pw").val() == '') cnt++;
-			if (document.getElementById("pwCheckIcon").src == "../Image/check2.png") cnt++;
-			if ($("#name").val() == '') cnt++;
-			if ($("#email").val() == '') cnt++;
-			if (document.getElementById("emailCheckIcon").src == "../Image/check2.png") cnt++;
-			if (cnt == 7) {<% // TODO 버튼 교체 %>}
+ 			if (document.getElementById("idCheckIcon").src == 'http://localhost:8095/Classcendo/Image/check1.png') {
+				alert("Id 확인 필요");
+				return;
+			} else if (document.getElementById("pwCheckIcon").src == 'http://localhost:8095/Classcendo/Image/check1.png') {
+				alert("Password 확인 필요");
+				return;
+			} else if ($("#name").val() == '') {
+				alert("Name 확인 필요");
+				return;
+			} else if (document.getElementById("emailCheckIcon").src == 'http://localhost:8095/Classcendo/Image/check1.png') {
+				alert("E-Mail 확인 필요");
+				return;
+			} else{
+				signUpInfoCheckResult()
+				return;
+			}
 		}
+		
+		// 회원가입 시 정보 확인 결과
+		function signUpInfoCheckResult(){
+			$.ajax({
+				type : "post",
+				url : "../SignUpService",
+				data : {
+					'id' : $("#id").val(),
+					'pw' : $("#pw").val(),
+					'name' : $("#name").val(),
+					'email' : $("#email").val()
+				},
+				success : function(result) {
+					var text = $('#signUpForm');
+					text.html("");
+					<% // TODO HTML 수정 필요 회원가입 성공 메시지 및 로그인 창으로 이동하는 버튼 %>
+					if (result == 'true') {
+						text.html("<h2 class='form__title'>Find Password Success</h2>"
+										+ "<table>"
+										+ "<tr>"
+										+ "<td colspan='2'><input type='password' placeholder='New Pw' class='input' id='pw1' autofocus/></td>"
+										+ "</tr>"
+										+ "<tr>"
+										+ "<td><input type='password' placeholder='New Pw Check' class='input' id='pw2' onkeyup='PwCall()' /></td>"
+										+ "<td id='pwcheck' align='center'></td>"
+										+ "</tr>"
+										+ "<tr>"
+										+ "<td colspan='2' align='center'><input type='button' value='Revise' class='btn' onclick='RevisePwCheck()'></td>"
+										+ "</tr>" + "</table>");
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+
 	</script>
 </body>
 </html>

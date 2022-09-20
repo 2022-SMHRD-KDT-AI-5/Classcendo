@@ -22,110 +22,101 @@ body {
 </style>
 </head>
 <body>
-	<form action="../FindPwService" class="login-form" id = "findPwFrom">
-		<img src="../Image/logo_white.png" width="500" height="65"><br>
-		<br>
-
-		<div class="textb">
-			<input type="text" class="form-control" id="nameTofindPw" placeholder="User Name" >
+	<form action="#" class="login-form" id="findPwForm">
+		<img src='../Image/logo_white.png' alt='' width='500' height='65'><br><br>
+		<div class='textb'>
+			<input type='text' class='form-control' id='id' placeholder='Employee Number'>
 		</div>
-
-		<div class="textb">
-			<input type="text" class="form-control" id="idTofindPw" placeholder="Employee Number">
+		<div class='textb'>
+			<input type='text' class='form-control' id='name' placeholder='User Name'>
 		</div>
-
-		<div class="textb">
-			<input type="email" class="form-control" id="emailTofindPw" placeholder="E-mail">
+		<div class='textb'>
+			<input type='email' class='form-control' id='email' placeholder='E-mail'>
 		</div>
-
-		<div class="Passwordbtn">
-			<input type = "submit" class ="btnfind" id = "btnFind" value = "Find" onclick = "findPw()">
-			<!-- <button class="btnfind" type="button" onclick="location.href='RevisePwToFindPw.jsp'">Find</button> -->
+		<div class='Passwordbtn'>
+			<button type='button' class='btnfind' id='btnFindBtn' onclick='findPwCheck()'>Find</button>
 		</div>
 	</form>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-	
-	// 비밀번호 찾기 입력 정보 확인
-	function findPwCheck() {
-			var cnt = 0;
-			if ($("#idTofindPw").val() == '') cnt++;
-			if ($("#nameTofindPw").val() == '') cnt++;
-			if ($("#emailTofindPw").val() == '') cnt++;
-			if (cnt == 3) <% // TODO 버튼 교체 %>
+		// 비밀번호 찾기 시 정보 확인
+		function findPwCheck() {
+				if ($("#id").val() == '') {
+				alert("Id 입력 필요");
+				return;
+			} else if ($("#name").val() == '') {
+				alert("Name 입력 필요");
+				return;
+			} else if ($("#email").val() == '') {
+				alert("Email 입력 필요");
+				return;
+			} else{
+				findPwCheckResult()
+				return;
+			}
 		}
 
-	// 비밀번호 찾기 입력 정보 확인
-	function findPwCheck(){
-		if($("#idTofindPw").val() == ''){
-			alert("ID를 입력하세요");
-			return;
-		}else if($("#nameTofindPw").val() == ''){
-			alert("Name을 입력하세요");
-			return;
-		}else if ($("#emailTofindPw").val() == ''){
-			alert("Email을 입력하세요");
-			return;
-		}else{
-			findPw();
-		}
-	}
-		
-
-		// 비밀번호 찾기
-		function findPw() {
+		// 비밀번호 찾기 결과
+		function findPwCheckResult() {
 			$.ajax({
 				type : "post",
-				url : "FindPwService",
+				url : "../FindPwService",
 				data : {
-					'id' : $("#idTofindPw").val(),
-					'name' : $("#nameTofindPw").val(),
-					'email' : $("#emailTofindPw").val()
+					'id' : $("#id").val(),
+					'name' : $("#name").val(),
+					'email' : $("#email").val()
 				},
 				dataType : "text",
 				success : function(idCheck) {
-					revisePwToFindPw(idCheck);
-					alert("idcheck");
+					var text = $('#findPwForm');
+					text.html("");
+					<% // TODO HTML 수정 필요 table로 수정 필요 => pwCheckIcon 담을 테이블임..%>
+					if (idCheck != 'null') {
+						text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
+										+ "<br>"
+										+ "<div class='textb'>"
+										+ "<input type='password' class='form-control' id='pw' placeholder='New Password' onkeyup='pwEqualCheck()'>"
+										+ "</div>"
+										+ "<div class='textb'>"
+										+ "<input type='password' class='form-control' id='pwCheck' placeholder='New Password Confirm' onkeyup='pwEqualCheck()'>"
+										+ "</div>"
+										+ "<img src='../Image/check1.png' class='img_check1' id='pwCheckIcon'>"
+										+ "<div class='Passwordbtn'>"
+										+ "<button type='button' class='btnfind'id='revisePwBtn' onclick='revisePwToFindPw()'>Revise</button>"
+										+ "</div>");
+					} else {
+						text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
+								+ "<br>"
+								+ "<div class='textb'>"
+								+ "<input type='text' class='form-control' id='id' placeholder='Employee Number'>"
+								+ "</div>"
+								+ "<div class='textb'>"
+								+ "<input type='text' class='form-control' id='name' placeholder='User Name'>"
+								+ "</div>"
+								+ "<div class='textb'>"
+								+ "<input type='email' class='form-control' id='email' placeholder='E-mail'>"
+								+ "</div>"
+								+ "<div class='Passwordbtn'>"
+								+ "<button type='button' class='btnfind' id='btnFindBtn' onclick='findPwCheck()'>Find</button>"
+								+ "</div>");
+						alert("존재하지 않는 정보")
+					}
 				},
 				error : function(e) {
 					alert("요청실패");
 				}
 			});
 		}
-	<% // TODO html, 연결페이지 변경 필요%>
-		// 비밀번호 찾기 후 HTML 변경
-		function revisePwToFindPw(idCheck) {
-			var text = $('#findPwForm');
-			text.html("");
-			if (idCheck != 'null') {
-				text
-						.html("<form action='../RevisePwToFindPwService' class='login-form' id = 'RevisePwForm'>"
-								+ "<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
-								+ "<br>"
-								+ "<div class='textb'>"
-								+ "<input type='password' class='form-control' id='pw' placeholder='New Password' onkeyup = 'pwEqualCheck'>"
-								+ "</div>"
-								+ "<div class='textb'>"
-								+ "<input type='password' class='form-control' id='pwCheck' placeholder='New Password Confirm' onkeyup = 'pwEqualCheck'>"
-								+ "</div>"
-								+ "<div class='Passwordbtn'>"
-								+ "<input type = 'submit' class = 'btnfind' value = 'Check'>"
-								+ "</div>"
-								+ "</form>");
-			} else {
-				text.html("<h5 class='input'>존재하지 않는 회원입니다</h5>"
-						+ "<a href='SignUp.jsp' class='link'>Find info</a>");
-			}
-		}
-		
+
 		// 비밀번호 확인
 		function pwEqualCheck() {
 			var pw = document.getElementById("pw").value;
 			var pwCheck = document.getElementById("pwCheck").value;
 			pwEqualCheckResult(pw, pwCheck);
 		}
-
+		
 		// 비밀번호 확인 결과
 		function pwEqualCheckResult(pw, pwCheck) {
 			var icon = $('#pwCheckIcon');
@@ -138,45 +129,39 @@ body {
 			}
 		}
 
-		// 비밀번호 변경 입력 정보 확인
-		function pwCheckToFindPw() {
-			if (document.getElementById("pwCheck").innerHTML != "일치") <% // TODO 버튼 교체 %>
+		// 비밀번호 찾기 후 비밀번호 변경 시 정보 확인
+		function revisePwToFindPw() {
+ 			if (document.getElementById("pwCheckIcon").src == 'http://localhost:8095/Classcendo/Image/check1.png') {
+				alert("Password 확인 필요");
+				return;
+			} else{
+				revisePwToFindPwResult()
+				return;
+			}
 		}
 
 		// 비밀번호 변경 버튼
-		function revisePwToFindPw() {
+		function revisePwToFindPwResult() {
 			$.ajax({
 				type : "post",
-				url : "RevisePwToFindPwService",
+				url : "../RevisePwToFindPwService",
 				data : {
 					'pw' : $("#pw").val(),
 					'pwCheck' : $("#pwCheck").val()
 				},
 				success : function(result) {
+					var text = $('#findPwForm');
+					text.html("");
+					<% // TODO HTML 수정 필요 비밀번호 변경 성공 text와 로그인 창으로 이동하는 버튼%>
 					if (result == 'true') {
-						revisePwCompleteToFindPw(result);
-					} else {
-						return;
+						text.html("<h5 class='input'>Revise Pw Success</h5>"
+										+ "<a href='Signin.jsp' class='link'>Sign in/Sign up</a>");
 					}
 				},
 				error : function(e) {
 					alert("요청실패");
 				}
 			});
-		}
-
-		<% // TODO html, 연결페이지 변경 필요%>
-		// 비밀번호 변경 완료 HTML
-		function revisePwCompleteToFindPw(result) {
-			var text = $('#RevisePwForm');
-			text.html("");
-			if (result == 'true') {
-				text
-						.html("<h5 class='input'>Revise Pw Success</h5>"
-								+ "<a href='Signin.jsp' class='link'>Sign in/Sign up</a>");
-			} else {
-				return;
-			}
 		}
 	</script>
 </body>
