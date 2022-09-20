@@ -13,7 +13,7 @@ public class SignOutService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 인코딩
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 
 		// 기존 저장된 회원정보 session 호출
 		HttpSession session = request.getSession();

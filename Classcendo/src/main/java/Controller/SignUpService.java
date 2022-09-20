@@ -13,7 +13,7 @@ import Model.UserInfoDTO;
 public class SignUpService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 
 		// id, pw, name, email 값 받아오기
 		String id = request.getParameter("id");
