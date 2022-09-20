@@ -40,6 +40,18 @@
   	<description></description>
   	<servlet-class>UserInfo.Controller.RevisePwToFindPwService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>IdDuplicateCheckService</servlet-name>
+  	<display-name>IdDuplicateCheckService</display-name>
+  	<description></description>
+  	<servlet-class>UserInfo.Controller.IdDuplicateCheckService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EmailDuplicateCheckService</servlet-name>
+  	<display-name>EmailDuplicateCheckService</display-name>
+  	<description></description>
+  	<servlet-class>UserInfo.Controller.EmailDuplicateCheckService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -63,5 +75,13 @@
   <servlet-mapping>
   	<servlet-name>RevisePwToFindPwService</servlet-name>
   	<url-pattern>/RevisePwToFindPwService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>IdDuplicateCheckService</servlet-name>
+  	<url-pattern>/IdDuplicateCheckService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmailDuplicateCheckService</servlet-name>
+  	<url-pattern>/EmailDuplicateCheckService</url-pattern>
   </servlet-mapping>
 </web-app>

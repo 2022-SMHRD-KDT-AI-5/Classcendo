@@ -93,6 +93,58 @@ public class UserInfoDAO {
 		return dto;
 	}
 
+	// 회원가입 시 아이디 중복 확인
+	public boolean checkId(String newId) {
+		changeDatabase.getConn();
+
+		try {
+			result = false;
+
+			sql = "select * from user_info where user_num = ?";
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, newId);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				result = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
+
+	// 회원가입시 이메일 중복 확인
+	public boolean checkEmail(String newEmail) {
+		changeDatabase.getConn();
+
+		try {
+			result = false;
+			sql = "select * from user_info where user_email = ?";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, newEmail);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn();
+		}
+
+		return result;
+	}
+
 	// 개인정보 확인
 	public int infoCheck(UserInfoDTO dto) {
 		changeDatabase.getConn();
