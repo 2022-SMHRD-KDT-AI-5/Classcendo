@@ -8,37 +8,37 @@
   	<servlet-name>SignInService</servlet-name>
   	<display-name>SignInService</display-name>
   	<description></description>
-  	<servlet-class>Controller.SignInService</servlet-class>
+  	<servlet-class>UserInfo.Controller.SignInService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>SignUpService</servlet-name>
   	<display-name>SignUpService</display-name>
   	<description></description>
-  	<servlet-class>Controller.SignUpService</servlet-class>
+  	<servlet-class>UserInfo.Controller.SignUpService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>SignOutService</servlet-name>
   	<display-name>SignOutService</display-name>
   	<description></description>
-  	<servlet-class>Controller.SignOutService</servlet-class>
+  	<servlet-class>UserInfo.Controller.SignOutService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>PwCheckToReviseInfoService</servlet-name>
   	<display-name>PwCheckToReviseInfoService</display-name>
   	<description></description>
-  	<servlet-class>Controller.PwCheckToReviseInfoService</servlet-class>
+  	<servlet-class>UserInfo.Controller.PwCheckToReviseInfoService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>FindPwService</servlet-name>
   	<display-name>FindPwService</display-name>
   	<description></description>
-  	<servlet-class>Controller.FindPwService</servlet-class>
+  	<servlet-class>UserInfo.Controller.FindPwService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RevisePwToFindPwService</servlet-name>
   	<display-name>RevisePwToFindPwService</display-name>
   	<description></description>
-  	<servlet-class>Controller.RevisePwToFindPwService</servlet-class>
+  	<servlet-class>UserInfo.Controller.RevisePwToFindPwService</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
