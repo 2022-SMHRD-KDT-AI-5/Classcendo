@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>Controller.FindPwService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RevisePwToFindPwService</servlet-name>
+  	<display-name>RevisePwToFindPwService</display-name>
+  	<description></description>
+  	<servlet-class>Controller.RevisePwToFindPwService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -48,10 +54,14 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>PwCheckToReviseInfoService</servlet-name>
-  	<url-pattern>/IPwCheckToReviseInfoService</url-pattern>
+  	<url-pattern>/PwCheckToReviseInfoService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>FindPwService</servlet-name>
   	<url-pattern>/FindPwService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RevisePwToFindPwService</servlet-name>
+  	<url-pattern>/RevisePwToFindPwService</url-pattern>
   </servlet-mapping>
 </web-app>
