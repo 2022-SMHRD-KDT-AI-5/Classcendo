@@ -21,7 +21,7 @@ public class SignUpService extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 
-		// memberDTO, memberDAO 호출
+		// UserInfoDTO, UserInfoDAO 호출
 		UserInfoDTO dto = new UserInfoDTO(id, pw, name, email);
 		UserInfoDAO dao = new UserInfoDAO();
 		String moveURL = null;
@@ -33,10 +33,10 @@ public class SignUpService extends HttpServlet {
 		// TODO 연결 페이지 변경 필요
 		if (dao.signUp(dto)) {
 			// 회원가입 성공 시
-			moveURL = "CodeTest_yl.jsp";
+			moveURL = "CodeTest_로그인,로그아웃.jsp";
 		} else {
 			// 회원가입 실패 시
-			moveURL = "CodeTest_yl.jsp";
+			moveURL = "CodeTest_로그인,로그아웃.jsp";
 		}
 		response.sendRedirect(moveURL);
 	}

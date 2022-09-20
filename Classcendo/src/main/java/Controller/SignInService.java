@@ -31,10 +31,10 @@ public class SignInService extends HttpServlet {
 			// 로그인 성공 시
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info);
-			moveURL = "CodeTest_yl.jsp";
+			moveURL = "CodeTest_로그인,로그아웃.jsp";
 		} else {
 			// 로그인 실패 시
-			moveURL = "CodeTest_yl.jsp";
+			moveURL = "CodeTest_로그인,로그아웃.jsp";
 		}
 		response.sendRedirect(moveURL);
 	}

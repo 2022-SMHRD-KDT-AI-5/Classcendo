@@ -24,14 +24,14 @@ public class RevisePwToFindPwService extends HttpServlet {
 		// 수정할 pw 값 받아오기
 		String pw = request.getParameter("pw");
 
-		// memberDTO, memberDAO 호출
+		// UserInfoDAO 호출
 		UserInfoDAO dao = new UserInfoDAO();
 
 		boolean result = false;
 
 		if (dao.updatePw(idCheck, pw) > 0) {
 			// 비밀번호 수정 성공 시
-			session.removeAttribute("id_check");
+			session.removeAttribute("idCheck");
 			result = true;
 		} else {
 			// 비밀번호 수정 실패 시
