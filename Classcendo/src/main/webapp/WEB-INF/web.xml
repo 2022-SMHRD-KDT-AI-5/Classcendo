@@ -23,10 +23,10 @@
   	<servlet-class>Controller.SignOutService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>InfoPwCheckService</servlet-name>
-  	<display-name>InfoPwCheckService</display-name>
+  	<servlet-name>PwCheckToReviseInfoService</servlet-name>
+  	<display-name>PwCheckToReviseInfoService</display-name>
   	<description></description>
-  	<servlet-class>Controller.InfoPwCheckService</servlet-class>
+  	<servlet-class>Controller.PwCheckToReviseInfoService</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>FindPwService</servlet-name>
@@ -47,8 +47,8 @@
   	<url-pattern>/SignOutService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>InfoPwCheckService</servlet-name>
-  	<url-pattern>/InfoPwCheckService</url-pattern>
+  	<servlet-name>PwCheckToReviseInfoService</servlet-name>
+  	<url-pattern>/IPwCheckToReviseInfoService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>FindPwService</servlet-name>
