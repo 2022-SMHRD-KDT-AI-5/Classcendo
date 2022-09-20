@@ -25,7 +25,7 @@
 		function idDuplicateCheck() {
 			$.ajax({
 				type : "post",
-				url : "idDuplicateCheckService",
+				url : "IdDuplicateCheckService",
 				data : {
 					'id' : $("#id").val()
 				},
@@ -75,7 +75,7 @@
 		function emailDuplicateCheck() {
 			$.ajax({
 				type : "post",
-				url : "emailDuplicateCheckService",
+				url : "EmailDuplicateCheckService",
 				data : {
 					'email' : $("#email").val()
 				},
@@ -98,7 +98,7 @@
 				} else {
 					text.html("중복").css('color', 'red');
 				}
-			}	
+			}
 		}
 		
 		// 회원가입 시 정보 확인
