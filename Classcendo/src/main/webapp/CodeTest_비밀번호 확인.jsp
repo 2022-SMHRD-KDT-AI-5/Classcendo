@@ -1,4 +1,4 @@
-<%@page import="Model.UserInfoDTO"%>
+<%@page import="UserInfo.Model.UserInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
