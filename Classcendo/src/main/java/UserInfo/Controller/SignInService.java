@@ -20,6 +20,9 @@ public class SignInService extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
+		System.out.println(id);
+		System.out.println(pw);
+		
 		// UserInfoDTO, UserInfoDAO 호출
 		UserInfoDTO dto = new UserInfoDTO(id, pw);
 		UserInfoDAO dao = new UserInfoDAO();
@@ -31,10 +34,10 @@ public class SignInService extends HttpServlet {
 			// 로그인 성공 시
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info);
-			moveURL = "CodeTest_로그인,로그아웃.jsp";
+			moveURL = "UserInfo/SignIn.jsp";
 		} else {
 			// 로그인 실패 시
-			moveURL = "CodeTest_로그인,로그아웃.jsp";
+			moveURL = "UserInfo/SignUp.jsp";
 		}
 		response.sendRedirect(moveURL);
 	}

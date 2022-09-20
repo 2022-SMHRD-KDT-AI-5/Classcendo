@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,19 +22,18 @@ body {
 </style>
 </head>
 <body>
-	<form action="Student_record.jsp" class="login-form">
+	<form action="../SignInService" class="login-form">
 		<img src="../Image/logo_green.png" alt="" width="500" height="65"><br>
 		<br>
 
 		<div class="textb">
-			<input type="email" class="form-control" id="floatingInput"
+			<input type="text" class="form-control" id="floatingInput" name="id"
 				placeholder="Employee Number">
 		</div>
 
 		<div class="textb">
-			<input type="password" class="form-control" id="floatingInput"
+			<input type="password" class="form-control" id="floatingInput" name="pw"
 				placeholder="Password">
-
 		</div>
 
 		<div class="d-grid gap-2 d-md-block">

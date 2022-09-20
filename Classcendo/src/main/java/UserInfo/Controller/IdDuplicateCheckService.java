@@ -27,8 +27,5 @@ public class IdDuplicateCheckService extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(dao.checkId(idCheck));
-		
-
 	}
-
 }
