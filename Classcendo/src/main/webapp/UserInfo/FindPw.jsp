@@ -44,7 +44,7 @@ body {
 		// 비밀번호 찾기 시 정보 확인
 		function findPwCheck() {
 				if ($("#id").val() == '') {
-				alert("Id 입력 필요");
+				alert("Employee Number 입력 필요");
 				return;
 			} else if ($("#name").val() == '') {
 				alert("Name 입력 필요");

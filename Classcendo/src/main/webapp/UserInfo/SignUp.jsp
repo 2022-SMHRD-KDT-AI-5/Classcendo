@@ -183,7 +183,7 @@ body {
 					if (result == 'true') {
 						text.html("<h2 class='form__title'>Find Password Success</h2>"
 										+ "<table>"
-										+ "<tr>"
+										+ "<tr>"    
 										+ "<td colspan='2'><input type='password' placeholder='New Pw' class='input' id='pw1' autofocus/></td>"
 										+ "</tr>"
 										+ "<tr>"
