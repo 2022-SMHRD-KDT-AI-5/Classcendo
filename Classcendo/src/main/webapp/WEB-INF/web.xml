@@ -52,6 +52,18 @@
   	<description></description>
   	<servlet-class>UserInfo.Controller.EmailDuplicateCheckService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ReviseInfoService</servlet-name>
+  	<display-name>ReviseInfoService</display-name>
+  	<description></description>
+  	<servlet-class>UserInfo.Controller.ReviseInfoService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CheckPwToMyPageService</servlet-name>
+  	<display-name>CheckPwToMyPageService</display-name>
+  	<description></description>
+  	<servlet-class>UserInfo.Controller.CheckPwToMyPageService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -83,5 +95,13 @@
   <servlet-mapping>
   	<servlet-name>EmailDuplicateCheckService</servlet-name>
   	<url-pattern>/EmailDuplicateCheckService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReviseInfoService</servlet-name>
+  	<url-pattern>/ReviseInfoService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckPwToMyPageService</servlet-name>
+  	<url-pattern>/CheckPwToMyPageService</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -34,7 +34,7 @@ public class SignInService extends HttpServlet {
 			// 로그인 성공 시
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info);
-			moveURL = "UserInfo/SignIn.jsp";
+			moveURL = "UserInfo/test.jsp";
 		} else {
 			// 로그인 실패 시
 			moveURL = "UserInfo/SignUp.jsp";
