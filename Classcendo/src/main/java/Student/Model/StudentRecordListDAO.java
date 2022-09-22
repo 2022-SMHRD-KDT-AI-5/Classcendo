@@ -109,14 +109,14 @@ public class StudentRecordListDAO {
 	}
 
 	// 학생기록부 불러오기
-	public ArrayList<StudentRecordListDTO> getStudentRecord(int seq) {
+	public ArrayList<StudentRecordListDTO> getStudentRecord(String num) {
 		changeDatabase.getConn();
 		result = false;
 		ArrayList<StudentRecordListDTO> srlList = new ArrayList<>();
 		try {
 			sql = "select * from student_record where user_num = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, seq);
+			psmt.setString(1, num);
 
 			rs = psmt.executeQuery();
 			while (rs.next()) {

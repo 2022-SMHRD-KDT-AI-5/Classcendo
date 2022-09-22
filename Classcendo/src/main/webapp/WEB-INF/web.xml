@@ -64,6 +64,18 @@
   	<description></description>
   	<servlet-class>UserInfo.Controller.CheckPwToMyPageService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetStudentList</servlet-name>
+  	<display-name>GetStudentList</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.GetStudentList</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetStudentRecordList</servlet-name>
+  	<display-name>GetStudentRecordList</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.GetStudentRecordList</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -103,5 +115,13 @@
   <servlet-mapping>
   	<servlet-name>CheckPwToMyPageService</servlet-name>
   	<url-pattern>/CheckPwToMyPageService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetStudentList</servlet-name>
+  	<url-pattern>/GetStudentList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetStudentRecordList</servlet-name>
+  	<url-pattern>/GetStudentRecordList</url-pattern>
   </servlet-mapping>
 </web-app>
