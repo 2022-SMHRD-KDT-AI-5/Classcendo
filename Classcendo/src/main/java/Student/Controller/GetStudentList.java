@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import Analysis.Model.AnalysisResultListDAO;
 import Analysis.Model.AnalysisResultListDTO;
 import Student.Model.StudentRecordDAO;
@@ -30,16 +32,25 @@ public class GetStudentList extends HttpServlet {
 		// StudentRecordDTO, StudentRecordDAO 호출
 		StudentRecordDAO srDao = new StudentRecordDAO();
 		ArrayList<StudentRecordDTO> srList = srDao.getAllStudentList(Integer.parseInt(srlSeq));
-		String text = "";
 		
 		// AnalysisResultListDAO, AnalysisResultListDTO 호출
 		AnalysisResultListDAO arlDao = new AnalysisResultListDAO();
-		AnalysisResultListDTO arlDto = null;
 		
+		// Gson 객체 불러오기
+		Gson gson = new Gson();
+		
+		// list를 json 형식으로 바꿔주기
+		String json = gson.toJson(srList);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		
+		/*
 		if (srList != null) {
 			// 학생 목록 출력 성공 시
 			for (int i = 0; i < srList.size(); i++) {
-				text += "<li class='list' style='background=\"red\"' onclick='test()'>"
+				text += "<li class='list' style='background=\"red\"' onclick='getAnalysisResult()'>"
 					 + srList.get(i).getStdNum() + "번 " + srList.get(i).getStdName()
 					 + srList.get(i).getSrDate();
 				if(arlDao.getAnalysisResult(srList.get(i).getSrSeq()) != null) {
@@ -47,9 +58,6 @@ public class GetStudentList extends HttpServlet {
 							+ srList.get(i).getSrSeq() + ")'>";
 				}
 			}
-		}
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.print(text);
+		}*/
 	}
 }

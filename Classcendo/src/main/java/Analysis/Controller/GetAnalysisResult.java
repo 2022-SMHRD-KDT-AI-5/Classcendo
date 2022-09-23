@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import Analysis.Model.AnalysisResultListDAO;
 import Analysis.Model.AnalysisResultListDTO;
 import Student.Model.StudentRecordDAO;
@@ -21,7 +23,6 @@ public class GetAnalysisResult extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// 기존 저장된 학생번호 session 호출
-		HttpSession session = request.getSession();
 		String srSeq = request.getParameter("srSeq"); 
 		
 		// StudentRecordDTO, StudentRecordDAO 호출
@@ -29,12 +30,14 @@ public class GetAnalysisResult extends HttpServlet {
 		AnalysisResultListDTO dto = dao.getAnalysisResult(Integer.parseInt(srSeq));
 		String text = "";
 		
-		if (dto != null) {
-			// 분석 결과 출력 성공 시
-			// TODO 출력한 HTML문 입력 필요
-		}
+		// Gson 객체 불러오기
+		Gson gson = new Gson();
+		
+		// list를 json 형식으로 바꿔주기
+		String json = gson.toJson(dto);
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.print(text);
+		out.print(json);
 	}
 }

@@ -38,7 +38,40 @@
 					'srlSeq' : $("#srlSeq").val()
 				},
 				success : function(result) {
-					emailDuplicateCheckResult(result);
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result != null) {
+						text.html(result);
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		// 학생기록 불러오기
+		function getStudentRecord(){
+			$.ajax({
+				type : "post",
+				url : "../GetStudentRecord",
+				data : {
+					'srSeq' : $("#srSeq").val()
+				},
+				dataType : "json",
+				success : function(data) {
+					var list = [];
+					$.each(data, function(i) {
+						var result = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srContent, data[i].srDate ];
+						list.push(result);
+					});
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result != null) {
+						text.html(result);
+					}
 				},
 				error : function(e) {
 					alert("요청실패");
@@ -54,15 +87,25 @@
 				data : {
 					'srSeq' : $("#srSeq").val()
 				},
-				success : function(result) {
-					emailDuplicateCheckResult(result);
+				dataType : "json",
+				success : function(data) {
+					var result = [ data.arlSeq, data.srSeq,
+						+ data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate,
+						+ data.arlGraphPath, data.jobsSeq ];
+					list.push(result);
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result != null) {
+						text.html(result);
+					}
 				},
 				error : function(e) {
 					alert("요청실패");
 				}
 			});
 		}
+		
 	</script>
-
 </body>
 </html>

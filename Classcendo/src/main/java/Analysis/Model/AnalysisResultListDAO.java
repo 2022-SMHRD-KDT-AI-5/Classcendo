@@ -162,4 +162,24 @@ public class AnalysisResultListDAO {
 		}
 		return dto;
 	}
+	
+	// 학생 분석 결과 유무 확인
+	public boolean getAnalysisResultExistence(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		try {
+			sql = "select * from analysis_result_list where sr_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			rs = psmt.executeQuery();
+			if (rs.next()) result = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
 }
