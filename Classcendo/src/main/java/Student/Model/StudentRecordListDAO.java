@@ -84,7 +84,7 @@ public class StudentRecordListDAO {
 		result = false;
 		ArrayList<StudentRecordListDTO> srlList = new ArrayList<>();
 		try {
-			sql = "select * from student_record where user_num = ?";
+			sql = "select * from student_record_list where user_num = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, num);
 

@@ -33,46 +33,46 @@
 		// 비밀번호 확인 결과
 		function pwCheckResult() {
 			$.ajax({
-						type : "post",
-						url : "../CheckPwToMyPageService",
-						data : {
-							'pw' : $("#pw").val()
-						},
-						dataType : "text",
-						success : function(idCheck) {
-							var text = $('#checkPwForm');
-							text.html("");
-	<% // TODO HTML 수정 필요 회원정보 수정 페이지로 수정%>
-					if (idCheck != 'null') {
-						text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
-										+ "<br>"
-										+ "<div class='textb'>"
-										+ "<input type='password' class='form-control' id='pw' placeholder='New Password' onkeyup='pwEqualCheck()'>"
-										+ "</div>"
-										+ "<div class='textb'>"
-										+ "<input type='password' class='form-control' id='pwCheck' placeholder='New Password Confirm' onkeyup='pwEqualCheck()'>"
-										+ "</div>"
-										+ "<img src='../Image/check1.png' class='img_check1' id='pwCheckIcon'>"
-										+ "<div class='textb'>"
-										+ "<input type='text' class='form-control' id='name' placeholder='Name'>"
-										+ "</div>"
-										+ "<div class='textb'>"
-										+ "<input type='email' class='form-control' id='email' placeholder='Email' onkeyup='emailDuplicateCheck()'>"
-										+ "</div>"
-										+ "<img src='../Image/check1.png' class='img_check1' id='emailCheckIcon'>"
-										+ "<div class='Passwordbtn'>"
-										+ "<button type='button' class='btnfind'id='reviseInfoBtn' onclick='reviseInfo()'>Revise</button>"
-										+ "</div>");
-					} else {
-						text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
-								+ "<br>"
-								+ "<div class='textb'>"
-								+ "<input type='text' class='form-control' id='pw' placeholder='pw'>"
-								+ "</div>"
-								+ "<div class='Passwordbtn'>"
-								+ "<button type='button' class='btnfind' id='btnCheckBtn' onclick='pwCheck()'>확인</button>"
-								+ "</div>");
-						alert("비밀번호가 틀렸습니다.")
+					type : "post",
+					url : "../CheckPwToMyPageService",
+					data : {
+						'pw' : $("#pw").val()
+					},
+					dataType : "text",
+					success : function(idCheck) {
+						var text = $('#checkPwForm');
+						text.html("");
+				<% // TODO HTML 수정 필요 회원정보 수정 페이지로 수정%>
+				if (idCheck != 'null') {
+					text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
+									+ "<br>"
+									+ "<div class='textb'>"
+									+ "<input type='password' class='form-control' id='pw' placeholder='New Password' onkeyup='pwEqualCheck()'>"
+									+ "</div>"
+									+ "<div class='textb'>"
+									+ "<input type='password' class='form-control' id='pwCheck' placeholder='New Password Confirm' onkeyup='pwEqualCheck()'>"
+									+ "</div>"
+									+ "<img src='../Image/check1.png' class='img_check1' id='pwCheckIcon'>"
+									+ "<div class='textb'>"
+									+ "<input type='text' class='form-control' id='name' placeholder='Name'>"
+									+ "</div>"
+									+ "<div class='textb'>"
+									+ "<input type='email' class='form-control' id='email' placeholder='Email' onkeyup='emailDuplicateCheck()'>"
+									+ "</div>"
+									+ "<img src='../Image/check1.png' class='img_check1' id='emailCheckIcon'>"
+									+ "<div class='Passwordbtn'>"
+									+ "<button type='button' class='btnfind'id='reviseInfoBtn' onclick='reviseInfo()'>Revise</button>"
+									+ "</div>");
+				} else {
+					text.html("<img src='../Image/logo_white.png' alt='' width='500' height='65'><br>"
+							+ "<br>"
+							+ "<div class='textb'>"
+							+ "<input type='text' class='form-control' id='pw' placeholder='pw'>"
+							+ "</div>"
+							+ "<div class='Passwordbtn'>"
+							+ "<button type='button' class='btnfind' id='btnCheckBtn' onclick='pwCheck()'>확인</button>"
+							+ "</div>");
+					alert("비밀번호가 틀렸습니다.")
 					}
 				},
 				error : function(e) {

@@ -76,6 +76,18 @@
   	<description></description>
   	<servlet-class>Student.Controller.GetStudentRecordList</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetAnalysisResult</servlet-name>
+  	<display-name>GetAnalysisResult</display-name>
+  	<description></description>
+  	<servlet-class>Analysis.Controller.GetAnalysisResult</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetStudentRecord</servlet-name>
+  	<display-name>GetStudentRecord</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.GetStudentRecord</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -123,5 +135,13 @@
   <servlet-mapping>
   	<servlet-name>GetStudentRecordList</servlet-name>
   	<url-pattern>/GetStudentRecordList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetAnalysisResult</servlet-name>
+  	<url-pattern>/GetAnalysisResult</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetStudentRecord</servlet-name>
+  	<url-pattern>/GetStudentRecord</url-pattern>
   </servlet-mapping>
 </web-app>

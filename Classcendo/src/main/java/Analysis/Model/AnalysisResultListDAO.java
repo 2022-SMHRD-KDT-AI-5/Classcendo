@@ -129,10 +129,10 @@ public class AnalysisResultListDAO {
 	}
 	
 	// 학생 분석 결과 불러오기
-	public ArrayList<AnalysisResultListDTO> getAnalysisResult(int seq) {
+	public AnalysisResultListDTO getAnalysisResult(int seq) {
 		changeDatabase.getConn();
 		result = false;
-		ArrayList<AnalysisResultListDTO> arlList = new ArrayList<>();
+		AnalysisResultListDTO dto = null;
 		try {
 			sql = "select * from analysis_result_list where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
@@ -149,18 +149,17 @@ public class AnalysisResultListDAO {
 				int tendency4Rate = rs.getInt(6);
 				String arlGraphPath = rs.getString(7);
 				String jobsSeq = rs.getString(8);
-				AnalysisResultListDTO dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
+				dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
 						tendency4Rate, arlGraphPath, jobsSeq);
-				arlList.add(dto);
 			}
 			if (!result) {
-				arlList = null;
+				dto = null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConn();
 		}
-		return arlList;
+		return dto;
 	}
 }

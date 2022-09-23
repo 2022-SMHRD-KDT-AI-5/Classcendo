@@ -82,13 +82,13 @@ public class StudentRecordDAO {
 		return result;
 	}
 
-	// 모든 학생기록 불러오기
-	public ArrayList<StudentRecordDTO> getAllStudentRecord(int seq) {
+	// 모든 학생목록 불러오기
+	public ArrayList<StudentRecordDTO> getAllStudentList(int seq) {
 		changeDatabase.getConn();
 		result = false;
 		ArrayList<StudentRecordDTO> srList = new ArrayList<>();
 		try {
-			sql = "select * from student_record where srl_seq = ?";
+			sql = "select * from student_record where srl_seq = ? order by std_num";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, seq);
 
@@ -96,11 +96,9 @@ public class StudentRecordDAO {
 			while (rs.next()) {
 				result = true;
 				int srSeq = rs.getInt(1);
-				int srlSeq = rs.getInt(2);
-				int stdNum = rs.getInt(3);
 				String stdName = rs.getString(4);
 				String srDate = rs.getString(6);
-				StudentRecordDTO dto = new StudentRecordDTO(srSeq, srlSeq, stdNum, stdName, srDate);
+				StudentRecordDTO dto = new StudentRecordDTO(srSeq, stdName, srDate);
 				srList.add(dto);
 			}
 			if (!result) {
@@ -115,10 +113,10 @@ public class StudentRecordDAO {
 	}
 
 	// 학생기록 불러오기
-	public ArrayList<StudentRecordDTO> getStudentRecord(int seq) {
+	public StudentRecordDTO getStudentRecord(int seq) {
 		changeDatabase.getConn();
 		result = false;
-		ArrayList<StudentRecordDTO> srList = new ArrayList<>();
+		StudentRecordDTO dto = null;
 		try {
 			sql = "select * from student_record where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
@@ -128,23 +126,21 @@ public class StudentRecordDAO {
 			while (rs.next()) {
 				result = true;
 				int srSeq = rs.getInt(1);
-				int srlSeq = rs.getInt(2);
 				int stdNum = rs.getInt(3);
 				String stdName = rs.getString(4);
 				String srContent = rs.getString(5);
 				String srDate = rs.getString(6);
-				StudentRecordDTO dto = new StudentRecordDTO(srSeq, srlSeq, stdNum, stdName, srContent, srDate);
-				srList.add(dto);
+				dto = new StudentRecordDTO(srSeq, stdNum, stdName, srContent, srDate);
 			}
 			if (!result) {
-				srList = null;
+				dto = null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConn();
 		}
-		return srList;
+		return dto;
 	}
 
 	// 학생기록 삭제

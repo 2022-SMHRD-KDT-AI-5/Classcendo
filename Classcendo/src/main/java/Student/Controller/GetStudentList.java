@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Analysis.Model.AnalysisResultListDAO;
+import Analysis.Model.AnalysisResultListDTO;
 import Student.Model.StudentRecordDAO;
 import Student.Model.StudentRecordDTO;
 import UserInfo.Model.UserInfoDTO;
@@ -21,31 +23,33 @@ public class GetStudentList extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// 기존 저장된 회원정보 session 호출
+		// 기존 저장된 학생기록부 목록 번호 session 호출
 		HttpSession session = request.getSession();
 		String srlSeq = request.getParameter("srlSeq"); 
-		String text = "<li class='list'>" + srlSeq + "</li>";
-		
 		
 		// StudentRecordDTO, StudentRecordDAO 호출
-		StudentRecordDAO dao = new StudentRecordDAO();
-		ArrayList<StudentRecordDTO> srList = dao.getAllStudentRecord(Integer.parseInt(srlSeq));
+		StudentRecordDAO srDao = new StudentRecordDAO();
+		ArrayList<StudentRecordDTO> srList = srDao.getAllStudentList(Integer.parseInt(srlSeq));
+		String text = "";
+		
+		// AnalysisResultListDAO, AnalysisResultListDTO 호출
+		AnalysisResultListDAO arlDao = new AnalysisResultListDAO();
+		AnalysisResultListDTO arlDto = null;
 		
 		if (srList != null) {
 			// 학생 목록 출력 성공 시
 			for (int i = 0; i < srList.size(); i++) {
-				text += "<li class='list' style='background=\"red\"'>"+ srList.get(i).getStdNum() + "번 " + srList.get(i).getStdName();
-				text += srList.get(i).getSrDate();
-				if(srList.get(i).getSrContent() == null) {
+				text += "<li class='list' style='background=\"red\"' onclick='test()'>"
+					 + srList.get(i).getStdNum() + "번 " + srList.get(i).getStdName()
+					 + srList.get(i).getSrDate();
+				if(arlDao.getAnalysisResult(srList.get(i).getSrSeq()) != null) {
 					text += "<input type='button' id='result' value='결과' onclick='analysisResult("
 							+ srList.get(i).getSrSeq() + ")'>";
-				} 
+				}
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(text);
-
 	}
-
 }
