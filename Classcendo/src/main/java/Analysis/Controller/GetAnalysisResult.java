@@ -28,7 +28,6 @@ public class GetAnalysisResult extends HttpServlet {
 		// StudentRecordDTO, StudentRecordDAO 호출
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
 		AnalysisResultListDTO dto = dao.getAnalysisResult(Integer.parseInt(srSeq));
-		String text = "";
 		
 		// Gson 객체 불러오기
 		Gson gson = new Gson();

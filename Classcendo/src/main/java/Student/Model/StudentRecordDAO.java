@@ -96,9 +96,10 @@ public class StudentRecordDAO {
 			while (rs.next()) {
 				result = true;
 				int srSeq = rs.getInt(1);
+				int stdNum = rs.getInt(3);
 				String stdName = rs.getString(4);
 				String srDate = rs.getString(6);
-				StudentRecordDTO dto = new StudentRecordDTO(srSeq, stdName, srDate);
+				StudentRecordDTO dto = new StudentRecordDTO(srSeq, stdNum, stdName, srDate);
 				srList.add(dto);
 			}
 			if (!result) {

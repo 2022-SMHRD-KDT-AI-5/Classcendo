@@ -33,9 +33,6 @@ public class GetStudentList extends HttpServlet {
 		StudentRecordDAO srDao = new StudentRecordDAO();
 		ArrayList<StudentRecordDTO> srList = srDao.getAllStudentList(Integer.parseInt(srlSeq));
 		
-		// AnalysisResultListDAO, AnalysisResultListDTO 호출
-		AnalysisResultListDAO arlDao = new AnalysisResultListDAO();
-		
 		// Gson 객체 불러오기
 		Gson gson = new Gson();
 		

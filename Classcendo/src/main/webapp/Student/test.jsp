@@ -37,7 +37,13 @@
 				data : {
 					'srlSeq' : $("#srlSeq").val()
 				},
-				success : function(result) {
+				dataType : "json",
+				success : function(data) {
+					var list = [];
+					$.each(data, function(i) {
+						var result = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srDate ];
+						list.push(result);
+					});
 					<% // TODO html, id변경 %>
 					var text = $('#test');
 					text.html("");
@@ -61,11 +67,7 @@
 				},
 				dataType : "json",
 				success : function(data) {
-					var list = [];
-					$.each(data, function(i) {
-						var result = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srContent, data[i].srDate ];
-						list.push(result);
-					});
+					var data = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srContent, data[i].srDate ];
 					<% // TODO html, id변경 %>
 					var text = $('#test');
 					text.html("");
