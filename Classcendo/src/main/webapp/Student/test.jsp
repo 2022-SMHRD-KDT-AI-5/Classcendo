@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	test
 	<%
 	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>) session.getAttribute("srlList");
 	UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
