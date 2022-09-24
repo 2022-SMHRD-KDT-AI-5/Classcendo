@@ -1,161 +1,160 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://kit.fontawesome.com/3624917c4f.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="main.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <title>Nav bar</title>
-    <script src="student.js" defer></script> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="main.css">
+<title>Nav bar</title>
+<script src="student.js" defer></script>
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="navbar__logo">
-            <a href="student_record.html">
-                <image src="./image/logo_white.png" width="160" height="24">
-            </a>
-        </div>
-        <div class="navbar_center">
-            ÏïàÎÖïÌïòÏÑ∏Ïöî ÏÑ†ÏÉùÎãò :)
-        </div>
-        <ul class="navbar__menu">
-            <li><a href="">ÎßàÏù¥ÌéòÏù¥ÏßÄ</a></li>
-            <li><a href="">Î°úÍ∑∏ÏïÑÏõÉ</a></li>
-        </ul>
-        <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
-    </header>
-        <table class="innerbox">
-            <tr>
-                <td class="innernav">
-                    <table>
-                        <tr class="inner_name">Î∞ò ÏÑ†ÌÉù<br></tr>
-                            <select>
-                                <option value="">--Please choose an option--</option>
-                                <option value="1Î∞ò">1Î∞ò</option>
-                                <option value="2Î∞ò">2Î∞ò</option>
-                                <option value="3Î∞ò">3Î∞ò</option>
-                                <option value="4Î∞ò">4Î∞ò</option>
-                                <option value="5Î∞ò">5Î∞ò</option>
-                            </select>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1Î≤à</td>
-                                    <td>Í∞ï*Î¶∞</td>
-                                    <td>22.09.23</td>
-                                    <td><button class="inner_btn1">Î∂ÑÏÑùÍ≤∞Í≥º</button></td>
-                                </tr>
-                    </table>
-           </td>
-                <td class="innersection">
-                    <table>
-                        <div class="inner_title">ÌïôÏÉùÍ∏∞Î°ùÎ∂Ä</div>
-                        <div class="inner_name">01Î≤à Í∞ï * Î¶∞</div>
-                        <div class="inner_text">ÌïôÏÉù ÌñâÎèôÌäπÏÑ± Î∞è Ï¢ÖÌï©ÏùòÍ≤¨</div>
-                        <div class = "inner_textbox">
-                            <center><textarea placeholder="ÎÇ¥Ïö© ÏûÖÎ†•" class="textarea"></textarea></center></div>
-                        <div>
-                            <button type="button" onclick="location.href='view.html'" class="inner_btn" >Î∂ÑÏÑù</button>
-                        </div>
-                     </table>
-                </td>          
-             </tr>
-        </table>
+	<header class="navbar">
+		<div class="navbar__logo">
+			<a href="student_record.html">
+				<img src="../Image/logo_white.png" width="160" height="24">
+			</a>
+		</div>
+		<div class="navbar_center">æ»≥Á«œººø‰ º±ª˝¥‘ :)</div>
+		<ul class="navbar__menu">
+			<li><a href="">∏∂¿Ã∆‰¿Ã¡ˆ</a></li>
+			<li><a href="">∑Œ±◊æ∆øÙ</a></li>
+		</ul>
+		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
+	</header>
+	<table class="innerbox">
+		<tr>
+			<td class="innernav">
+				<table>
+					<tr class="inner_name">
+						π› º±≈√
+						<br>
+					</tr>
+					<select>
+						<option value="">--Please choose an option--</option>
+						<option value="1π›">1π›</option>
+						<option value="2π›">2π›</option>
+						<option value="3π›">3π›</option>
+						<option value="4π›">4π›</option>
+						<option value="5π›">5π›</option>
+					</select>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+					<tr>
+						<td>1π¯</td>
+						<td>∞≠*∏∞</td>
+						<td>22.09.23</td>
+						<td><button class="inner_btn1">∫–ºÆ∞·∞˙</button></td>
+					</tr>
+				</table>
+			</td>
+			<td class="innersection">
+				<table>
+					<div class="inner_title">«–ª˝±‚∑œ∫Œ</div>
+					<div class="inner_name">01π¯ ∞≠ * ∏∞</div>
+					<div class="inner_text">«–ª˝ «‡µø∆Øº∫ π◊ ¡æ«’¿«∞ﬂ</div>
+					<div class="inner_textbox">
+						<center>
+							<textarea placeholder="≥ªøÎ ¿‘∑¬" class="textarea"></textarea>
+						</center>
+					</div>
+					<div>
+						<button type="button" onclick="location.href='view.html'"
+							class="inner_btn">∫–ºÆ</button>
+					</div>
+				</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
