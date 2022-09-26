@@ -47,7 +47,7 @@
 					<select id="srlNum" onchange="selectSrlSeq()">
 						<option value="">학급선택</option>
 						<%for(StudentRecordListDTO srl : srlList){ %>
-							<option value=<%=String.valueOf(srl.getSrlSeq()) %>><%=srl.getSrlName() %></option>
+							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
 						<%} %>
 					</select>
 					<div id="studentList">
@@ -57,16 +57,14 @@
 			<td class="innersection">
 				<table>
 					<div class="inner_title">학생기록부</div>
-					<div class="inner_name">01번 강 * 린</div>
+					<div class="inner_name" id="stdName"></div>
 					<div class="inner_text">학생 행동특성 및 종합의견</div>
 					<div class="inner_textbox">
 						<center>
-							<textarea placeholder="내용 입력" class="textarea"></textarea>
+							<textarea placeholder="내용 입력" class="textarea" id="stdContent"></textarea>
 						</center>
 					</div>
-					<div>
-						<button type="button" onclick="location.href='view.html'"
-							class="inner_btn">분석</button>
+					<div id="stdAnalysisBtn">
 					</div>
 				</table>
 			</td>
@@ -95,9 +93,10 @@
 				success : function(data) {
 					var result = null;
 					$.each(data, function(i) {
+						<% // TODO html %>
 						result += "<tr>"
-								+ "<td>" + data[i].stdNum + "번</td>"
-								+ "<td>" + data[i].stdName + "</td>"
+								+ "<td onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdNum + "번</td>"
+								+ "<td onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdName + "</td>"
 								+ "<td>" + data[i].srDate.substring(0, 10) + "</td>"
 								+ "<td><button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>분석결과</button></td>"
 								+ "</tr>";
@@ -115,22 +114,19 @@
 		}
 		
 		// 학생기록 불러오기
-		function getStudentRecord(){
+		function getStudentRecord(srSeq){
 			$.ajax({
 				type : "post",
 				url : "../GetStudentRecord",
 				data : {
-					'srSeq' : $("#srSeq").val()
+					'srSeq' : srSeq
 				},
 				dataType : "json",
 				success : function(data) {
-					var data = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srContent, data[i].srDate ];
-					<% // TODO html, id변경 %>
-					var text = $('#test');
-					text.html("");
-					if (result != null) {
-						text.html(result);
-					}
+					<% // TODO html 변경 %>
+					$('#stdName').html(data.stdNum + "번" + data.stdName)
+					$('#stdContent').html(data.srContent)
+					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn'>분석</button>")
 				},
 				error : function(e) {
 					alert("요청실패");
