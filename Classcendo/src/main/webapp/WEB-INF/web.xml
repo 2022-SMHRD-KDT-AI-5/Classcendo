@@ -112,6 +112,12 @@
   	<description></description>
   	<servlet-class>Job.Controller.GetJobListService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteStudentRecordService</servlet-name>
+  	<display-name>DeleteStudentRecordService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.DeleteStudentRecordService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -183,5 +189,9 @@
   <servlet-mapping>
   	<servlet-name>GetJobListService</servlet-name>
   	<url-pattern>/GetJobListService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteStudentRecordService</servlet-name>
+  	<url-pattern>/DeleteStudentRecordService</url-pattern>
   </servlet-mapping>
 </web-app>

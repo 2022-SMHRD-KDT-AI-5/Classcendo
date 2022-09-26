@@ -139,14 +139,14 @@ public class StudentRecordDAO {
 		return dto;
 	}
 
-	// 학생기록 삭제
-	public boolean deleteStudentRecord(StudentRecordDTO dto) {
+	// 학생 삭제
+	public boolean deleteStudentRecord(int srSeq) {
 		changeDatabase.getConn();
 		result = false;
 		try {
 			sql = "delete from student_record where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getSrSeq());
+			psmt.setInt(1, srSeq);
 
 			row = psmt.executeUpdate();
 			if (row > 0)
