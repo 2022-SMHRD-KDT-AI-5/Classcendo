@@ -29,7 +29,7 @@
 		</div>
 		<ul class="navbar__menu">
 			<li><a href="">마이페이지</a></li>
-			<li><a href="">로그아웃</a></li>
+			<li><a href="../SignOutService">로그아웃</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
@@ -95,7 +95,7 @@
 					$.each(data, function(i) {
 						<% // TODO html %>
 						result += "<tr>"
-								+ "<td onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdNum + "번</td>"
+								+ "<td id='srSeq' onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdNum + "번</td>"
 								+ "<td onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdName + "</td>"
 								+ "<td>" + data[i].srDate.substring(0, 10) + "</td>"
 								+ "<td><button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>분석결과</button></td>"
@@ -124,9 +124,9 @@
 				dataType : "json",
 				success : function(data) {
 					<% // TODO html 변경 %>
-					$('#stdName').html(data.stdNum + "번" + data.stdName)
+					$('#stdName').html(data.stdNum + "번 " + data.stdName)
 					$('#stdContent').html(data.srContent)
-					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn'>분석</button>")
+					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='getAnalysisResult()'>분석</button>")
 				},
 				error : function(e) {
 					alert("요청실패");
