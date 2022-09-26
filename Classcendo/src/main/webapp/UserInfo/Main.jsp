@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="main.css">
-<title>Nav bar</title>
+<title>Main</title>
 <script src="student.js" defer></script>
 </head>
 <body>
@@ -34,117 +34,24 @@
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
 	<table class="innerbox">
-		<tr>
+ 		<tr>
+ 			<%if(srlList == null){ %>
+				학급을 생성해주세요
+				<button type="button" onclick="location.href='SignUp.jsp'">학급 생성</button>
+			<%} else{%>
 			<td class="innernav">
 				<table>
 					<tr class="inner_name">
-						반 선택
-						<br>
+						반 선택<br>
 					</tr>
-					<select>
-						<option value="">--Please choose an option--</option>
-						<option value="1반">1반</option>
-						<option value="2반">2반</option>
-						<option value="3반">3반</option>
-						<option value="4반">4반</option>
-						<option value="5반">5반</option>
+					<select id="srlNum" onchange="selectSrlSeq()">
+						<option value="">학급선택</option>
+						<%for(StudentRecordListDTO srl : srlList){ %>
+							<option value=<%=String.valueOf(srl.getSrlSeq()) %>><%=srl.getSrlName() %></option>
+						<%} %>
 					</select>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
-					<tr>
-						<td>1번</td>
-						<td>강*린</td>
-						<td>22.09.23</td>
-						<td><button class="inner_btn1">분석결과</button></td>
-					</tr>
+					<div id="studentList">
+					</div>
 				</table>
 			</td>
 			<td class="innersection">
@@ -164,6 +71,100 @@
 				</table>
 			</td>
 		</tr>
+		<%}%>
 	</table>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		// 학생부 변경
+		function selectSrlSeq(){
+			var srlNum = $('#srlNum');
+			if(srlNum.val() != "") getSrList(srlNum);
+		}
+	
+		// 학생목록 불러오기
+		function getSrList(srlNum){
+			$.ajax({
+				type : "post",
+				url : "../GetStudentList",
+				data : {
+					'srlSeq' : srlNum.val()
+				},
+				dataType : "json",
+				success : function(data) {
+					var result = null;
+					$.each(data, function(i) {
+						result += "<tr>"
+								+ "<td>" + data[i].stdNum + "번</td>"
+								+ "<td>" + data[i].stdName + "</td>"
+								+ "<td>" + data[i].srDate.substring(0, 10) + "</td>"
+								+ "<td><button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>분석결과</button></td>"
+								+ "</tr>";
+					});
+					var text = $('#studentList');
+					text.html("");
+					if(result != null){
+						text.html(result);
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		// 학생기록 불러오기
+		function getStudentRecord(){
+			$.ajax({
+				type : "post",
+				url : "../GetStudentRecord",
+				data : {
+					'srSeq' : $("#srSeq").val()
+				},
+				dataType : "json",
+				success : function(data) {
+					var data = [ data[i].srSeq, data[i].stdNum, data[i].stdName, data[i].srContent, data[i].srDate ];
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result != null) {
+						text.html(result);
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		// 분석 결과 불러오기
+		function getAnalysisResult(){
+			$.ajax({
+				type : "post",
+				url : "../GetAnalysisResult",
+				data : {
+					'srSeq' : $("#srSeq").val()
+				},
+				dataType : "json",
+				success : function(data) {
+					var result = [ data.arlSeq, data.srSeq,
+						+ data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate,
+						+ data.arlGraphPath, data.jobsSeq ];
+					list.push(result);
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result != null) {
+						text.html(result);
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+	</script>
 </body>
 </html>
