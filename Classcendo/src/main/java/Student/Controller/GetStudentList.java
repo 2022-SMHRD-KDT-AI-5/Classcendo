@@ -42,19 +42,5 @@ public class GetStudentList extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);
-		
-		/*
-		if (srList != null) {
-			// 학생 목록 출력 성공 시
-			for (int i = 0; i < srList.size(); i++) {
-				text += "<li class='list' style='background=\"red\"' onclick='getAnalysisResult()'>"
-					 + srList.get(i).getStdNum() + "번 " + srList.get(i).getStdName()
-					 + srList.get(i).getSrDate();
-				if(arlDao.getAnalysisResult(srList.get(i).getSrSeq()) != null) {
-					text += "<input type='button' id='result' value='결과' onclick='analysisResult("
-							+ srList.get(i).getSrSeq() + ")'>";
-				}
-			}
-		}*/
 	}
 }
