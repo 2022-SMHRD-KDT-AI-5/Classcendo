@@ -1,3 +1,6 @@
+<%@page import="java.util.*"%>
+<%@page import="Student.Model.StudentRecordListDTO"%>
+<%@page import="UserInfo.Model.UserInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -11,13 +14,19 @@
 <script src="student.js" defer></script>
 </head>
 <body>
+	<%
+	UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
+	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>)session.getAttribute("srlList");
+	%>
 	<header class="navbar">
 		<div class="navbar__logo">
 			<a href="student_record.html">
 				<img src="../Image/logo_white.png" width="160" height="24">
 			</a>
 		</div>
-		<div class="navbar_center">안녕하세요 선생님 :)</div>
+		<div class="navbar_center">
+			안녕하세요 <%=info.getUserName()%>선생님 :)
+		</div>
 		<ul class="navbar__menu">
 			<li><a href="">마이페이지</a></li>
 			<li><a href="">로그아웃</a></li>
