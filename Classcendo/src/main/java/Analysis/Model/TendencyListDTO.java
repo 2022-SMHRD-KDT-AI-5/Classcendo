@@ -27,5 +27,4 @@ public class TendencyListDTO {
 	public void setTendencyName(String tendencyName) {
 		this.tendencyName = tendencyName;
 	}
-
 }
