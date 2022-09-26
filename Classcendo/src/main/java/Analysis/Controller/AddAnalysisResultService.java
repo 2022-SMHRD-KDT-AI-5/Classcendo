@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import Analysis.Model.AnalysisResultListDAO;
 import Analysis.Model.AnalysisResultListDTO;
 
-public class AddAnalysisResult extends HttpServlet {
+public class AddAnalysisResultService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
