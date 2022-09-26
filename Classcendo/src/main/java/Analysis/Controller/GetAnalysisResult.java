@@ -24,8 +24,8 @@ public class GetAnalysisResult extends HttpServlet {
 
 		// 기존 저장된 학생번호 session 호출
 		String srSeq = request.getParameter("srSeq"); 
-		
-		// StudentRecordDTO, StudentRecordDAO 호출
+
+		// AnalysisResultListDTO, AnalysisResultListDAO 호출
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
 		AnalysisResultListDTO dto = dao.getAnalysisResult(Integer.parseInt(srSeq));
 		

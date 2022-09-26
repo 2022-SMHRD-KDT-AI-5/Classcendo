@@ -88,6 +88,12 @@
   	<description></description>
   	<servlet-class>Student.Controller.GetStudentRecord</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddAnalysisResultService</servlet-name>
+  	<display-name>AddAnalysisResultService</display-name>
+  	<description></description>
+  	<servlet-class>Analysis.Controller.AddAnalysisResultService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -143,5 +149,9 @@
   <servlet-mapping>
   	<servlet-name>GetStudentRecord</servlet-name>
   	<url-pattern>/GetStudentRecord</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddAnalysisResultService</servlet-name>
+  	<url-pattern>/AddAnalysisResultService</url-pattern>
   </servlet-mapping>
 </web-app>
