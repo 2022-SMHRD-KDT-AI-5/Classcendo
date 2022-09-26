@@ -20,6 +20,7 @@ public class UpdateStudentRecordService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
+		// Parameter 호출
 		String srSeq = request.getParameter("srSeq"); 
 		String srContent = request.getParameter("srContent");
 		

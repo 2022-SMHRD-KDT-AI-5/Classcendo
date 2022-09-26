@@ -16,7 +16,7 @@ public class EmailDuplicateCheckService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
-		// newEmail 값 받아오기
+		// Parameter 호출
 		String emailCheck = request.getParameter("email");
 		
 		// UserInfoDAO 호출

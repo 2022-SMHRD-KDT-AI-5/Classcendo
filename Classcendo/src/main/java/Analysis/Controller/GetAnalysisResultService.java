@@ -17,12 +17,12 @@ import Analysis.Model.AnalysisResultListDTO;
 import Student.Model.StudentRecordDAO;
 import Student.Model.StudentRecordDTO;
 
-public class GetAnalysisResult extends HttpServlet {
+public class GetAnalysisResultService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// 기존 저장된 학생번호 session 호출
+		// Parameter 호출
 		String srSeq = request.getParameter("srSeq"); 
 
 		// AnalysisResultListDTO, AnalysisResultListDAO 호출

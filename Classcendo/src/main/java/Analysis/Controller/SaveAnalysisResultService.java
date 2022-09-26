@@ -5,18 +5,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
 import Analysis.Model.AnalysisResultListDAO;
 import Analysis.Model.AnalysisResultListDTO;
 
-public class AddAnalysisResultService extends HttpServlet {
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class SaveAnalysisResultService extends HttpServlet {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// 기존 저장된 session 호출
+		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
 		int tendency1Rate = Integer.parseInt(request.getParameter("tendency1Rate"));
 		int tendency2Rate = Integer.parseInt(request.getParameter("tendency2Rate"));
@@ -24,11 +26,17 @@ public class AddAnalysisResultService extends HttpServlet {
 		int tendency4Rate = Integer.parseInt(request.getParameter("tendency4Rate"));
 		String graphPath = request.getParameter("graphPath");
 		String jobsSeq = request.getParameter("jobsSeq");
-		
+
 		// AnalysisResultListDTO, AnalysisResultListDAO 호출
-		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, tendency1Rate, tendency2Rate, tendency3Rate, tendency4Rate, graphPath, jobsSeq);
+		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
+				tendency4Rate, graphPath, jobsSeq);
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
-		
-		dao.addAnalysisResult(dto);
+
+		if (dao.getAnalysisResultExistence(srSeq)) {
+			dao.updateAnalysisResult(dto);
+		} else {
+			dao.addAnalysisResult(dto);
+		}
+		response.sendRedirect("GetAnalysisResultService");
 	}
 }

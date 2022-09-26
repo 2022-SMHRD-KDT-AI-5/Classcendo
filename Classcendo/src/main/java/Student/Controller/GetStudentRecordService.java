@@ -19,7 +19,7 @@ public class GetStudentRecordService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// 기존 저장된 학생번호 session 호출
+		// Parameter 호출
 		String srSeq = request.getParameter("srSeq"); 
 		
 		// StudentRecordDTO, StudentRecordDAO 호출

@@ -22,7 +22,7 @@ public class CheckPwToMyPageService extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
 
-		// pw 값 받아오기
+		// Parameter 호출
 		String pw = request.getParameter("pw");
 
 		// UserInfoDTO, UserInfoDAO 호출

@@ -18,7 +18,7 @@ public class IdDuplicateCheckService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// newId 값 받아오기
+		// Parameter 호출
 		String idCheck = request.getParameter("id");
 
 		// UserInfoDAO 호출

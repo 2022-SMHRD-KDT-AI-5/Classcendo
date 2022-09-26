@@ -34,6 +34,7 @@ public class AnalysisResultListDAO {
 			e.printStackTrace();
 		}
 	}
+	
 
 	// 학생 분석 결과 추가
 	public boolean addAnalysisResult(AnalysisResultListDTO dto) {

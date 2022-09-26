@@ -25,7 +25,7 @@ public class GetStudentListService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// 기존 저장된 학생기록부 목록 번호 session 호출
+		// Parameter 호출
 		HttpSession session = request.getSession();
 		String srlSeq = request.getParameter("srlSeq"); 
 		
