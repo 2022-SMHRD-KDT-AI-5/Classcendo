@@ -37,6 +37,12 @@ public class StudentRecordDTO {
 		this.srDate = srDate;
 	}
 
+	// 생성자 메소드 - 학생기록 수정
+	public StudentRecordDTO(int srSeq, String srContent) {
+		this.srSeq = srSeq;
+		this.srContent = srContent;
+	}
+	
 	public int getSrSeq() {
 		return srSeq;
 	}

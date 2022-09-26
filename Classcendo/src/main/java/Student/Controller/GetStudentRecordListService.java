@@ -14,7 +14,7 @@ import Student.Model.StudentRecordListDAO;
 import Student.Model.StudentRecordListDTO;
 import UserInfo.Model.UserInfoDTO;
 
-public class GetStudentRecordList extends HttpServlet {
+public class GetStudentRecordListService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -65,28 +65,34 @@
   	<servlet-class>UserInfo.Controller.CheckPwToMyPageService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetStudentList</servlet-name>
-  	<display-name>GetStudentList</display-name>
+  	<servlet-name>GetStudentListService</servlet-name>
+  	<display-name>GetStudentListService</display-name>
   	<description></description>
-  	<servlet-class>Student.Controller.GetStudentList</servlet-class>
+  	<servlet-class>Student.Controller.GetStudentListService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetStudentRecordList</servlet-name>
-  	<display-name>GetStudentRecordList</display-name>
+  	<servlet-name>GetStudentRecordListService</servlet-name>
+  	<display-name>GetStudentRecordListService</display-name>
   	<description></description>
-  	<servlet-class>Student.Controller.GetStudentRecordList</servlet-class>
+  	<servlet-class>Student.Controller.GetStudentRecordListService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetAnalysisResult</servlet-name>
-  	<display-name>GetAnalysisResult</display-name>
+  	<servlet-name>GetAnalysisResultService</servlet-name>
+  	<display-name>GetAnalysisResultService</display-name>
   	<description></description>
-  	<servlet-class>Analysis.Controller.GetAnalysisResult</servlet-class>
+  	<servlet-class>Analysis.Controller.GetAnalysisResultService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetStudentRecord</servlet-name>
-  	<display-name>GetStudentRecord</display-name>
+  	<servlet-name>GetStudentRecordService</servlet-name>
+  	<display-name>GetStudentRecordService</display-name>
   	<description></description>
-  	<servlet-class>Student.Controller.GetStudentRecord</servlet-class>
+  	<servlet-class>Student.Controller.GetStudentRecordService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateStudentRecordService</servlet-name>
+  	<display-name>UpdateStudentRecordService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.UpdateStudentRecordService</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
@@ -129,19 +135,23 @@
   	<url-pattern>/CheckPwToMyPageService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GetStudentList</servlet-name>
-  	<url-pattern>/GetStudentList</url-pattern>
+  	<servlet-name>GetStudentListService</servlet-name>
+  	<url-pattern>/GetStudentListService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GetStudentRecordList</servlet-name>
-  	<url-pattern>/GetStudentRecordList</url-pattern>
+  	<servlet-name>GetStudentRecordListService</servlet-name>
+  	<url-pattern>/GetStudentRecordListService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GetAnalysisResult</servlet-name>
-  	<url-pattern>/GetAnalysisResult</url-pattern>
+  	<servlet-name>GetAnalysisResultService</servlet-name>
+  	<url-pattern>/GetAnalysisResultService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GetStudentRecord</servlet-name>
-  	<url-pattern>/GetStudentRecord</url-pattern>
+  	<servlet-name>GetStudentRecordService</servlet-name>
+  	<url-pattern>/GetStudentRecordService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateStudentRecordService</servlet-name>
+  	<url-pattern>/UpdateStudentRecordService</url-pattern>
   </servlet-mapping>
 </web-app>

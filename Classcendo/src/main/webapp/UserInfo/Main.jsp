@@ -61,7 +61,7 @@
 					<div class="inner_text">학생 행동특성 및 종합의견</div>
 					<div class="inner_textbox">
 						<center>
-							<textarea placeholder="내용 입력" class="textarea" id="stdContent"></textarea>
+							<textarea placeholder="내용 입력" class="textarea" id="srContent"></textarea>
 						</center>
 					</div>
 					<div id="stdAnalysisBtn">
@@ -85,7 +85,7 @@
 		function getSrList(srlNum){
 			$.ajax({
 				type : "post",
-				url : "../GetStudentList",
+				url : "../GetStudentListService",
 				data : {
 					'srlSeq' : srlNum.val()
 				},
@@ -117,7 +117,7 @@
 		function getStudentRecord(srSeq){
 			$.ajax({
 				type : "post",
-				url : "../GetStudentRecord",
+				url : "../GetStudentRecordService",
 				data : {
 					'srSeq' : srSeq
 				},
@@ -125,7 +125,7 @@
 				success : function(data) {
 					<% // TODO html 변경 %>
 					$('#stdName').html(data.stdNum + "번 " + data.stdName)
-					$('#stdContent').html(data.srContent)
+					$('#srContent').html(data.srContent)
 					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='getAnalysisResult()'>분석</button>")
 				},
 				error : function(e) {
@@ -138,7 +138,7 @@
 		function getAnalysisResult(){
 			$.ajax({
 				type : "post",
-				url : "../GetAnalysisResult",
+				url : "../GetAnalysisResultService",
 				data : {
 					'srSeq' : $("#srSeq").val()
 				},
