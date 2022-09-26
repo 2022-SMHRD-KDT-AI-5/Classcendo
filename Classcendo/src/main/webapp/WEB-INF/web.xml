@@ -106,6 +106,12 @@
   	<description></description>
   	<servlet-class>Analysis.Controller.DeleteAnalysisResultService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetJobListService</servlet-name>
+  	<display-name>GetJobListService</display-name>
+  	<description></description>
+  	<servlet-class>Job.Controller.GetJobListService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -173,5 +179,9 @@
   <servlet-mapping>
   	<servlet-name>DeleteAnalysisResultService</servlet-name>
   	<url-pattern>/DeleteAnalysisResultService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetJobListService</servlet-name>
+  	<url-pattern>/GetJobListService</url-pattern>
   </servlet-mapping>
 </web-app>

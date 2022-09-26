@@ -66,5 +66,4 @@ public class TendencyListDAO {
 		}
 		return tendencyList;
 	}
-
 }
