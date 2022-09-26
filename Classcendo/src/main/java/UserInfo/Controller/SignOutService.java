@@ -22,6 +22,6 @@ public class SignOutService extends HttpServlet {
 		// 로그아웃 시 회원정보 저장 세션 삭제
 		// TODO 연결 페이지 변경
 		session.removeAttribute("info");
-		response.sendRedirect("Main.jsp");
+		response.sendRedirect("Signin.jsp");
 	}
 }

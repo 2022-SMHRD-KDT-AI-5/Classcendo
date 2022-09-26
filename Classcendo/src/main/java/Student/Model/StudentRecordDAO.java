@@ -40,12 +40,11 @@ public class StudentRecordDAO {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "insert into student_record(student_record_SEQ.nextval, ?, ?, ?, ?, default)";
+			sql = "insert into student_record(student_record_SEQ.nextval, ?, ?, ?, null, default)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getSrlSeq());
 			psmt.setInt(2, dto.getStdNum());
 			psmt.setString(3, dto.getStdName());
-			psmt.setString(4, dto.getSrContent());
 
 			row = psmt.executeUpdate();
 			if (row > 0)
@@ -58,22 +57,18 @@ public class StudentRecordDAO {
 		return result;
 	}
 
-	// 학생기록 업데이트
+	// 학생기록 수정
 	public boolean updateStudentRecord(StudentRecordDTO dto) {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "update student_record set srl_seq = ?, std_num = ?, std_name = ?, sr_content = ?, sr_date = default where sr_seq = ?";
+			sql = "update student_record set sr_content = ?, sr_date = default where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getSrlSeq());
-			psmt.setInt(2, dto.getStdNum());
-			psmt.setString(3, dto.getStdName());
-			psmt.setString(4, dto.getSrContent());
-			psmt.setInt(5, dto.getSrSeq());
+			psmt.setString(1, dto.getSrContent());
+			psmt.setInt(2, dto.getSrSeq());
 
 			row = psmt.executeUpdate();
-			if (row > 0)
-				result = true;
+			if (row > 0) result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
