@@ -17,7 +17,7 @@ public class SignUpService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// id, pw, name, email 값 받아오기
+		// Parameter 호출
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");

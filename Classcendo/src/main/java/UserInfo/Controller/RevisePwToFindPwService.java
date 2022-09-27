@@ -21,7 +21,7 @@ public class RevisePwToFindPwService extends HttpServlet {
 		HttpSession session = request.getSession();
 		String idCheck = (String) session.getAttribute("idCheck");
 		
-		// 수정할 pw 값 받아오기
+		// Parameter 호출
 		String pw = request.getParameter("pw");
 
 		// UserInfoDAO 호출
@@ -37,6 +37,7 @@ public class RevisePwToFindPwService extends HttpServlet {
 			// 비밀번호 수정 실패 시
 			result = false;
 		}
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}

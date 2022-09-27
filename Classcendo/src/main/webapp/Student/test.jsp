@@ -108,6 +108,53 @@
 			});
 		}
 		
+		
+		// 학생 삭제
+		function deleteStudent(){
+			$.ajax({
+				type : "post",
+				url : "../DeleteStudentRecordService",
+				data : {
+					'srSeq' : $("#srSeq").val()
+				},
+				dataType : "text",
+				success : function(result) {
+					<% // TODO html, id변경 %>
+					var text = $('#test');
+					text.html("");
+					if (result) {
+						// 없어지게
+						text.html(result);
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		// 학생 기록 수정
+		function updateStudent(){
+			$.ajax({
+				type : "post",
+				url : "../UpdateStudentRecordService",
+				data : {
+					'srSeq' : $("#srSeq").val(),
+					'srContent' : $("#srContent").val()
+				},
+				success : function(result) {
+					<% // TODO HTML 수정 필요 회원가입 성공 메시지 및 로그인 창으로 이동하는 버튼 %>
+					if (result) {
+						alert("수정완료");
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+
+		
 	</script>
 </body>
 </html>

@@ -18,7 +18,7 @@ public class FindPwService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// id, name, email 값 받아오기
+		// Parameter 호출
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");

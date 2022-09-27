@@ -16,7 +16,7 @@ public class SignInService extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
 
-		// id, pw 값 받아오기
+		// Parameter 호출
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
@@ -31,10 +31,10 @@ public class SignInService extends HttpServlet {
 			// 로그인 성공 시
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info);
-			moveURL = "GetStudentRecordList";
+			moveURL = "GetStudentRecordListService";
 		} else {
 			// 로그인 실패 시
-			moveURL = "UserInfo/SignUp.jsp";
+			moveURL = "UserInfo/SignIn.jsp";
 		}
 		response.sendRedirect(moveURL);
 	}

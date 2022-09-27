@@ -21,7 +21,7 @@ public class ReviseInfoService extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
 
-		// 수정할 pw, name, email 값 받아오기
+		// Parameter 호출
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
