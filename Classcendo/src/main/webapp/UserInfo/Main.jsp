@@ -59,12 +59,9 @@
 					<div class="inner_title">학생기록부</div>
 					<div class="inner_name" id="stdName"></div>
 					<div class="inner_text">학생 행동특성 및 종합의견</div>
-					<div class="inner_textbox">
-						<center>
-							<textarea placeholder="내용 입력" class="textarea" id="srContent"></textarea>
-						</center>
+					<div class="inner_textbox" id="srContent">
 					</div>
-					<div id="stdAnalysisBtn">
+					<div id="stdSaveBtn">
 					</div>
 				</table>
 			</td>
@@ -123,10 +120,39 @@
 				},
 				dataType : "json",
 				success : function(data) {
-					<% // TODO html 변경 %>
 					$('#stdName').html(data.stdNum + "번 " + data.stdName)
-					$('#srContent').html(data.srContent)
-					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='getAnalysisResult()'>분석</button>")
+					if(data.srContent == null) {
+						$('#srContent').html("<center>"
+											+ "<textarea placeholder='내용 입력' class='textarea'></textarea>"
+											+ "</center>"
+											);
+					}
+					else $('#srContent').html("<center>"
+										+ "<textarea placeholder='내용 입력' class='textarea'>"
+										+ data.srContent
+										+ "</textarea>"
+										+ "</center>"
+										);
+					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>")
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		// 학생기록 저장하기
+		function updateStudentRecord(srSeq){
+			$.ajax({
+				type : "post",
+				url : "../UpdateStudentRecordService",
+				data : {
+					'srSeq' : srSeq,
+					'srContent' : $('#srContent').val()
+				},
+				success : function(data) {
+					if(data == 'true') alert("저장 성공");
+					else alert("저장 실패");
 				},
 				error : function(e) {
 					alert("요청실패");
@@ -135,7 +161,7 @@
 		}
 		
 		// 분석 결과 불러오기
-		function getAnalysisResult(){
+		function getAnalysisResult(srSeq){
 			$.ajax({
 				type : "post",
 				url : "../GetAnalysisResultService",

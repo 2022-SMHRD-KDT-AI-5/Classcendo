@@ -26,6 +26,8 @@ public class GetStudentRecordService extends HttpServlet {
 		StudentRecordDAO dao = new StudentRecordDAO();
 		StudentRecordDTO dto = dao.getStudentRecord(Integer.parseInt(srSeq));
 		
+		System.out.println(dto.getSrContent());
+		
 		// Gson 객체 불러오기
 		Gson gson = new Gson();
 		

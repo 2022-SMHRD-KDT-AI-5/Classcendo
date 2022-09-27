@@ -29,10 +29,11 @@ public class UpdateStudentRecordService extends HttpServlet {
 		StudentRecordDAO dao = new StudentRecordDAO();
 		boolean result = dao.updateStudentRecord(dto);
 
+		System.out.println(srSeq);
+		System.out.println(srContent);
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
-
 	}
-
 }
