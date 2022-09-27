@@ -34,7 +34,7 @@ body {
 		<div class="textb">
 			<input type="password" class="form-control" id="floatingInput" name="pw"
 				placeholder="Password">
-		</div>
+		</div> 
 
 		<div class="d-grid gap-2 d-md-block">
 			<button class="btn btn-primary" type="submit">Login</button>
