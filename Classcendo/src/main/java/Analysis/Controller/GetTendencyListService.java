@@ -1,4 +1,4 @@
-package Student.Controller;
+package Analysis.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
+import Analysis.Model.TendencyListDAO;
+import Analysis.Model.TendencyListDTO;
 import Student.Model.StudentRecordDAO;
 import Student.Model.StudentRecordDTO;
 
-public class UpdateStudentRecordService extends HttpServlet {
+public class GetTendencyListService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -21,17 +25,22 @@ public class UpdateStudentRecordService extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// Parameter 호출
-		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
-		String srContent = request.getParameter("srContent");
+		HttpSession session = request.getSession();
+		int tendencySeq = Integer.parseInt(request.getParameter("tendencySeq"));
 
-		// StudentRecordDTO, StudentRecordDAO 호출
-		StudentRecordDTO dto = new StudentRecordDTO(srSeq, srContent);
-		StudentRecordDAO dao = new StudentRecordDAO();
-		boolean result = dao.updateStudentRecord(dto);
+		// TendencyListDTO, TendencyListDAO 호출
+		TendencyListDAO dao = new TendencyListDAO();
+		ArrayList<TendencyListDTO> tendencyList = dao.getTendencyList(tendencySeq);
+
+		// Gson 객체 불러오기
+		Gson gson = new Gson();
+
+		// list를 json 형식으로 바꿔주기
+		String json = gson.toJson(tendencyList);
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.print(result);
+		out.print(json);
 
 	}
 

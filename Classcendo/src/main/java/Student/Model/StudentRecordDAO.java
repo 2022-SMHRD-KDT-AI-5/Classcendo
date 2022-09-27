@@ -36,15 +36,15 @@ public class StudentRecordDAO {
 	}
 
 	// 학생 추가
-	public boolean addStudent(StudentRecordDTO dto) {
+	public boolean addStudent(int srlSeq, int stdNum, String stdName) {
 		changeDatabase.getConn();
 		result = false;
 		try {
 			sql = "insert into student_record(student_record_SEQ.nextval, ?, ?, ?, null, default)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getSrlSeq());
-			psmt.setInt(2, dto.getStdNum());
-			psmt.setString(3, dto.getStdName());
+			psmt.setInt(1, srlSeq);
+			psmt.setInt(2, stdNum);
+			psmt.setString(3, stdName);
 
 			row = psmt.executeUpdate();
 			if (row > 0)
