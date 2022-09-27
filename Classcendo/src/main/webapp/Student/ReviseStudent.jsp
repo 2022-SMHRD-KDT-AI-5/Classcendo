@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>last demo</title>
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="drop.js"></script>
-
-  <link rel="stylesheet" href="adddel.css">
-  <link rel="stylesheet" href="drop.css">
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
     <header class="navbar">
