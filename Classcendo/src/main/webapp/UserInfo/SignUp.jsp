@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>Classcendo</title>
 <link href="SignIn.css" rel="stylesheet">
 <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	rel="stylesheet">

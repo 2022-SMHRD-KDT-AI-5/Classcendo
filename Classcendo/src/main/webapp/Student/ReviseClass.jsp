@@ -13,7 +13,7 @@
 <body>
     <header class="navbar">
         <div class="navbar__logo">
-            <a href="student_record.html">
+            <a href="Student/Main.jsp">
                 <image src="./image/logo_white.png" width="160" height="24">
             </a>
         </div>

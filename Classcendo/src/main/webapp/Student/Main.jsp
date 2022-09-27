@@ -1,17 +1,16 @@
 <%@page import="java.util.*"%>
 <%@page import="Student.Model.StudentRecordListDTO"%>
 <%@page import="UserInfo.Model.UserInfoDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="main.css">
-<title>Main</title>
-<script src="student.js" defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Main.css">
+<title>Classcendo</title>
 </head>
 <body>
 	<%
@@ -20,65 +19,58 @@
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
-			<a href="student_record.html">
+			<a href="../Student/Main.jsp">
 				<img src="../Image/logo_white.png" width="160" height="24">
 			</a>
 		</div>
 		<div class="navbar_center">
-			¾È³çÇÏ¼¼¿ä <%=info.getUserName()%>¼±»ı´Ô :)
+			ì•ˆë…•í•˜ì„¸ìš” <%=info.getUserName()%>ì„ ìƒë‹˜ :)
 		</div>
 		<ul class="navbar__menu">
-			<li><a href="">¸¶ÀÌÆäÀÌÁö</a></li>
-			<li><a href="../SignOutService">·Î±×¾Æ¿ô</a></li>
+			<li><a href="">ë§ˆì´í˜ì´ì§€</a></li>
+			<li><a href="../SignOutService">ë¡œê·¸ì•„ì›ƒ</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
 	<table class="innerbox">
  		<tr>
- 			<%if(srlList == null){ %>
-				ÇĞ±ŞÀ» »ı¼ºÇØÁÖ¼¼¿ä
-				<button type="button" onclick="location.href='SignUp.jsp'">ÇĞ±Ş »ı¼º</button>
-			<%} else{%>
 			<td class="innernav">
 				<table>
 					<tr class="inner_name">
-						¹İ ¼±ÅÃ<br>
+						ë°˜ ì„ íƒ<br>
 					</tr>
 					<select id="srlNum" onchange="selectSrlSeq()">
-						<option value="">ÇĞ±Ş¼±ÅÃ</option>
+						<option value="">í•™ê¸‰ì„ íƒ</option>
 						<%for(StudentRecordListDTO srl : srlList){ %>
 							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
 						<%} %>
 					</select>
-					<div id="studentList">
+					<div class="scro" id="studentList">
 					</div>
 				</table>
 			</td>
-			<td class="innersection">
+			<td class="innersection" id="innersection">
 				<table>
-					<div class="inner_title">ÇĞ»ı±â·ÏºÎ</div>
+					<div class="inner_title">í•™ìƒê¸°ë¡ë¶€</div>
 					<div class="inner_name" id="stdName"></div>
-					<div class="inner_text">ÇĞ»ı Çàµ¿Æ¯¼º ¹× Á¾ÇÕÀÇ°ß</div>
-					<div class="inner_textbox" id="srContent">
-					</div>
-					<div id="stdSaveBtn">
-					</div>
+					<div class="inner_text">í•™ìƒ í–‰ë™íŠ¹ì„± ë° ì¢…í•©ì˜ê²¬</div>
+					<div class="inner_textbox" id="srTextarea"></div>
+					<div id="stdSaveBtn"></div>
 				</table>
 			</td>
 		</tr>
-		<%}%>
 	</table>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-		// ÇĞ»ıºÎ º¯°æ
+		// í•™ìƒë¶€ ë³€ê²½
 		function selectSrlSeq(){
 			var srlNum = $('#srlNum');
 			if(srlNum.val() != "") getSrList(srlNum);
 		}
 	
-		// ÇĞ»ı¸ñ·Ï ºÒ·¯¿À±â
+		// í•™ìƒëª©ë¡ ë¶ˆëŸ¬ì˜¤ê¸°
 		function getSrList(srlNum){
 			$.ajax({
 				type : "post",
@@ -88,29 +80,39 @@
 				},
 				dataType : "json",
 				success : function(data) {
-					var result = null;
+					var result = '';
 					$.each(data, function(i) {
-						<% // TODO html %>
-						result += "<tr>"
-								+ "<td id='srSeq' onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdNum + "¹ø</td>"
-								+ "<td onclick='getStudentRecord(" + data[i].srSeq + ")'>" + data[i].stdName + "</td>"
-								+ "<td>" + data[i].srDate.substring(0, 10) + "</td>"
-								+ "<td><button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>ºĞ¼®°á°ú</button></td>"
-								+ "</tr>";
+						result += "<div class='in'>"
+								+ "<div class='name' onclick='getStudentRecord(" + data[i].srSeq + ")'>"
+								+ data[i].stdNum + "ë²ˆ " + data[i].stdName + " " + data[i].srDate.substring(0, 10)
+								+ "</div>"
+								+ "<div class='namebtn'>"
+								+ "<button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>ë¶„ì„ê²°ê³¼</button>"
+								+ "</div>"
+								+ "</div>"
 					});
 					var text = $('#studentList');
 					text.html("");
 					if(result != null){
 						text.html(result);
+						$('#innersection').html("<table>"
+												+ "<div class='inner_title'>í•™ìƒê¸°ë¡ë¶€</div>"
+												+ "<div class='inner_name' id='stdName'></div>"
+												+ "<div class='inner_text'>í•™ìƒ í–‰ë™íŠ¹ì„± ë° ì¢…í•©ì˜ê²¬</div>"
+												+ "<div class='inner_textbox' id='srTextarea'>"
+												+ "</div>"
+												+ "<div id='stdSaveBtn'>"
+												+ "</div>"
+												+ "</table>");
 					}
 				},
 				error : function(e) {
-					alert("¿äÃ»½ÇÆĞ");
+					alert("ìš”ì²­ì‹¤íŒ¨");
 				}
 			});
 		}
 		
-		// ÇĞ»ı±â·Ï ºÒ·¯¿À±â
+		// í•™ìƒê¸°ë¡ ë¶ˆëŸ¬ì˜¤ê¸°
 		function getStudentRecord(srSeq){
 			$.ajax({
 				type : "post",
@@ -120,28 +122,28 @@
 				},
 				dataType : "json",
 				success : function(data) {
-					$('#stdName').html(data.stdNum + "¹ø " + data.stdName)
+					$('#stdName').html(data.stdNum + "ë²ˆ " + data.stdName)
 					if(data.srContent == null) {
-						$('#srContent').html("<center>"
-											+ "<textarea placeholder='³»¿ë ÀÔ·Â' class='textarea'></textarea>"
+						$('#srTextarea').html("<center>"
+											+ "<textarea placeholder='ë‚´ìš© ì…ë ¥' class='textarea' id='srContent'></textarea>"
 											+ "</center>"
 											);
 					}
-					else $('#srContent').html("<center>"
-										+ "<textarea placeholder='³»¿ë ÀÔ·Â' class='textarea'>"
+					else $('#srTextarea').html("<center>"
+										+ "<textarea placeholder='ë‚´ìš© ì…ë ¥' class='textarea' id='srContent'>"
 										+ data.srContent
 										+ "</textarea>"
 										+ "</center>"
 										);
-					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>ÀúÀå</button>")
+					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>ì €ì¥</button>");
 				},
 				error : function(e) {
-					alert("¿äÃ»½ÇÆĞ");
+					alert("ìš”ì²­ì‹¤íŒ¨");
 				}
 			});
 		}
 		
-		// ÇĞ»ı±â·Ï ÀúÀåÇÏ±â
+		// í•™ìƒê¸°ë¡ ì €ì¥í•˜ê¸°
 		function updateStudentRecord(srSeq){
 			$.ajax({
 				type : "post",
@@ -151,16 +153,16 @@
 					'srContent' : $('#srContent').val()
 				},
 				success : function(data) {
-					if(data == 'true') alert("ÀúÀå ¼º°ø");
-					else alert("ÀúÀå ½ÇÆĞ");
+					if(data == 'true') alert("ì €ì¥ ì„±ê³µ");
+					else alert("ì €ì¥ ì‹¤íŒ¨");
 				},
 				error : function(e) {
-					alert("¿äÃ»½ÇÆĞ");
+					alert("ìš”ì²­ì‹¤íŒ¨");
 				}
 			});
 		}
 		
-		// ºĞ¼® °á°ú ºÒ·¯¿À±â
+		// ë¶„ì„ ê²°ê³¼ ë¶ˆëŸ¬ì˜¤ê¸°
 		function getAnalysisResult(srSeq){
 			$.ajax({
 				type : "post",
@@ -174,7 +176,6 @@
 						+ data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate,
 						+ data.arlGraphPath, data.jobsSeq ];
 					list.push(result);
-					<% // TODO html, idº¯°æ %>
 					var text = $('#test');
 					text.html("");
 					if (result != null) {
@@ -182,7 +183,7 @@
 					}
 				},
 				error : function(e) {
-					alert("¿äÃ»½ÇÆĞ");
+					alert("ìš”ì²­ì‹¤íŒ¨");
 				}
 			});
 		}

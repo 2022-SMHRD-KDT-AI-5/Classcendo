@@ -1,4 +1,3 @@
-@charset "EUC-KR";
 * {
     margin: auto;
     padding: 0;
@@ -7,7 +6,7 @@ body {
     margin: 0;
     background-color: #133f12;
 }
- 
+
 a {
     text-decoration: none;
     color: white;
@@ -29,7 +28,7 @@ a {
 
 .innernav{
     position: float;
-    background-color:#ffff;
+    background-color:#ededed;
 	color:white;
 	width:30%;
 	height:90%; 
@@ -37,6 +36,7 @@ a {
     line-height:40px; 
     color: black;
     border-radius: 3%;
+    
 }
 
 .innersection{
@@ -57,6 +57,7 @@ a {
     align: left;
     margin-left: 5%;
     font-size: 20px;
+    
 }
 
 .inner_text{
@@ -65,26 +66,60 @@ a {
 .inner_textbox{
     margin-left: 5%;
 }
+/* 胶农费 */
+.scro{
+    overflow-y : scroll;
+    width: 400px;
+    height: 600px;
+    /* display: flex; */
+}
+.scro::-webkit-scrollbar{
+    width : 20px;
+    height : 10px;
+  }
+.scro::-webkit-scrollbar-thumb{
+    background-color :#ffdd00;
+    border-radius: 10px; 
+    
+}
+.scro::-webkit-scrollbar-track{
+    background-color: #133F12;
+    height : 30px;
+    border-radius: 10px; 
+}
+.in{
+    display: flex;
+    margin: 10px;
+}
+.name{
+    border: 2px solid #ededed;
+    border-bottom-color: #fff;
+}
+.namebtn{
+    flex: 1;
+}
+
+/* 胶农费场 */
 
 .textarea{
     width: 1000px;
     height: 450px;
     text-align:center;
     align-items: center;
-    padding: 3%
+    padding: 3%;
+    border-radius: 10px; 
 }
 .inner_btn1{
     display: block;
-    width: 50px;
+    width: 70px;
     height: 30px;
     background-color: #133f12;
     color: #fff;
-    font-size: 7px;
+    font-size: 13px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: .3s linear;
-    align: right;
    }
 .inner_btn1:hover {
    opacity: .85;
@@ -99,11 +134,11 @@ a {
      display: block;
      width: 80px;
      height: 55px;
-     background-color: #133f12;
-     color: #fff;
+     background-color: #fff;
+     color: #000;
      font-size: 15px;
      border: none;
-     border-radius: 5px;
+     border-radius: 15px;
      cursor: pointer;
      transition: .3s linear;
      filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.5));
@@ -114,7 +149,7 @@ a {
 }
 .inner_btn:disabled {
     background-color: transparent;
-    color: #ddd;
+    color: rgb(190, 190, 190);
     border: 2px solid;
 }
 

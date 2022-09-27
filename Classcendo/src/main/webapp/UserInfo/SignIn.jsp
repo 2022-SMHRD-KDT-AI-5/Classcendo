@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Classcendo</title>
 <link href="SignIn.css" rel="stylesheet">
 <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	rel="stylesheet">
@@ -34,7 +34,7 @@ body {
 		<div class="textb">
 			<input type="password" class="form-control" id="floatingInput" name="pw"
 				placeholder="Password">
-		</div> 
+		</div>
 
 		<div class="d-grid gap-2 d-md-block">
 			<button class="btn btn-primary" type="submit">Login</button>

@@ -18,6 +18,6 @@ public class SignOutService extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		session.invalidate();
-		response.sendRedirect("Signin.jsp");
+		response.sendRedirect("UserInfo/SignIn.jsp");
 	}
 }
