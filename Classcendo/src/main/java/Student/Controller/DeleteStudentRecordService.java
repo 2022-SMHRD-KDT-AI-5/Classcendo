@@ -23,15 +23,7 @@ public class DeleteStudentRecordService extends HttpServlet {
 
 		// StudentRecordDTO, StudentRecordDAO 호출
 		StudentRecordDAO dao = new StudentRecordDAO();
-		boolean result = false;
-
-		if (dao.deleteStudentRecord(srSeq)) {
-			// 학생 삭제 성공시
-			result = true;
-		} else {
-			// 학생 삭제 실패시
-			result = false;
-		}
+		boolean result = dao.deleteStudentRecord(srSeq);
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

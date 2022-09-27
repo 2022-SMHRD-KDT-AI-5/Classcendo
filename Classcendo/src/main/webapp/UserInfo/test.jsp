@@ -19,6 +19,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
+	// 학생 삭제
+	function deleteStudent(){
+		$.ajax({
+			type : "post",
+			url : "../DeleteStudentRecordService",
+			data : {
+				'srSeq' : $("#srSeq").val()
+			},
+			dataType : "text",
+			success : function(result) {
+				<% // TODO html, id변경 %>
+				var text = $('#test');
+				text.html("");
+				if (result) {
+					// 없어지게
+					text.html(result);
+				}
+			},
+			error : function(e) {
+				alert("요청실패");
+			}
+		});
+	}
+	
+	
 		// 회원정보 수정 시 정보 확인
 		function pwCheck() {
 			if ($("#pw").val() == '') {

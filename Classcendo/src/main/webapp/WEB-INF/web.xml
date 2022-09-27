@@ -118,6 +118,24 @@
   	<description></description>
   	<servlet-class>Student.Controller.DeleteStudentRecordService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddStudentRecordService</servlet-name>
+  	<display-name>AddStudentRecordService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.AddStudentRecordService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetJobRelatedTendencyService</servlet-name>
+  	<display-name>GetJobRelatedTendencyService</display-name>
+  	<description></description>
+  	<servlet-class>Job.Controller.GetJobRelatedTendencyService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetTendencyListService</servlet-name>
+  	<display-name>GetTendencyListService</display-name>
+  	<description></description>
+  	<servlet-class>Analysis.Controller.GetTendencyListService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -193,5 +211,17 @@
   <servlet-mapping>
   	<servlet-name>DeleteStudentRecordService</servlet-name>
   	<url-pattern>/DeleteStudentRecordService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddStudentRecordService</servlet-name>
+  	<url-pattern>/AddStudentRecordService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetJobRelatedTendencyService</servlet-name>
+  	<url-pattern>/GetJobRelatedTendencyService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetTendencyListService</servlet-name>
+  	<url-pattern>/GetTendencyListService</url-pattern>
   </servlet-mapping>
 </web-app>
