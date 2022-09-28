@@ -21,8 +21,7 @@ body {
 }
 </style>
 </head>
-<body>
-	<form action="../SignInService" class="login-form">
+<body>	<form action="../SignInService" class="login-form">
 		<img src="../Image/logo_green.png" alt="" width="500" height="65"><br>
 		<br>
 

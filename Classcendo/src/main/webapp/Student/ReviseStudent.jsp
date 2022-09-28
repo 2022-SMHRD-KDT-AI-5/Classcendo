@@ -51,13 +51,13 @@
 						<th class="firstline">번호</th>
 						<th class="firstline">이름</th>
 						<th class="secondline"><button name="Add_stu" class="Add_stu">학생 추가</button></th>
-						<th class="secondline"><button name="save_stu" class="Add_stu" onclick="getList()">저장</button></th>
+						<th class="secondline"><button name="save_stu" class="Add_stu" onclick="reviseStudent()">저장</button></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" class="textbox" placeholder="번호"></td>
-						<td><input type="text" class="textbox" placeholder="이름"></td>
+						<td><input type="text" class="textbox" placeholder="번호" name='stdNum'></td>
+						<td><input type="text" class="textbox" placeholder="이름" name='stdName'></td>
 						<td><button class="btn_del" name="delStaff">삭제</button></td>
 					</tr>
 				</tbody>
@@ -129,7 +129,6 @@
 				text.html("");
 				if(result != null){
 					text.html(result);
-					alert(num);
 				}
 			},
 			error : function(e) {
@@ -158,8 +157,8 @@
 			url : "../ReviseStudentService",
 			data : {
 				'srlSeq' : $('#srlNum').val(),
-				'stdNums' : $('input[name=stdNum]').val(),
-				'stdNames' : $('input[name=stdName]').val()
+				'stdNums' : $('input[name=stdNum]').serialize(),
+				'stdNames' : $('input[name=stdName]').serialize()
 			},
 			success : function(data) {
 				if(data == 'true') alert("저장 성공");

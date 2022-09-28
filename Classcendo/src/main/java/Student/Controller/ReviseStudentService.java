@@ -2,6 +2,7 @@ package Student.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,24 +18,25 @@ public class ReviseStudentService extends HttpServlet {
 
 		// Parameter 호출
 		int srlSeq = Integer.parseInt(request.getParameter("srlSeq"));
-		String stdNums = request.getParameter("stdNums");
-		String stdNames = request.getParameter("stdNames");
-		System.out.println(stdNums);
+		String[] stdNums = request.getParameterValues("stdNums");
+		String[] stdNames = request.getParameterValues("stdNames");
+		
+		String[] nums = null;
+		String[] names = null;
+		
+		for(String stdNum : stdNums) {
+			nums = stdNum.replace("stdNum=", "").split("&");
+		}
+		
+		for(String stdName : stdNames) {
+			names = stdName.replace("stdName=", "").split("&");
+		}
 		
 		boolean result = false;
 		
 		// StudentRecordDAO 호출
 		StudentRecordDAO dao = new StudentRecordDAO();
-//		for(int i = 0; i < stdNums.length; i++) {
-//			if(stdNums[i] == null || stdNames[i] == null) {
-//				continue;
-//			}
-//			int stdNum = Integer.parseInt(stdNums[i]);
-//			result = dao.addStudent(srlSeq, stdNum, stdNames[i]);
-//			if(result != false) {
-//				System.out.println("저장 오류" + stdNames[i]);
-//			}
-//		}
+		result = dao.addStudent(srlSeq, nums, names);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
