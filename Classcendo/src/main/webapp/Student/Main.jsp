@@ -27,7 +27,7 @@
 			안녕하세요 <%=info.getUserName()%>선생님 :)
 		</div>
 		<ul class="navbar__menu">
-			<li><a href="">마이페이지</a></li>
+			<li><a href="../Student/ReviseStudent.jsp">마이페이지</a></li>
 			<li><a href="../SignOutService">로그아웃</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
