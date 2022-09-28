@@ -15,7 +15,9 @@ public class ReviseStudentService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		int srlSeq = Integer.parseInt(request.getParameter("srlSeq"));
 		String[] stdNums = request.getParameterValues("stdNums");
@@ -34,13 +36,15 @@ public class ReviseStudentService extends HttpServlet {
 		
 		boolean result = false;
 		
+		for(String name : names) {
+			System.out.println(name);
+		}
+		
 		// StudentRecordDAO 호출
 		StudentRecordDAO dao = new StudentRecordDAO();
 		result = dao.addStudent(srlSeq, nums, names);
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
-
 	}
 }

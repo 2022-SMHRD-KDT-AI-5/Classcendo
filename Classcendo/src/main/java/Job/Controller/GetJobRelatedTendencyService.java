@@ -20,7 +20,9 @@ public class GetJobRelatedTendencyService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		String tendencys = request.getParameter("tendencys");
 
@@ -29,9 +31,7 @@ public class GetJobRelatedTendencyService extends HttpServlet {
 		ArrayList<Integer> jobList = dao.getJobTendency(tendencys);
 
 
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(jobList);
-
 	}
 }

@@ -16,7 +16,9 @@ public class RevisePwToFindPwService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// idCheck 값 받아오기
 		HttpSession session = request.getSession();
 		String idCheck = (String) session.getAttribute("idCheck");
@@ -37,7 +39,6 @@ public class RevisePwToFindPwService extends HttpServlet {
 			// 비밀번호 수정 실패 시
 			result = false;
 		}
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}

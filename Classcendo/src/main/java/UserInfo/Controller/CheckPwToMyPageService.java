@@ -17,7 +17,9 @@ public class CheckPwToMyPageService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// 기존 저장된 회원정보 session 호출
 		HttpSession session = request.getSession();
 		UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
@@ -38,7 +40,6 @@ public class CheckPwToMyPageService extends HttpServlet {
 			// 정보 확인 실패 시
 			idCheck = null;
 		}
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(idCheck);
 	}

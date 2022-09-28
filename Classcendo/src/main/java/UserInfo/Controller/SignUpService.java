@@ -16,7 +16,9 @@ public class SignUpService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -28,7 +30,6 @@ public class SignUpService extends HttpServlet {
 		UserInfoDAO dao = new UserInfoDAO();
 		String moveURL = null;
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(dao.signUp(dto));
 	}

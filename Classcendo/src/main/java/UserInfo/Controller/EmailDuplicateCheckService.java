@@ -15,6 +15,8 @@ public class EmailDuplicateCheckService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		// Parameter 호출
 		String emailCheck = request.getParameter("email");
@@ -22,7 +24,6 @@ public class EmailDuplicateCheckService extends HttpServlet {
 		// UserInfoDAO 호출
 		UserInfoDAO dao = new UserInfoDAO();
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(dao.checkEmail(emailCheck));
 	}

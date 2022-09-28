@@ -14,7 +14,9 @@ public class SignOutService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		HttpSession session = request.getSession();
 
 		session.invalidate();

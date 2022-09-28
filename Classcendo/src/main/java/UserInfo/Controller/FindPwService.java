@@ -17,7 +17,9 @@ public class FindPwService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
@@ -37,7 +39,6 @@ public class FindPwService extends HttpServlet {
 			// 비밀번호 찾기 실패 시
 			idCheck = null;
 		}
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(idCheck);
 	}

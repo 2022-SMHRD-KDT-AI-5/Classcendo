@@ -17,7 +17,9 @@ public class DeleteAnalysisResultService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq")); 
 
@@ -25,7 +27,6 @@ public class DeleteAnalysisResultService extends HttpServlet {
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
 		boolean result = dao.deleteAnalysisResultList(srSeq);
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}

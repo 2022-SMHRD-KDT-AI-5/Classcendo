@@ -54,6 +54,7 @@ public class StudentRecordDAO {
 	
 				row = psmt.executeUpdate();
 				if (row > 0) result = true;
+				System.out.println("srlSeq : " + srlSeq + ", num : " + stdNum + ", name : " + stdNames[i] + ", result : " + result);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

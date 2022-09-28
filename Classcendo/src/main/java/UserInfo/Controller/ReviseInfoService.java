@@ -13,9 +13,10 @@ import UserInfo.Model.UserInfoDTO;
 public class ReviseInfoService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		// 세션에 저장된 회원정보 받아오기
 		HttpSession session = request.getSession();
@@ -30,8 +31,6 @@ public class ReviseInfoService extends HttpServlet {
 		UserInfoDTO dto = new UserInfoDTO(info.getUserNum(), pw, name, email);
 		UserInfoDAO dao = new UserInfoDAO();
 
-		
-
 		if (dao.infoUpdate(dto) > 0) {
 			// 정보 수정 성공 시
 			session.setAttribute("info", dto);
@@ -40,10 +39,5 @@ public class ReviseInfoService extends HttpServlet {
 			// 정보 수정 실패 시
 			
 		}
-		
-		
-		
-		
 	}
-
 }

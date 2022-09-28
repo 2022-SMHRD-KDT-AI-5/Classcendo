@@ -21,7 +21,9 @@ public class GetAnalysisResultService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		String srSeq = request.getParameter("srSeq"); 
 
@@ -35,7 +37,6 @@ public class GetAnalysisResultService extends HttpServlet {
 		// list를 json 형식으로 바꿔주기
 		String json = gson.toJson(dto);
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);
 	}

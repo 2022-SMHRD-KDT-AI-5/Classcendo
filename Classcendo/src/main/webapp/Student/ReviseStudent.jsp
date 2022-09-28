@@ -6,10 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Classcendo</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<link rel="stylesheet" href="ReviseStudent.css">
+    <meta charset="UTF-8">
+	<title>Classcendo</title>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<link rel="stylesheet" href="ReviseStudent.css">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumABbaEuiYeonAePyeonJi.css" rel="stylesheet">
+	<style>
+	    body {
+	        background-color: #133f12;
+	        background-size: cover;
+	        min-height: 100vh;
+	    }
+	</style>
 </head>
 <body>
 	<%
@@ -18,13 +26,12 @@
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
-			<a href="../Student/Main.jsp"> <image
-					src="../Image/logo_white.png" width="160" height="24"></a>
+			<a href="../Student/Main.jsp"> <image src="../Image/logo_white.png" width="160" height="24"></a>
 		</div>
-		<div class="navbar_center">안녕하세요 선생님 :)</div>
+		<div class="navbar_center">안녕하세요 <%=info.getUserName()%>선생님 :)</div>
 		<ul class="navbar__menu">
 			<li><a href="">마이페이지</a></li>
-			<li><a href="../SignOutService">로그아웃</a></li>
+			<li><a href="#popSignOut">로그아웃</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
@@ -47,10 +54,10 @@
 			</table>
 			<table>
 				<thead>
-					<tr name="trStaff">
+					<tr name="trStaff" class="class_title">
 						<th class="firstline">번호</th>
 						<th class="firstline">이름</th>
-						<th class="secondline"><button name="Add_stu" class="Add_stu">학생 추가</button></th>
+						<th class="secondline"><button name="Add_stu" class="Add_stu">추가</button></th>
 						<th class="secondline"><button name="save_stu" class="Add_stu" onclick="reviseStudent()">저장</button></th>
 					</tr>
 				</thead>
@@ -58,21 +65,30 @@
 					<tr>
 						<td><input type="text" class="textbox" placeholder="번호" name='stdNum'></td>
 						<td><input type="text" class="textbox" placeholder="이름" name='stdName'></td>
-						<td><button class="btn_del" name="delStaff">삭제</button></td>
+						<td><button class="btn_del" name="delStaff" onclick="#popSignOut">삭제</button></td>
 					</tr>
+					<tr>
+                        <td colspan="4"><img src="../Image/cha.png" width="600px" height="100px"></td>
+                    </tr>
 				</tbody>
 			</table>
-			<div id="pop_info_1" class="pop_wrap" style="display: none;">
+			<div id="popSignOut" class="pop_wrap" style="display:none;">
+                <div class="pop_inner">
+                  <p class="dsc">로그아웃 하시겠습니까?</p>
+                  <button type="button" class="btn_yes" onclick="../SignOutService">예</button>
+                  <button type="button" class="btn_no" onclick="#">아니오</button>
+        
+                </div>
+            </div>
+			<div id="popDelete" class="pop_wrap" style="display: none;">
 				<div class="pop_inner">
 					<p class="dsc">정말 삭제 하시겠습니까?</p>
-					<button type="button" class="btn_yes"
-						onclick="location.href='login.html'">예</button>
-					<button type="button" class="btn_no"
-						onclick="location.href='mypage_1.html'">아니오</button>
+					<button type="button" class="btn_yes" onclick="#">예</button>
+					<button type="button" class="btn_no" onclick="#">아니오</button>
 				</div>
 			</div>
 	</table>
-
+	<script src="pop.js"></script>
 	<script>
 		//추가 버튼
 		$(document).on(
@@ -82,7 +98,7 @@
 					var addStaffText = "<tr name='trStaff'>"
 									+ "<td><input type='text' class='textbox' placeholder='번호' name='stdNum'></td>"
 									+ "<td><input type=text' class='textbox' placeholder='이름' name='stdName'></td>"
-									+ "<td><button class=btn_del name=delStaff'>삭제</button></td>"
+									+ "<td><button class=btn_del name=delStaff' onclick='#popSignOut'>삭제</button></td>"
 									+ "</tr>";
 					var trHtml = $("tr[name=trStaff]:last"); // last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
 					trHtml.after(addStaffText); // 마지막 trStaff명 뒤에 붙인다.
@@ -122,7 +138,7 @@
 					result += "<tr>"
 							+ "<td><input type='text' class='textbox' placeholder='번호' id='stdNum" + num + "'>"+data[i].stdNum+"</td>"
 							+ "<td><input type='text' class='textbox' placeholder='이름' id='stdName" + num + "'>"+data[i].stdName+"</td>"
-							+ "<td><button class='btn_del' name='delStaff' id='stdDelete" + num++ + "'>삭제</button></td>"
+							+ "<td><button class='btn_del' name='delStaff' id='stdDelete" + num++ + "' onclick='#popSignOut'>삭제</button></td>"
 							+ "</tr>"
 				});
 				var text = $('#studentList');
@@ -135,20 +151,7 @@
 				alert("요청실패");
 			}
 		});
-	}	
-	
-/*   	// 학생 정보 리스트 생성
- 	function getList(){
- 		var stdNums = [];
- 		var stdNames = [];
- 		$('input[name=stdNum]').each(function(index, item){
- 			stdNums.push($(item).val());
- 		});
- 		$('input[name=stdName]').each(function(index, item){
- 			stdNames.push($(item).val());
- 		});
- 		reviseStudent(stdNums, stdNames)
- 	} */
+	}
  	
 	// 학생 정보 저장하기
 	function reviseStudent(){

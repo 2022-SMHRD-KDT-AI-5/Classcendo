@@ -17,7 +17,9 @@ public class SaveAnalysisResultService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
 		int tendency1Rate = Integer.parseInt(request.getParameter("tendency1Rate"));

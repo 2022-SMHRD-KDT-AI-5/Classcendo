@@ -17,14 +17,15 @@ public class IdDuplicateCheckService extends HttpServlet {
 			throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		String idCheck = request.getParameter("id");
 
 		// UserInfoDAO 호출
 		UserInfoDAO dao = new UserInfoDAO();
 
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(dao.checkId(idCheck));
 	}

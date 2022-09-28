@@ -21,10 +21,11 @@ import UserInfo.Model.UserInfoDTO;
 public class GetStudentListService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
-
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		// Parameter 호출
 		HttpSession session = request.getSession();
 		String srlSeq = request.getParameter("srlSeq"); 
@@ -39,7 +40,6 @@ public class GetStudentListService extends HttpServlet {
 		// list를 json 형식으로 바꿔주기
 		String json = gson.toJson(srList);
 		
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);
 	}
