@@ -30,17 +30,19 @@ public class CheckPwToMyPageService extends HttpServlet {
 		// UserInfoDTO, UserInfoDAO 호출
 		UserInfoDTO dto = new UserInfoDTO(info.getUserNum(), pw);
 		UserInfoDAO dao = new UserInfoDAO();
-		String idCheck = null;
+		boolean result = false;
+		System.out.println(pw);
 
 		if (dao.infoCheck(dto) == 1) {
 			// 정보 확인 성공 시
-			idCheck = info.getUserNum();
-			session.setAttribute("idCheck", idCheck);
+			result = true;
+			
 		} else {
 			// 정보 확인 실패 시
-			idCheck = null;
+			result = false;
 		}
+		
 		PrintWriter out = response.getWriter();
-		out.print(idCheck);
+		out.print(result);
 	}
 }

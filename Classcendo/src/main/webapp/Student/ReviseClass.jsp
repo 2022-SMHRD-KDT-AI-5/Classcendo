@@ -1,103 +1,155 @@
+<%@page import="Student.Model.StudentRecordListDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="UserInfo.Model.UserInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>last demo</title>
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="drop.js"></script>
-
-  <link rel="stylesheet" href="adddel.css">
-  <link rel="stylesheet" href="drop.css">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stu_cont.css">
+    <title>Nav bar</title>
+    <script src="student.js" defer></script> 
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumABbaEuiYeonAePyeonJi.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('./image/bg.png') no-repeat center;
+            background-size: cover;
+            min-height: 100vh;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+        }
+    </style>
 </head>
+
 <body>
+	<%
+	UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
+	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>)session.getAttribute("srlList");
+	%>
     <header class="navbar">
         <div class="navbar__logo">
-            <a href="Student/Main.jsp">
-                <image src="./image/logo_white.png" width="160" height="24">
+            <a href="../Student/Main.jsp">
+                <image src="../image/logo_white.png" width="160" height="24">
             </a>
         </div>
         <div class="navbar_center">
-            안녕하세요 선생님 :)
+            안녕하세요 <%=info.getUserName()%>선생님 :)
         </div>
         <ul class="navbar__menu">
-            <li><a href="">마이페이지</a></li>
-            <li><a href="">로그아웃</a></li>
+            <li><a href="mypage_1.html">마이페이지</a></li>
+            <li><a href="#popSignOut" class="btn_open">로그아웃</a></li>
         </ul>
-        <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
     </header>
-
-    <table class="innerbox">
-            <td class="innersection">
-                <table>
-                    <thead>
-                        <tr>
-                            <th><select class="select_class">
-                                <option value="1반">2022년 1학년 1반</option>
-                                <option value="2반">2021년 2학년 2반</option>
-                                <option value="3반">2020년 3학년 3반</option>
-                                </select>
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-                <table>
-                    <thead>
-                        <tr name="trStaff">
-                            <th class="firstline">번호</th>
-                            <th class="firstline">이름</th>
-                            <th class="secondline"><button name="Add_stu" class="Add_stu">학생 추가</button></th>
-                            <th class="secondline"><button name="save_stu" class="Add_stu">저장</button></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" class="textbox" placeholder="번호"></td>
-                            <td><input type="text" class="textbox" placeholder="이름"></td>
-                            <td><button class="btn_del" name="delStaff">삭제</button></td>
-                           
-                          
-                        </tr>
-
+        <table class="innerbox">
+            <tr>
+                <td class="innernav">
                     
-                    </tbody>
-                </table>
-                <div id="pop_info_1" class="pop_wrap" style="display:none;">
-                    <div class="pop_inner">
-                    <p class="dsc">정말 삭제 하시겠습니까?</p>
-                    <button type="button" class="btn_yes" onclick="location.href='login.html'">예</button>
-                    <button type="button" class="btn_no" onclick="location.href='mypage_1.html'">아니오</button>
+                    <div class="in">
+                        <div class="in1">반 목록 </div>
                     </div>
-                </div>
-    </table>
+                    <table>
+                        <div class="scro">
+                        <%for(StudentRecordListDTO srl : srlList){ %>
+                            <div class="in">
+                                <div class="name">
+                                <%=srl.getSrlName() %>
+                                </div>
+                                <div clss="namebtn">
+                                    <button class="inner_btn1">삭제</button>
+                                </div>
+                            </div>
+						<%} %>
+                            </div>
+                              
+                    </table>
+                </td>
+                <td class="innersection">
+                    <div class="inner_title">
+                        학급관리
+                    </div>
+                    <table>
+                        <div class = "inner_textbox">
+                            <div class="textb">
+                                연도
+                                <input type="text" class="form-control" placeholder="ex) 2022">
+                            </div>
+                            <div class="textb">
+                                학년
+                                <input type="text" class="form-control" placeholder="ex) 3">
+                            </div>
+                            <div class="textb">
+                                반
+                                <input type="text" class="form-control" placeholder="ex) 1">
+                            </div>
+
+                            <div class="JoinPassbtn">
+                                <button type="button" class = "btn1" >Add</button>
+                            </div>
+                        </div>
+                      
+                     </table>
+                </td>          
+             </tr>
+        </table>
+        <div id="popSignOut" class="pop_wrap" style="display:none;">
+    		<div class="pop_inner">
+      			<p class="dsc">정말 로그아웃 하시겠습니까?</p>
+      			<button type="button" class="btn_yes" onclick="../SignOutService'">예</button>
+      			<button type="button" class="btn_no" onclick="">아니오</button>
+
+    		</div>
+		</div>
+    
+        <script src="pop.js"></script>
+</body>
     
 <script>
-    //추가 버튼
-    $(document).on("click","button[name=Add_stu]",function(){
-        
-        var addStaffText = '<tr name="trStaff">'+
-            '        <td>' + '<input type="text"  class="textbox" placeholder="번호">' + '</td>' +
-            '        <td>' + '<input type="text"  class="textbox" placeholder="이름">' + '</td>' +
-            '        <td>' + '<button class="btn_del" name="delStaff">삭제</button>'+
-            '    </td>'+
-            '</tr>';
-            
-        var trHtml = $( "tr[name=trStaff]:last" ); //last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
-        
-        trHtml.after(addStaffText); //마지막 trStaff명 뒤에 붙인다.
-        
-    });
+
+ // 학생부 변경
+	function selectSrlSeq(){
+		var srlNum = $('#srlNum');
+		if(srlNum.val() != "") getSrList(srlNum);
+	}
     
-    //삭제 버튼
-    $(document).on("click","button[name=delStaff]",function(){
-        
-        var trHtml = $(this).parent().parent();
-        
-        trHtml.remove(); //tr 테그 삭제
-        
-    });
+ // 학생목록 불러오기
+	function getSrList(){
+		$.ajax({
+			type : "post",
+			url : "../GetStudentListService",
+			data : {
+				'UserNum' : info.getUserNum()
+			},
+			dataType : "json",
+			success : function(data) {
+				var result = '';
+				var num = 0;
+				$.each(data, function(i) {
+					result += "<tr>"
+							+ "<td><input type='text' class='textbox' placeholder='번호' id='stdNum" + num + "'>"+data[i].stdNum+"</td>"
+							+ "<td><input type='text' class='textbox' placeholder='이름' id='stdName" + num + "'>"+data[i].stdName+"</td>"
+							+ "<td><button class='btn_del' name='delStaff' id='stdDelete" + num++ + "'>삭제</button></td>"
+							+ "</tr>"
+				});
+				
+				<
+            
+				var text = $('#studentList');
+				text.html("");
+				if(result != null){
+					text.html(result);
+					alert(num);
+				}
+			},
+			error : function(e) {
+				alert("요청실패");
+			}
+		});
+	}
+ 
 </script>
  
 </body>

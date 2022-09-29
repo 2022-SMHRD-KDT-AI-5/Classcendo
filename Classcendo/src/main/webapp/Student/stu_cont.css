@@ -1,0 +1,341 @@
+* {
+    margin: auto;
+    padding: 0;
+}
+body {
+    margin: 0;
+    background-color: #133f12;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+/* 이너박스 css */
+.innerbox{
+    box-sizing: border-box;
+    position: float;
+    width: 1689px;
+    height: 800px;
+    left: 117px;
+    top: 1009px;
+    align-items: center;
+    margin-top: 2%;
+    border: 8px solid #ffff;
+    border-radius: 25px;
+    padding: 1% 1%;
+}
+
+.innernav{
+    position: float;
+    background-color: #ffff;
+    color: white;
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    border-radius: 3%;
+}
+
+.innersection{
+    /* background-color:#133F12; */
+    width:50%;
+    height: 90%;
+	padding:10px;
+    text-align: center;
+    line-height:40px; 
+    color : #ffff
+}
+
+.inner_title{
+    text-align: center;
+    /* font-size: 30px; */
+    /* margin-bottom: 30px; */
+    font-size: 60px;
+    margin-left: 300px;
+    margin-bottom: 75px;
+    font-weight: 500;
+    border: 2px solid #133f12;
+    padding: 15px;
+    width: 200px;
+    border-bottom-color: #fff;
+    font-family: 'NanumABbaEuiYeonAePyeonJi';
+    font-weight: bold;
+}
+
+.inner_name{
+    text-align: left;
+    margin-left: 5%;
+    font-size: 20px;
+}
+
+.inner_text{
+    text-align: center;
+}
+.inner_textbox{
+    margin-left: 5%;
+}
+
+.textarea{
+    width: 200px;
+    height: 70px;
+    text-align:center;
+    align-items: center;
+    padding: 3%
+}
+.inner_btn1{
+    display: block;
+    width: 150px;
+    height: 45px;
+    background-color: #133f12;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s linear;
+    /* text-align: right; */
+    margin-top: 15px;
+   }
+.inner_btn1:hover {
+   opacity: .85;
+}
+.inner_btn1:disabled {
+   background-color: transparent;
+   color: #ddd;
+   border: 2px solid;
+}
+.in1{
+    font-size: 60px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-weight: 500;
+    border: 2px solid #fff;
+    border-bottom-color: #133f12;
+    font-family: '송명', serif;
+    font-weight: bold;
+    font-family: 'NanumABbaEuiYeonAePyeonJi';
+    font-weight: bold;
+}
+
+.inner_btn{
+     display: block;
+     width: 80px;
+     height: 55px;
+     background-color: #133f12;
+     color: #fff;
+     font-size: 15px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: .3s linear;
+     filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.5));
+     text-align: right;
+    }
+.inner_btn:hover {
+    opacity: .85;
+}
+.inner_btn:disabled {
+    background-color: transparent;
+    color: #ddd;
+    border: 2px solid;
+}
+/* 이너박스 css 끝  */
+
+/* 메뉴바 css */
+.navbar {
+    background-color: #133F12;
+    display: flex;
+    justify-content: space-between;
+    width: --webkit-fill-available;
+    height: 86px;
+}
+
+.navbar__logo {
+    font-size: 24px;
+}
+.navbar_center{
+    color: white;
+}
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navbar__menu li {
+    background-color: #133F12;
+
+    padding: 8px 12px;
+}
+.navbar__menu li:hover {
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+}
+.navbar__menu li a:hover {
+    color:#133f12;
+}
+
+.navbar__links {
+    list-style: none;
+    padding-left: 0;
+    color: teal;
+    display: flex;
+}
+
+.navbar__links li {
+    padding: 8px 12px;
+}
+
+.navbar__toggleBtn {
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+}
+/* 메뉴바 끝 */
+/* 스크롤 */
+.scro{
+    overflow-y: scroll;
+    width: 95%;
+    height: 510px;
+    /* display: flex; */
+    margin-right: 20px;
+}
+.scro::-webkit-scrollbar{
+    width : 20px;
+    height : 10px;
+  }
+.scro::-webkit-scrollbar-thumb{
+    background-color :#ffdd00;
+    border-radius: 10px; 
+    
+}
+.scro::-webkit-scrollbar-track{
+    background-color: #133F12;
+    height : 30px;
+    border-radius: 10px; 
+}
+.in{
+    display: flex;
+    margin: 10px;
+}
+.name{
+    border: 2px solid #ffff;
+    border-bottom-color: #133f12;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'NanumABbaEuiYeonAePyeonJi';
+}
+.namebtn{
+    flex: 1;
+}
+
+/* 스크롤끝 */
+
+/* pop.css */
+.wrap{
+    padding:10px;
+}
+.btn_open{
+    font-weight:bold; 
+    margin:5px; 
+    padding:4px 6px; 
+    color:#fff;
+}
+.pop_wrap{
+    position:fixed; 
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    background:rgba(0,0,0,0.5); 
+    font-size:0; 
+    text-align:center;
+}
+.pop_wrap:after{
+    display:inline-block; 
+    height:100%; 
+    vertical-align:middle; 
+    content:'';
+}
+.pop_wrap .pop_inner{
+    display: inline-block;
+    padding: 30px 30px;
+    background: #fff;
+    width: 30%;
+    height: 10%;
+    vertical-align: middle;
+    font-size: 20px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.pop_inner button{
+    width: 70px;
+    height: 35px;
+    margin: 30px;
+    background-color: white;
+    border: 2px solid #446544;
+    border-radius: 30px;
+}
+
+/* 내용 */
+
+.textb {
+    margin-bottom: 30px;
+    font-family: 'NanumABbaEuiYeonAePyeonJi';
+    font-weight: bold;
+    font-size: 40px;
+    position: relative;
+}
+
+.textb input {
+    display: block;
+    width: 30%;
+    text-align: center;
+    height: 45px;
+    margin: 10px auto;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    border: 1px;
+    border-style: solid;
+    border-color: #133f12;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s linear;
+    /* padding: 5px 0px 0px 90px;*/
+}
+.btn1 {
+    display: block;
+    width: 30%;
+    height: 45px;
+    margin: 40px auto;
+    background-color: rgb(255, 221, 0);
+    color: #000;
+    font-size: 15px;
+    border: 3px solid #133f12;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s linear;
+    filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.5));
+}
+.placeholder {
+    font-size: 1.0rem;
+    font-weight: 700;
+    position: absolute;
+    line-height: 70px;
+    top: 0;
+    left: 20px;
+    color: #9d9d9d;
+    user-select: none;
+    pointer-events: none;
+}
+.btn1:hover {
+    color:#000;
+    background-color: rgb(255, 221, 0);
+    border: 1px solid #fff;
+}

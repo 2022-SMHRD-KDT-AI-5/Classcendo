@@ -27,7 +27,7 @@
 			안녕하세요 <%=info.getUserName()%>선생님 :)
 		</div>
 		<ul class="navbar__menu">
-			<li><a href="../Student/ReviseStudent.jsp">마이페이지</a></li>
+			<li><a href="../UserInfo/MyPage.jsp">마이페이지</a></li>
 			<li><a href="../SignOutService">로그아웃</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
@@ -40,7 +40,7 @@
 						반 선택<br>
 					</tr>
 					<select id="srlNum" onchange="selectSrlSeq()">
-						<option value="">학급선택</option>
+						<option value="0">학급선택</option>
 						<%for(StudentRecordListDTO srl : srlList){ %>
 							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
 						<%} %>
@@ -153,7 +153,10 @@
 					'srContent' : $('#srContent').val()
 				},
 				success : function(data) {
-					if(data == 'true') alert("저장 성공");
+					if(data == 'true') {
+						alert("저장 성공");
+						getAnalysisResult(srSeq);
+					}
 					else alert("저장 실패");
 				},
 				error : function(e) {

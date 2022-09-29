@@ -32,6 +32,11 @@ public class GetStudentRecordListService extends HttpServlet {
 
 		session.setAttribute("srlList", srlList);
 		
-		response.sendRedirect("Student/Main.jsp");
+		if (srlList != null) {
+			response.sendRedirect("Student/Main.jsp");
+		} else {
+			response.sendRedirect("Student/MainStart.jsp");
+		}
+
 	}
 }

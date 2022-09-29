@@ -36,14 +36,14 @@ public class StudentRecordListDAO {
 	}
 
 	// 학생기록부 추가
-	public boolean addSrl(StudentRecordListDTO dto) {
+	public boolean addSrl(String userNum, String srlName) {
 		changeDatabase.getConn();
 		result = false;
 		try {
 			sql = "insert into student_record_list(student_record_list_SEQ.nextval, ?, ?)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getUserNum());
-			psmt.setString(2, dto.getSrlName());
+			psmt.setString(1, userNum);
+			psmt.setString(2, srlName);
 
 			row = psmt.executeUpdate();
 			if (row > 0)

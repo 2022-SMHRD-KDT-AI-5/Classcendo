@@ -136,6 +136,12 @@
   	<description></description>
   	<servlet-class>Student.Controller.ReviseStudentService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddStudentRecordListService</servlet-name>
+  	<display-name>AddStudentRecordListService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.AddStudentRecordListService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -223,5 +229,9 @@
   <servlet-mapping>
   	<servlet-name>ReviseStudentService</servlet-name>
   	<url-pattern>/ReviseStudentService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddStudentRecordListService</servlet-name>
+  	<url-pattern>/AddStudentRecordListService</url-pattern>
   </servlet-mapping>
 </web-app>
