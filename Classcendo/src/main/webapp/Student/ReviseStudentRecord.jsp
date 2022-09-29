@@ -6,10 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Main.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./ReviseStudentRecord.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumABbaEuiYeonAePyeonJi.css" rel="stylesheet">
+<script src="./ReviseStudentRecord.js" defer></script>
 <title>Classcendo</title>
 </head>
 <body>
@@ -19,7 +21,7 @@
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
-			<a href="../Student/Main.jsp">
+			<a href="../Student/ReviseStudentRecord.jsp">
 				<img src="../Image/logo_white.png" width="160" height="24">
 			</a>
 		</div>
@@ -28,7 +30,7 @@
 		</div>
 		<ul class="navbar__menu">
 			<li><a href="../UserInfo/MyPage.jsp">마이페이지</a></li>
-			<li><a href="../SignOutService">로그아웃</a></li>
+			<li><a href="#popSignOut" class="btn_open">로그아웃</a></li>
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
@@ -60,9 +62,21 @@
 			</td>
 		</tr>
 	</table>
+    <div id="popSignOut" class="pop_wrap" style="display:none;">
+		<div class="pop_inner">
+  			<p class="dsc">로그아웃 하시겠습니까?</p>
+  			<button type="button" class="btn_yes" onclick="location.href='../SignOutService'">예</button>
+  			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
+  		</div>
+	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="pop.js"></script>
 	<script type="text/javascript">
+		// pop 닫기
+		function closePop(){
+			$('#popSignOut').css("display", "none");
+		}
 	
 		// 학생부 변경
 		function selectSrlSeq(){
@@ -190,7 +204,6 @@
 				}
 			});
 		}
-		
 	</script>
 </body>
 </html>

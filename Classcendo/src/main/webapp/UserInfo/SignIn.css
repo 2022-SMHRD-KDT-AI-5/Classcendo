@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 * {
 	margin: 0;
@@ -176,7 +176,7 @@
 	border: 2px solid;
 }
 
-/*±Ü¾î¿È*/
+/*ê¸ì–´ì˜´*/
 .form-signin input[type="email"] {
 	margin-bottom: -1px;
 	border-bottom-right-radius: 0;

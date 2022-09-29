@@ -20,25 +20,16 @@ public class ReviseStudentService extends HttpServlet {
 		
 		// Parameter 호출
 		int srlSeq = Integer.parseInt(request.getParameter("srlSeq"));
-		String[] stdNums = request.getParameterValues("stdNums");
-		String[] stdNames = request.getParameterValues("stdNames");
+		String stdNums = request.getParameter("stdNums");
+		String stdNames = request.getParameter("stdNames");
 		
 		String[] nums = null;
 		String[] names = null;
 		
-		for(String stdNum : stdNums) {
-			nums = stdNum.replace("stdNum=", "").split("&");
-		}
-		
-		for(String stdName : stdNames) {
-			names = stdName.replace("stdName=", "").split("&");
-		}
+		nums = stdNums.split(",");
+		names = stdNames.split(",");
 		
 		boolean result = false;
-		
-		for(String name : names) {
-			System.out.println(name);
-		}
 		
 		// StudentRecordDAO 호출
 		StudentRecordDAO dao = new StudentRecordDAO();

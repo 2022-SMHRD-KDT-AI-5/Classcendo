@@ -181,18 +181,8 @@ body {
 					text.html("");
 					<% // TODO HTML 수정 필요 회원가입 성공 메시지 및 로그인 창으로 이동하는 버튼 %>
 					if (result == 'true') {
-						text.html("<h2 class='form__title'>Find Password Success</h2>"
-										+ "<table>"
-										+ "<tr>"    
-										+ "<td colspan='2'><input type='password' placeholder='New Pw' class='input' id='pw1' autofocus/></td>"
-										+ "</tr>"
-										+ "<tr>"
-										+ "<td><input type='password' placeholder='New Pw Check' class='input' id='pw2' onkeyup='PwCall()' /></td>"
-										+ "<td id='pwcheck' align='center'></td>"
-										+ "</tr>"
-										+ "<tr>"
-										+ "<td colspan='2' align='center'><input type='button' value='Revise' class='btn' onclick='RevisePwCheck()'></td>"
-										+ "</tr>" + "</table>");
+						alert('회원가입 성공!!')
+						window.location.href = "SignIn.jsp";
 					}
 				},
 				error : function(e) {
@@ -200,7 +190,6 @@ body {
 				}
 			});
 		}
-
 	</script>
 </body>
 </html>
