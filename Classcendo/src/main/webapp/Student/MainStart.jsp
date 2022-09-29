@@ -1,3 +1,6 @@
+<%@page import="Student.Model.StudentRecordListDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="UserInfo.Model.UserInfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -11,7 +14,10 @@
     <title>Document</title>
 </head>
 <body>
-
+	<%
+	UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
+	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>)session.getAttribute("srlList");
+	%>
     <nav class="navbar">
         <div class="navbar__logo">
             <a href="../Student/Main.jsp">
@@ -19,7 +25,7 @@
             </a>
         </div>
         <div class="navbar_center">
-            안녕하세요 선생님 :)
+            안녕하세요 <%=info.getUserName()%>선생님 :)
         </div> 
         <ul class="navbar__menu">
             <li><a href="../UserInfo/MyPage.jsp">마이페이지</a></li>
@@ -36,7 +42,7 @@
             <input type="text" class="form-control" placeholder="OOOO년 OO학년 OO반" id="srlName">
         </div>
         <div class = "password_btn">
-            <button class="btn" type="submit" onclick="location.href='../Student/ReviseClass.jsp'">Add</button>
+            <button class="btn" type="submit">Add</button>
         </div>
     </form>
 
