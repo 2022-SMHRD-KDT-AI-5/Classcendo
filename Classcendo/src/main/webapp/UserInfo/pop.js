@@ -10,9 +10,9 @@ for(var i = 0; i < target.length; i++){
   });
 }
 
-// 팝업 닫기
+/*// 팝업 닫기
 for(var j = 0; j < target.length; j++){
   btnPopClose[j].addEventListener('click', function(){
     this.parentNode.parentNode.style.display = 'none';
   });
-}
+}*/

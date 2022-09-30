@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>Classcendo</title>
 <link href="SignIn.css" rel="stylesheet">
 <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"

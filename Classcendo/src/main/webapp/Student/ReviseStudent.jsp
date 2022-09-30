@@ -1,3 +1,4 @@
+<%@page import="Student.Model.StudentRecordDTO"%>
 <%@page import="Student.Model.StudentRecordListDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="UserInfo.Model.UserInfoDTO"%>
@@ -22,7 +23,8 @@
 <body>
 	<%
 	UserInfoDTO info = (UserInfoDTO)session.getAttribute("info");
-	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>) session.getAttribute("srlList");
+	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>)session.getAttribute("srlList");
+	ArrayList<StudentRecordDTO> stdList = (ArrayList<StudentRecordDTO>)session.getAttribute("stdList");
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
@@ -39,36 +41,40 @@
 		</ul>
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
-
 	<div class="innerbox">
-		<table>
-			<th colspan=4>
-				<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
-					<option value="">학급선택</option>
-					<%for(StudentRecordListDTO srl : srlList){ %>
-						<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
-					<%} %>
-				</select>
-			</th>
-		</table>
-		<table>
+		<table id="studentList">
+			<tr>
+				<th colspan=4>
+					<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
+						<option value="">학급선택</option>
+						<%for(StudentRecordListDTO srl : srlList){ %>
+							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
+						<%} %>
+					</select>
+				</th>
+			</tr>
 			<tr name="trStaff" class="class_title">
 				<td class="firstline">번호</td>
 				<td class="firstline">이름</td>
 				<td class="secondline"><button name="Add_stu" class="Add_stu">추가</button></td>
 				<td class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo()">저장</button></td>
 			</tr>
-		</table>
-		<div id="studentList">
-<!-- 			<table>
-				<tr style="display:none;">
-					<td><input type="text" class="textbox" placeholder="번호" name='stdNum'></td>
-					<td><input type="text" class="textbox" placeholder="이름" name='stdName'></td>
-					<td><button class="btn_del" name="delStaff" onclick="#popDelete">삭제</button></td>
+ 			<%if(stdList != null){
+ 				for(StudentRecordDTO std : stdList){ %>
+ 				<tr>
+ 					<td><input type="text" class="textbox" placeholder="번호" name='stdNum' value='<%=std.getStdNum() %>'></td>
+ 					<td><input type="text" class="textbox" placeholder="이름" name='stdName' value='<%=std.getStdName() %>'></td>
+					<td><button class="btn_del" value='<%=std.getSrSeq() %>'><a href="#popDelete" class="btn_open">삭제</a></button></td>
 					<td></td>
 				</tr>
-			</table> -->
-		</div>
+ 			<%}} %>
+			<tr style="display:none;">
+				<td><input type="text" class="textbox" placeholder="번호" name='stdNum'></td>
+				<td><input type="text" class="textbox" placeholder="이름" name='stdName'></td>
+				<td><button class="btn_del" name="delStaff">삭제</button></td>
+				<td></td>
+			</tr>
+		</table>
 		<table>
 			<th colspan="4"><img src="../Image/cha.png" width="600px" height="100px"></th>
 		</table>
@@ -105,8 +111,8 @@
 								+ "<td><button class='btn_del' name='delStaff'>삭제</button></td>"
 								+ "<td></td>"
 								+ "</tr>"
-				var trHtml = $("tr[name=trStaff]:last"); // last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
-				trHtml.after(addStaffText); // 마지막 trStaff명 뒤에 붙인다.
+				var trHtml = $("#studentList"); // last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
+				trHtml.append(addStaffText); // 마지막 trStaff명 뒤에 붙인다.
 			});
 
 		//삭제 버튼
@@ -124,39 +130,11 @@
 	// 학생부 변경
 	function selectSrlSeq(){
 		var srlNum = $('#srlNum');
-		if(srlNum.val() != "") getSrList(srlNum);
+		if(srlNum.val() != "") getStdList(srlNum);
 	}
-    
- 	// 학생목록 불러오기
-	function getSrList(srlNum){
-		$.ajax({
-			type : "post",
-			url : "../GetStudentListService",
-			data : {
-				'srlSeq' : srlNum.val()
-			},
-			dataType : "json",
-			success : function(data) {
-				var result = '';
-				var num = 0;
-				$.each(data, function(i) {
-					result += "<tr>"
-							+ "<td><input type='text' class='textbox' placeholder='번호' id='stdNum" + num + "' value='" + data[i].stdNum + "'></td>"
-							+ "<td><input type='text' class='textbox' placeholder='이름' id='stdName" + num + "' value='" + data[i].stdName + "'></td>"
-							+ "<td><button class='btn_del' name='delStaff' id='stdDelete" + num++ + "' onclick='#popDelete'>삭제</button></td>"
-							+ "<td></td>"
-							+ "</tr>"
-				});
-				var text = $('#studentList');
-				text.html("");
-				if(result != null){
-					text.html("<table>" + result + "</table>");
-				}
-			},
-			error : function(e) {
-				alert("요청실패");
-			}
-		});
+	
+	function getStdList(srlNum){
+		window.location.href = "../GetStudentListToReviseService?srlSeq=" + srlNum.val();
 	}
  	
  	// 학생 정보 담을 리스트 생성
@@ -186,6 +164,7 @@
 			success : function(data) {
 				if(data == 'true') alert("저장 성공");
 				else alert("저장 실패");
+				window.location.href = "../GetStudentListToReviseService?srlSeq=" + srlNum;
 			},
 			error : function(e) {
 				alert("요청실패");

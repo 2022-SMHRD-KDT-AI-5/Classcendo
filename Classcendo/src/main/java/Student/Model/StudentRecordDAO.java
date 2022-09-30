@@ -114,6 +114,36 @@ public class StudentRecordDAO {
 		}
 		return srList;
 	}
+	
+	// 모든 학생정보 목록 불러오기
+	public ArrayList<StudentRecordDTO> getAllStudentInfoList(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		ArrayList<StudentRecordDTO> srList = new ArrayList<>();
+		try {
+			sql = "select * from student_record where srl_seq = ? order by std_num";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				result = true;
+				int srSeq = rs.getInt(1);
+				int stdNum = rs.getInt(3);
+				String stdName = rs.getString(4);
+				StudentRecordDTO dto = new StudentRecordDTO(srSeq, stdNum, stdName);
+				srList.add(dto);
+			}
+			if (!result) {
+				srList = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return srList;
+	}
 
 	// 학생기록 불러오기
 	public StudentRecordDTO getStudentRecord(int seq) {
