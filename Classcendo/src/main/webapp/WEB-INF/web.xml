@@ -137,16 +137,28 @@
   	<servlet-class>Student.Controller.ReviseStudentService</servlet-class>
   </servlet>
   <servlet>
+  	<servlet-name>GetStudentListToReviseService</servlet-name>
+  	<display-name>GetStudentListToReviseService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.GetStudentListToReviseService</servlet-class>
+  </servlet>
+  <servlet>
   	<servlet-name>AddStudentRecordListService</servlet-name>
   	<display-name>AddStudentRecordListService</display-name>
   	<description></description>
   	<servlet-class>Student.Controller.AddStudentRecordListService</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>GetStudentListToReviseService</servlet-name>
-  	<display-name>GetStudentListToReviseService</display-name>
+  	<servlet-name>DeleteStudentRecordListService</servlet-name>
+  	<display-name>DeleteStudentRecordListService</display-name>
   	<description></description>
-  	<servlet-class>Student.Controller.GetStudentListToReviseService</servlet-class>
+  	<servlet-class>Student.Controller.DeleteStudentRecordListService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateStudentRecordListService</servlet-name>
+  	<display-name>UpdateStudentRecordListService</display-name>
+  	<description></description>
+  	<servlet-class>Student.Controller.UpdateStudentRecordListService</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
@@ -237,11 +249,19 @@
   	<url-pattern>/ReviseStudentService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+  	<servlet-name>GetStudentListToReviseService</servlet-name>
+  	<url-pattern>/GetStudentListToReviseService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
   	<servlet-name>AddStudentRecordListService</servlet-name>
   	<url-pattern>/AddStudentRecordListService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GetStudentListToReviseService</servlet-name>
-  	<url-pattern>/GetStudentListToReviseService</url-pattern>
+  	<servlet-name>DeleteStudentRecordListService</servlet-name>
+  	<url-pattern>/DeleteStudentRecordListService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateStudentRecordListService</servlet-name>
+  	<url-pattern>/UpdateStudentRecordListService</url-pattern>
   </servlet-mapping>
 </web-app>

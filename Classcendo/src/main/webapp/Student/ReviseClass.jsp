@@ -40,7 +40,7 @@
     </header>
     <table class="innerbox">
         <tr>
-            <td class="innernav">
+            <td class="innernav" id="srlList">
                 <div class="in">
                     <div class="in1">반 목록 </div>
                 </div>
@@ -49,14 +49,14 @@
                     <%if(srlList != null){
                     	for(StudentRecordListDTO srl : srlList){ %>
                         <div class="in">
-                            <div class="name">
+                            <div class="name" id="srlName" onclick="moveReviseStudent(<%=srl.getSrlSeq()%>)">
                             <%=srl.getSrlName() %>
                             </div>
                             <div clss="namebtn">
-                                <button class="inner_btn1">삭제</button>
+                                <button class="inner_btn1" onclick="deleteStudentRecordList(<%=srl.getSrlSeq() %>)">삭제</button>
                             </div>
                         </div>
-		<%}} %>
+					<%}} %>
                 	</div>
                 </table>
             </td>
@@ -64,22 +64,22 @@
                 <div class="inner_title">
                     학급관리
                 </div>
-                <table>
+				<table>
                     <div class = "inner_textbox">
                         <div class="textb">
                             연도
-                            <input type="text" class="form-control" placeholder="ex) 2022">
+                            <input type="text" class="form-control" placeholder="ex) 2022" id="srlYear">
                         </div>
                         <div class="textb">
                             학년
-                            <input type="text" class="form-control" placeholder="ex) 3">
+                            <input type="text" class="form-control" placeholder="ex) 3" id="srlGrade">
                         </div>
                         <div class="textb">
                             반
-                            <input type="text" class="form-control" placeholder="ex) 1">
+                            <input type="text" class="form-control" placeholder="ex) 1" id="srlClass">
                         </div>
                         <div class="JoinPassbtn">
-                            <button type="button" class = "btn1" >Add</button>
+                            <button type="button" class = "btn1" onclick="addStudentRecordList()">Add</button>
                         </div>
                     </div>
                  </table>
@@ -102,36 +102,79 @@
 			$('#popSignOut').css("display", "none");
 		}
 		
-		// 학생부 변경
-		function selectSrlSeq(){
-			var srlNum = $('#srlNum');
-			if(srlNum.val() != "") getSrList(srlNum);
+		//학생부 이름 클릭시 해당 학생부 학생 목록 수정하는 페이지로 넘어가기
+		function moveReviseStudent(seq){
+			window.location.href = "../GetStudentListToReviseService?srlSeq=" + seq;
 		}
-		   
-		// 학생목록 불러오기
-		function getSrList(){
+		
+		 // 학생부 목록 저장하기
+		function addStudentRecordList(){
 			$.ajax({
 				type : "post",
-				url : "../GetStudentListService",
+				url : "../AddStudentRecordListService",
 				data : {
-					'UserNum' : info.getUserNum()
+					'srlYear' : $('#srlYear').val(),
+					'srlGrade' : $('#srlGrade').val(),
+					'srlClass' : $('#srlClass').val()
 				},
 				dataType : "json",
 				success : function(data) {
 					var result = '';
-					var num = 0;
 					$.each(data, function(i) {
-						result += "<tr>"
-								+ "<td><input type='text' class='textbox' placeholder='번호' id='stdNum" + num + "'>"+data[i].stdNum+"</td>"
-								+ "<td><input type='text' class='textbox' placeholder='이름' id='stdName" + num + "'>"+data[i].stdName+"</td>"
-								+ "<td><button class='btn_del' name='delStaff' id='stdDelete" + num++ + "'>삭제</button></td>"
-								+ "</tr>"
+						result += "<div class='in'>"
+								+ "<div class='name' id='srlName' onclick=\"moveReviseStudent(" + data[i].srlSeq + ")\">" + data[i].srlName
+								+ "</div>"
+								+ "<div class='namebtn'>"
+								+ "<button class='inner_btn1' onclick='deleteStudentRecordList(" + data[i].srlSeq 
+								+ ")'>삭제</button>"
+								+ "</div>"
+								+ "</div>";
 					});
-					var text = $('#studentList');
+					var text = $('#srlList');
 					text.html("");
 					if(result != null){
-						text.html(result);
-						alert(num);
+						text.html("<div class='in'>"
+								+ "<div class='in1'>반 목록</div>"
+								+ "</div>"
+								+ "<table>"
+								+ "<div class='scro'>" + result + "</div>" + "</table>");
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+		 // 학생부 목록 삭제하기
+		 function deleteStudentRecordList(srlSeq){
+			$.ajax({
+				type : "post",
+				url : "../DeleteStudentRecordListService",
+				data : {
+					'srlSeq' : srlSeq
+				},
+				dataType : "json",
+				success : function(data) {
+					var result = '';
+					$.each(data, function(i) {
+						result += "<div class='in'>"
+								+ "<div class='name' id='srlName' onclick=\"moveReviseStudent(" + data[i].srlSeq +")\">" + data[i].srlName
+								+ "</div>"
+								+ "<div class='namebtn'>"
+								+ "<button class='inner_btn1' onclick='deleteStudentRecordList(" + data[i].srlSeq 
+								+ ")'>삭제</button>"
+								+ "</div>"
+								+ "</div>";
+					});
+					var text = $('#srlList');
+					text.html("");
+					if(result != null){
+						text.html("<div class='in'>"
+								+ "<div class='in1'>반 목록</div>"
+								+ "</div>"
+								+ "<table>"
+								+ "<div class='scro'>" + result + "</div>" + "</table>");
 					}
 				},
 				error : function(e) {
@@ -140,6 +183,5 @@
 			});
 		}
 	</script>
- 
 </body>
 </html>

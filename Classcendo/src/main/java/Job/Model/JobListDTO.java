@@ -3,25 +3,25 @@ package Job.Model;
 public class JobListDTO {
 
 	// 직업 목록 관리 DTO
-	private int jouSeq;
+	private int jobSeq;
 	private String jobName;
 	private String relationDept;
 	private String relationCert;
 
 	// 생성자 메소드
-	public JobListDTO(int jouSeq, String jobName, String relationDept, String relationCert) {
-		this.jouSeq = jouSeq;
+	public JobListDTO(int jobSeq, String jobName, String relationDept, String relationCert) {
+		this.jobSeq = jobSeq;
 		this.jobName = jobName;
 		this.relationDept = relationDept;
 		this.relationCert = relationCert;
 	}
 
 	public int getJouSeq() {
-		return jouSeq;
+		return jobSeq;
 	}
 
-	public void setJouSeq(int jouSeq) {
-		this.jouSeq = jouSeq;
+	public void setJouSeq(int jobSeq) {
+		this.jobSeq = jobSeq;
 	}
 
 	public String getJobName() {

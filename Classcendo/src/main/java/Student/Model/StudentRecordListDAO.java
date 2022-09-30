@@ -36,11 +36,11 @@ public class StudentRecordListDAO {
 	}
 
 	// 학생기록부 추가
-	public boolean addSrl(String userNum, String srlName) {
+	public boolean addStudentRecordList(String userNum, String srlName) {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "insert into student_record_list(student_record_list_SEQ.nextval, ?, ?)";
+			sql = "insert into student_record_list values(student_record_list_SEQ.nextval, ?, ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, userNum);
 			psmt.setString(2, srlName);
@@ -58,13 +58,13 @@ public class StudentRecordListDAO {
 	}
 
 	// 학생기록부 삭제
-	public boolean deleteStudentRecordList(StudentRecordListDTO dto) {
+	public boolean deleteStudentRecordList(int seq) {
 		changeDatabase.getConn();
 		result = false;
 		try {
 			sql = "delete from student_record_list where srl_seq = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getSrlSeq());
+			psmt.setInt(1, seq);
 
 			row = psmt.executeUpdate();
 			if (row > 0)
@@ -79,7 +79,7 @@ public class StudentRecordListDAO {
 	}
 
 	// 모든 학생기록부 불러오기
-	public ArrayList<StudentRecordListDTO> getAllStudentRecord(String num) {
+	public ArrayList<StudentRecordListDTO> getAllStudentRecordList(String num) {
 		changeDatabase.getConn();
 		result = false;
 		ArrayList<StudentRecordListDTO> srlList = new ArrayList<>();

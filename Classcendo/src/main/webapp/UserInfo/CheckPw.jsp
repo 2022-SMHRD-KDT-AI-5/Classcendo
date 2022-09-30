@@ -46,16 +46,21 @@
     </form>
 
     <div id="popSignOut" class="pop_wrap" style="display:none;">
-    		<div class="pop_inner">
-      			<p class="dsc">정말 로그아웃 하시겠습니까?</p>
-      			<button type="button" class="btn_yes" onclick="../SignOutService'">예</button>
-      			<button type="button" class="btn_no" onclick="#">아니오</button>
+		<div class="pop_inner">
+  			<p class="dsc">로그아웃 하시겠습니까?</p>
+  			<button type="button" class="btn_yes" onclick="location.href='../SignOutService'">예</button>
+  			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
 
     		</div>
     </div>
 
     <script src="pop.js"></script>
-    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    // pop 닫기
+	function closePop(){
+		$('#popSignOut').css("display", "none");
+	}
     
 	// 회원정보 수정 시 정보 확인
 	function pwCheck() {

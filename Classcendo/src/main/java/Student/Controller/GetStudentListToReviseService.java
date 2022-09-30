@@ -28,7 +28,7 @@ public class GetStudentListToReviseService extends HttpServlet {
 		// StudentRecordDTO, StudentRecordDAO 호출
 		StudentRecordDAO srDao = new StudentRecordDAO();
 		ArrayList<StudentRecordDTO> stdList = srDao.getAllStudentInfoList(Integer.parseInt(srlSeq));
-		
+		 
 		HttpSession session = request.getSession();
 		session.setAttribute("stdList", stdList);
 		

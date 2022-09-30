@@ -9,7 +9,7 @@
 <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	rel="stylesheet">
 <style>
-body {
+body { 
 	background: url('../Image/login_back.png') no-repeat center;
 	background-size: cover;
 	min-height: 100vh;

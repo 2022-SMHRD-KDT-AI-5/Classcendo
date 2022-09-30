@@ -64,7 +64,7 @@
  				<tr>
  					<td><input type="text" class="textbox" placeholder="번호" name='stdNum' value='<%=std.getStdNum() %>'></td>
  					<td><input type="text" class="textbox" placeholder="이름" name='stdName' value='<%=std.getStdName() %>'></td>
-					<td><button class="btn_del" value='<%=std.getSrSeq() %>'><a href="#popDelete" class="btn_open">삭제</a></button></td>
+					<td><button class="btn_del" onclick='deletePop(<%=std.getSrSeq() %>)'>삭제</button></td>
 					<td></td>
 				</tr>
  			<%}} %>
@@ -127,6 +127,18 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	
+	function deletePop(srSeq){
+		var result = confirm("삭제 하시겠습니까?");
+		if(result){
+			deleteStudent(srSeq);
+		}
+	}
+	
+	function deleteStudent(srSeq){
+		alert("ㅁㄴㅇㄹㅁ");
+	}
+	
 	// 학생부 변경
 	function selectSrlSeq(){
 		var srlNum = $('#srlNum');
