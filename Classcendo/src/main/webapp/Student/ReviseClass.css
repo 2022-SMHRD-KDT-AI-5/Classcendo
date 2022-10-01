@@ -11,7 +11,7 @@ a {
     text-decoration: none;
     color: white;
 }
-/* 이너박스 css */
+/* �씠�꼫諛뺤뒪 css */
 .innerbox{
     box-sizing: border-box;
     position: float;
@@ -90,9 +90,9 @@ a {
     height: 45px;
     background-color: #133f12;
     color: #fff;
-    font-size: 15px;
+    font-size: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     transition: .3s linear;
     /* text-align: right; */
@@ -113,7 +113,7 @@ a {
     font-weight: 500;
     border: 2px solid #fff;
     border-bottom-color: #133f12;
-    font-family: '송명', serif;
+    font-family: '�넚紐�', serif;
     font-weight: bold;
     font-family: 'NanumABbaEuiYeonAePyeonJi';
     font-weight: bold;
@@ -141,9 +141,9 @@ a {
     color: #ddd;
     border: 2px solid;
 }
-/* 이너박스 css 끝  */
+/* �씠�꼫諛뺤뒪 css �걹  */
 
-/* 메뉴바 css */
+/* 硫붾돱諛� css */
 .navbar {
     background-color: #133F12;
     display: flex;
@@ -194,8 +194,8 @@ a {
     right: 32px;
     font-size: 24px;
 }
-/* 메뉴바 끝 */
-/* 스크롤 */
+/* 硫붾돱諛� �걹 */
+/* �뒪�겕濡� */
 .scro{
     overflow-y: scroll;
     width: 95%;
@@ -229,10 +229,11 @@ a {
     font-family: 'NanumABbaEuiYeonAePyeonJi';
 }
 .namebtn{
-    flex: 1;
+    /*flex: 1;*/
+    margin-right:80px;
 }
 
-/* 스크롤끝 */
+/* �뒪�겕濡ㅻ걹 */
 
 /* pop.css */
 .wrap{
@@ -282,7 +283,7 @@ a {
     border-radius: 30px;
 }
 
-/* 내용 */
+/* �궡�슜 */
 
 .textb {
     margin-bottom: 30px;
