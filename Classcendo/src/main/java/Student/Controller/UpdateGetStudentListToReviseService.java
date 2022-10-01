@@ -24,7 +24,6 @@ public class UpdateGetStudentListToReviseService extends HttpServlet {
 		int srlSeq = Integer.parseInt(request.getParameter("srlSeq")); 
 		String result = request.getParameter("result");	
 		
-		System.out.println(srlSeq);
 		// StudentRecordDTO, StudentRecordDAO 호출
 		StudentRecordDAO srDao = new StudentRecordDAO();
 		ArrayList<StudentRecordDTO> stdList = srDao.getAllStudentInfoList(srlSeq);
