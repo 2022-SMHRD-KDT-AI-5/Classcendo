@@ -67,6 +67,7 @@ a {
     font-family: 'NanumABbaEuiYeonAePyeonJi';
     font-weight: bold;
     font-size: 30px;
+    margin: 20px;
 }
 .inner_textbox{
     margin-left: 5%;
@@ -100,6 +101,7 @@ a {
     border: 2px solid #ededed;
     border-bottom-color: #fff;
     margin-left: 20px;
+    cursor: pointer;
 }
 .namebtn{
     margin-right: 30px;
