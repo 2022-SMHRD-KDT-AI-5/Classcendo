@@ -99,9 +99,10 @@ a {
 .name{
     border: 2px solid #ededed;
     border-bottom-color: #fff;
+    margin-left: 20px;
 }
 .namebtn{
-    flex: 1;
+    margin-right: 30px;
 }
 
 /* 스크롤끝 */

@@ -49,10 +49,10 @@
                     <%if(srlList != null){
                     	for(StudentRecordListDTO srl : srlList){ %>
                         <div class="in">
-                            <div class="name" id="srlName" onclick="moveReviseStudent(<%=srl.getSrlSeq()%>)">
+                            <div class="name" id="srlName" onclick="moveReviseStudent(<%=srl.getSrlSeq()%>)" style="cursor:pointer;">
                             <%=srl.getSrlName() %>
                             </div>
-                            <div clss="namebtn">
+                            <div class="namebtn">
                                 <button class="inner_btn1" onclick="deleteStudentRecordList(<%=srl.getSrlSeq() %>)">삭제</button>
                             </div>
                         </div>
