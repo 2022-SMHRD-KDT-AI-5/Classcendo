@@ -67,11 +67,11 @@
  			<%if(stdList != null){
  				for(StudentRecordDTO std : stdList){ %>
  				<tr>
- 					<td><input type="text" class="textbox" placeholder="번호" name='stdNum' value='<%=std.getStdNum() %>'></td>
- 					<td><input type="text" class="textbox" placeholder="이름" name='stdName' value='<%=std.getStdName() %>'></td>
+ 					<td><input type="text" class="textbox" placeholder="번호" id="stdNum<%=std.getSrSeq() %>" value='<%=std.getStdNum() %>'></td>
+ 					<td><input type="text" class="textbox" placeholder="이름" id="stdName<%=std.getSrSeq() %>" value='<%=std.getStdName() %>'></td>
 					<td>
 						<button class="btn_del" name="<%=std.getSrSeq() %>" onclick='deletePop(<%=std.getSrSeq() %>, <%=srlSeq %>)'>삭제</button>
-						<button class="btn_del" onclick='deletePop(<%=std.getSrSeq() %>)'>수정</button>
+						<button class="btn_del" onclick='reviseStudent(<%=std.getSrSeq() %>)'>수정</button>
 					</td>
 					<td></td>
 				</tr>
@@ -149,7 +149,7 @@
 			url : "../DeleteStudentService",
 			data : {
 				'srSeq' : srSeq,
-				'srlSeq' : selSeq
+				'srlSeq' : srlSeq
 			},
 			success : function(result) {
 				if(result == 'true') {
@@ -158,6 +158,26 @@
 				}else{
 					alert("삭제 실패");	
 				}
+			},
+			error : function(e) {
+				alert("요청실패");
+			}
+		});
+	}
+	
+	// 학생 정보 변경
+	function reviseStudent(srSeq, stdNum, stdName){
+		$.ajax({
+			type : "post",
+			url : "../RevisePersonalStudentService",
+			data : {
+				'srSeq' : srSeq,
+				'stdNum' : $('#stdNum' + srSeq).val(),
+				'stdName' : $('#stdName' + srSeq).val()
+			},
+			success : function(result) {
+				if(result == 'true') alert("수정 성공")
+				else alert("수정 실패");
 			},
 			error : function(e) {
 				alert("요청실패");
@@ -185,11 +205,11 @@
  		$('input[name=stdName]').each(function(index, item){
  			names += $(item).val() + ",";
  		})
- 		reviseStudent(srlSeq, nums, names);
+ 		saveStudent(srlSeq, nums, names);
  	}
  	
 	// 학생 정보 저장하기
-	function reviseStudent(srlSeq, nums, names){
+	function saveStudent(srlSeq, nums, names){
 		$.ajax({
 			type : "post",
 			url : "../ReviseStudentService",

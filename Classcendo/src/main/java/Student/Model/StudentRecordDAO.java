@@ -54,7 +54,6 @@ public class StudentRecordDAO {
 	
 				row = psmt.executeUpdate();
 				if (row > 0) result = true;
-				System.out.println("srlSeq : " + srlSeq + ", num : " + stdNum + ", name : " + stdNames[i] + ", result : " + result);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,6 +63,30 @@ public class StudentRecordDAO {
 		return result;
 	}
 
+	// 학생정보 수정
+	public boolean updateStudentInfo(StudentRecordDTO dto) {
+		changeDatabase.getConn();
+		result = false;
+		System.out.println(dto.getStdNum());
+		System.out.println(dto.getStdName());
+		System.out.println(dto.getSrSeq());
+		try {
+			sql = "update student_record set std_num = ?, std_name = ? where sr_seq = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getStdNum());
+			psmt.setString(2, dto.getStdName());
+			psmt.setInt(3, dto.getSrSeq());
+
+			row = psmt.executeUpdate();
+			if (row > 0) result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return result;
+	}
+	
 	// 학생기록 수정
 	public boolean updateStudentRecord(StudentRecordDTO dto) {
 		changeDatabase.getConn();
