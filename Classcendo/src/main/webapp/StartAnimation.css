@@ -1,0 +1,27 @@
+body{
+    margin: auto;
+    display: flex;
+    background-color: #133f12;
+    font-family: 'Baguette';
+}
+.loading {
+    color: rgb(255 228 33);
+    font-size: 150px;
+    margin-left: 30%;
+    margin-top: 15%;
+}
+.loading::after {
+    animation: ellipsis 3s steps(10) infinite;
+    content: "lasscendo";
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-left: 18px;
+ }
+@keyframes ellipsis {
+    0% { width: 0; }
+    25% { width: 3ch; }
+    50% { width: 6ch; }
+    75% { width: 9ch; }
+    100% { width:12ch; }
+}
