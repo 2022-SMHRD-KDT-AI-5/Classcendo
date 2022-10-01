@@ -35,7 +35,6 @@ public class ReviseStudentService extends HttpServlet {
 		StudentRecordDAO dao = new StudentRecordDAO();
 		result = dao.addStudent(srlSeq, nums, names);
 		
-		PrintWriter out = response.getWriter();
-		out.print(result);
+		response.sendRedirect("UpdateGetStudentListToReviseService?result=" + result + "&srlSeq=" + srlSeq);
 	}
 }

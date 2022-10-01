@@ -201,7 +201,7 @@
 			success : function(data) {
 				if(data == 'true') alert("저장 성공");
 				else alert("저장 실패");
-				window.location.href = "../GetStudentListToReviseService?srlSeq=" + srlNum;
+				window.location.href = "../GetStudentListToReviseService?srlSeq=" + srlSeq;
 			},
 			error : function(e) {
 				alert("요청실패");
