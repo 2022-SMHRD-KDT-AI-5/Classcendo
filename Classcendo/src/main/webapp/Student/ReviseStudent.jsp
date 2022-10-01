@@ -62,7 +62,7 @@
 				<td class="firstline">번호</td>
 				<td class="firstline">이름</td>
 				<td class="secondline"><button name="Add_stu" class="Add_stu">추가</button></td>
-				<td class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo()">저장</button></td>
+				<td class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo(<%=srlSeq %>)">저장</button></td>
 			</tr>
  			<%if(stdList != null){
  				for(StudentRecordDTO std : stdList){ %>
@@ -176,7 +176,7 @@
 	}
  	
  	// 학생 정보 담을 리스트 생성
- 	function getStudentInfo(){
+ 	function getStudentInfo(srlSeq){
  		var nums = "";
  		var names = "";
  		$('input[name=stdNum]').each(function(index, item){
@@ -185,16 +185,16 @@
  		$('input[name=stdName]').each(function(index, item){
  			names += $(item).val() + ",";
  		})
- 		reviseStudent(nums, names);
+ 		reviseStudent(srlSeq, nums, names);
  	}
  	
 	// 학생 정보 저장하기
-	function reviseStudent(nums, names){
+	function reviseStudent(srlSeq, nums, names){
 		$.ajax({
 			type : "post",
 			url : "../ReviseStudentService",
 			data : {
-				'srlSeq' : $('#srlNum').val(),
+				'srlSeq' : srlSeq,
 				'stdNums' : nums,
 				'stdNames' : names
 			},
