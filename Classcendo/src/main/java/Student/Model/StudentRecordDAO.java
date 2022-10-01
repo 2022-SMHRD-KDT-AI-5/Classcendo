@@ -169,7 +169,7 @@ public class StudentRecordDAO {
 				dto = null;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();  
 		} finally {
 			closeConn();
 		}

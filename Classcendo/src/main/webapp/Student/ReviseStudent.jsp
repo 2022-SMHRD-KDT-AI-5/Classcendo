@@ -25,6 +25,11 @@
 	UserInfoDTO info = (UserInfoDTO)session.getAttribute("info");
 	ArrayList<StudentRecordListDTO> srlList = (ArrayList<StudentRecordListDTO>)session.getAttribute("srlList");
 	ArrayList<StudentRecordDTO> stdList = (ArrayList<StudentRecordDTO>)session.getAttribute("stdList");
+	int srlSeq = Integer.parseInt(request.getParameter("srlSeq"));
+	String srlName = "학급 선택";
+	for(StudentRecordListDTO srl : srlList){
+		if(srl.getSrlSeq() == srlSeq) srlName = srl.getSrlName();
+	}
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
@@ -46,7 +51,7 @@
 			<tr>
 				<th colspan=4>
 					<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
-						<option value="">학급선택</option>
+						<option value="<%=srlSeq %>" selected disabled hidden><%=srlName %></option>
 						<%for(StudentRecordListDTO srl : srlList){ %>
 							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
 						<%} %>
@@ -64,7 +69,10 @@
  				<tr>
  					<td><input type="text" class="textbox" placeholder="번호" name='stdNum' value='<%=std.getStdNum() %>'></td>
  					<td><input type="text" class="textbox" placeholder="이름" name='stdName' value='<%=std.getStdName() %>'></td>
-					<td><button class="btn_del" onclick='deletePop(<%=std.getSrSeq() %>)'>삭제</button></td>
+					<td>
+						<button class="btn_del" name="<%=std.getSrSeq() %>" onclick='deletePop(<%=std.getSrSeq() %>, <%=srlSeq %>)'>삭제</button>
+						<button class="btn_del" onclick='deletePop(<%=std.getSrSeq() %>)'>수정</button>
+					</td>
 					<td></td>
 				</tr>
  			<%}} %>
@@ -128,15 +136,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-	function deletePop(srSeq){
+	function deletePop(srSeq, srlSeq){
 		var result = confirm("삭제 하시겠습니까?");
 		if(result){
-			deleteStudent(srSeq);
+			deleteStudent(srSeq, srlSeq);
 		}
 	}
 	
-	function deleteStudent(srSeq){
-		alert("ㅁㄴㅇㄹㅁ");
+	function deleteStudent(srSeq, srlSeq){
+		$.ajax({
+			type : "post",
+			url : "../DeleteStudentService",
+			data : {
+				'srSeq' : srSeq,
+				'srlSeq' : selSeq
+			},
+			success : function(result) {
+				if(result == 'true') {
+					var trHtml = $('button[name=' + srSeq + ']').parent().parent();
+					trHtml.remove(); //tr 태그 삭제
+				}else{
+					alert("삭제 실패");	
+				}
+			},
+			error : function(e) {
+				alert("요청실패");
+			}
+		});
 	}
 	
 	// 학생부 변경
@@ -164,7 +190,6 @@
  	
 	// 학생 정보 저장하기
 	function reviseStudent(nums, names){
-		alert(names);
 		$.ajax({
 			type : "post",
 			url : "../ReviseStudentService",

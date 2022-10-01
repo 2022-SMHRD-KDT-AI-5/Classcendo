@@ -29,7 +29,7 @@
 
         <div class="mypage_btn">
                 <a href="../Student/ReviseClass.jsp" class="btn">학급정보 수정</a>
-                <a href="../Student/ReviseStudent.jsp" class="btn">학생정보 수정</a>
+                <a href="../GetStudentListToReviseService?srlSeq=-1" class="btn">학생정보 수정</a>
         </div>
         
     <div id="popSignOut" class="pop_wrap" style="display:none;">
