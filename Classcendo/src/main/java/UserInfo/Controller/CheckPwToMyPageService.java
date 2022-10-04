@@ -31,7 +31,6 @@ public class CheckPwToMyPageService extends HttpServlet {
 		UserInfoDTO dto = new UserInfoDTO(info.getUserNum(), pw);
 		UserInfoDAO dao = new UserInfoDAO();
 		boolean result = false;
-		System.out.println(pw);
 
 		if (dao.infoCheck(dto) == 1) {
 			// 정보 확인 성공 시
