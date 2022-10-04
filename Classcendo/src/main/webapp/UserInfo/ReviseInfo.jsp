@@ -52,13 +52,13 @@
             <tr>
                 <td class="textb_2">
                     Password
-                    <input type="password" class="form-control" placeholder="Password" id="pw" onkeyup="pwEqualCheck()">
+                    <input type="password" class="form-control" placeholder="Password" id="pw" onkeyup="pwEqualCheck()" value="<%=info.getUserPw() %>">
                 </td>
             </tr>
             <tr> 
                 <td class="textb_2">
                     Password Check
-                    <input type="password" class="form-control" placeholder="Password Check" id="pwCheck" onkeyup="pwEqualCheck()">
+                    <input type="password" class="form-control" placeholder="Password Check" id="pwCheck" onkeyup="pwEqualCheck()" value="<%=info.getUserPw() %>">
                 </td>
                 <td>
 					<img src="../Image/check1.png" class="img_check1" id="pwCheckIcon">
@@ -67,13 +67,13 @@
             <tr> 
                 <td class="textb_2">
                     Name
-                    <input type="text" class="form-control" placeholder="Name" id="name" onkeyup="nameCheck()">
+                    <input type="text" class="form-control" placeholder="Name" id="name" onkeyup="nameCheck()" value="<%=info.getUserName() %>">
                 </td>
             </tr>
             <tr> 
                 <td class="textb_2">
                     E-Mail
-                    <input type="email" class="form-control" placeholder="E-Mail" id="email" onkeyup="emailDuplicateCheck()">
+                    <input type="email" class="form-control" placeholder="E-Mail" id="email" onkeyup="emailDuplicateCheck()" value="<%=info.getUserEmail() %>">
                 </td>
                 <td>
 					<img src="../Image/check1.png" class="img_check1" id="emailCheckIcon">
@@ -187,7 +187,6 @@
 				'email' : $("#email").val()
 			},
 			success : function(result) {
-				<% // TODO HTML 수정 필요 회원 정보 변경 성공 text와 로그인 창으로 이동하는 버튼%>
 				if (result == 'true') {
 					document.querySelector('#popReviseInfo').style.display ='block';  
 					}

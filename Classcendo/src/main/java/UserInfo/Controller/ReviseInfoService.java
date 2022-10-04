@@ -1,6 +1,8 @@
 package UserInfo.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,14 +32,17 @@ public class ReviseInfoService extends HttpServlet {
 		// UserInfoDTO, UserInfoDAO 호출
 		UserInfoDTO dto = new UserInfoDTO(info.getUserNum(), pw, name, email);
 		UserInfoDAO dao = new UserInfoDAO();
+		boolean result = false;
 
 		if (dao.infoUpdate(dto) > 0) {
 			// 정보 수정 성공 시
 			session.setAttribute("info", dto);
-			
+			result = true;
 		} else {
 			// 정보 수정 실패 시
-			
+			result = false;
 		}
+		PrintWriter out = response.getWriter();
+		out.print(result);
 	}
 }
