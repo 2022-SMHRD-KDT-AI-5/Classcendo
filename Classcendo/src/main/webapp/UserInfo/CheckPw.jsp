@@ -17,7 +17,7 @@
 	%>
     <nav class="navbar">
         <div class="navbar__logo">
-            <a href="../Student/Main.jsp">
+            <a href="../Student/ReviseStudentRecord.jsp">
                 <image src="../Image/logo_white.png" width="160" height="24">
             </a>
         </div>
@@ -50,9 +50,8 @@
   			<p class="dsc">로그아웃 하시겠습니까?</p>
   			<button type="button" class="btn_yes" onclick="location.href='../SignOutService'">예</button>
   			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
-
-    		</div>
-    </div>
+  		</div>
+	</div>
 
     <script src="pop.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
