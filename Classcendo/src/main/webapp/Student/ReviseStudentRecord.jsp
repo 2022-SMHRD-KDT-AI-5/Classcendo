@@ -101,7 +101,7 @@
 								+ data[i].stdNum + "번 " + data[i].stdName + " " + data[i].srDate.substring(0, 10)
 								+ "</div>"
 								+ "<div class='namebtn'>"
-								+ "<button class='inner_btn1' onclick='getAnalysisResult(" + data[i].srSeq + ")'>분석결과</button>"
+								+ "<button class='inner_btn1' onclick=\"location.href='../GetAnalysisResultService?srSeq=" + data[i].srSeq + "'\">분석결과</button>"
 								+ "</div>"
 								+ "</div>"
 					});
@@ -116,6 +116,8 @@
 												+ "<div class='inner_textbox' id='srTextarea'>"
 												+ "</div>"
 												+ "<div id='stdSaveBtn'>"
+												+ "</div>"
+												+ "<div id='stdAanalysisBtn'>"
 												+ "</div>"
 												+ "</table>");
 					}
@@ -150,6 +152,7 @@
 										+ "</center>"
 										);
 					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>");
+					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='analysis()'>분석</button>")
 				},
 				error : function(e) {
 					alert("요청실패");
@@ -169,7 +172,6 @@
 				success : function(data) {
 					if(data == 'true') {
 						alert("저장 성공");
-						getAnalysisResult(srSeq);
 					}
 					else alert("저장 실패");
 				},
@@ -179,7 +181,26 @@
 			});
 		}
 		
-		// 분석 결과 불러오기
+		// 분석하기
+		function analysis(){
+			$.ajax({
+				type : "post",
+				url : "http://localhost:9000/",
+				data : {
+					'record' : $('#srContent').val()
+				},
+				success : function(result){
+					if(result == 'true'){
+						window.location.href = "Analysis/test.jsp";
+					}
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
+		
+/* 		// 분석 하기
 		function getAnalysisResult(srSeq){
 			$.ajax({
 				type : "post",
@@ -203,7 +224,7 @@
 					alert("요청실패");
 				}
 			});
-		}
+		} */
 	</script>
 </body>
 </html>

@@ -97,7 +97,8 @@ a{
 .horizontal {
     overflow:hidden;
     /* height:30%; */
-    width:80%
+    width:80%;
+    margin-top:44px;
 }
 .horizontal ul li {
     float:left;
@@ -174,7 +175,7 @@ a{
     /* border: 1px solid #c2c2c2; */
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    width: 94%;
+    width: 95%;
     padding: 20px;
     background: #f1efef;
 }
@@ -207,7 +208,7 @@ a{
     flex:1;
 }
 .inner_right{
-    /* margin: 0 auto; */
+    margin: 0 auto;
     /* border: 1px solid #e3e3e3; */
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -218,8 +219,9 @@ a{
 }
 .innertitle{
     display: flex;
-    padding: 5%;
-    /* border: 1px solid #e3e3e3; */
+    padding-right: 5.5%;
+    padding-left: 5.5%;
+    padding-top: 2%;
 }
 
 /* 그래프 */
@@ -427,4 +429,21 @@ table {
     color: white!important;
     font-size: 9px!important;
     fill: white!important;
+}
+.first{
+    display: flex;
+    margin: 15px;
+}
+.first_name{
+    flex: 1;
+    margin-left: 80px;
+}
+.first_sel{
+    flex: 1;
+    margin-left: 50px;
+    margin-right: 100px;
+}
+.first_date{
+    flex: 1;
+    margin-right: 30px;
 }

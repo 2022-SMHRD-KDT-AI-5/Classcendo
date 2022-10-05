@@ -12,10 +12,9 @@
 <title>Document</title>
 <link rel="stylesheet" href="Analysis.css">
 <link rel="stylesheet" href="../UserInfo/MyPage.css">
-<!-- <link rel="stylesheet" href="pop.css"> -->
 <script src="ana.js" defer></script>
 <!-- CSS only -->
-<link
+<link 
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/xbootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
@@ -25,7 +24,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-
 <!-- 그래프 -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
@@ -36,7 +34,9 @@
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
-			<a href="../Student/ReviseStudentRecord.jsp"> <image src="../Image/logo_white.png" width="160" height="24"></a>
+			<a href="../Student/ReviseStudentRecord.jsp">
+				<image src="../Image/logo_white.png" width="160" height="24">
+			</a>
 		</div>
 		<div class="navbar_center">
 			안녕하세요
@@ -49,10 +49,20 @@
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
 	<div>
-
 		<div class="innertitle">
 			<div class="inner_left">
-				<!-- 성향분석 -->
+			 <!-- 이름 sel 날짜 -->
+                <div class="first">
+                    <div class="first_name">
+                        1번 강나린
+                    </div>
+                    <select class="first_sel">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <div class="first_date">2022년 10월 05일</div>
+                </div>
 				<div class="ana">
 					<div class="anatext">성향분석</div>
 					<div class="content">
@@ -112,14 +122,12 @@
 		</div>
 	</div>
 
-	<script src="pop.js"></script>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		// pop 닫기
 		function closePop() {
 			$('#popSignOut').css("display", "none");
 		}
-		<script>
 		var pieColors = (function() {
 			var colors = [], base = Highcharts.getOptions().colors[0], i;
 
@@ -132,60 +140,51 @@
 		}());
 
 		// Build the chart
-		Highcharts.chart(
-			'container',
-			{
-				chart : {
-					plotBackgroundColor : null,
-					plotBorderWidth : null,
-					plotShadow : false,
-					type : 'pie'
-				},
-				title : {
-					text : '역량 분석 그래프'
-				},
-				tooltip : {
-					pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
-				},
-				accessibility : {
-					point : {
-						valueSuffix : '%'
-					}
-				},
-				plotOptions : {
-					pie : {
-						allowPointSelect : true,
-						cursor : 'pointer',
-						colors : pieColors,
-						dataLabels : {
-							enabled : true,
-							format : '<b>{point.name}</b><br>{point.percentage:.1f} %',
-							distance : -50,
-							filter : {
-								property : 'percentage',
-								operator : '>',
-								value : 4
-							}
-						}
-					}
-				},
-				series : [ {
-					name : 'Share',
-					data : [ {
-						name : '자기관리역량',
-						y : 74.03
-					}, {
-						name : '대인관계역량',
-						y : 12.66
-					}, {
-						name : '시민역량',
-						y : 4.96
-					}, {
-						name : '문제해결역량',
-						y : 2.49
-					}, ]
-				} ]
-			});
+		Highcharts.chart('container', {
+		    chart: {
+		        plotBackgroundColor: null,
+		        plotBorderWidth: null,
+		        plotShadow: false,
+		        type: 'pie'
+		    },
+		    title: {
+		        text: '역량 분석 그래프'
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    },
+		    accessibility: {
+		        point: {
+		            valueSuffix: '%'
+		        }
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            colors: pieColors,
+		            dataLabels: {
+		                enabled: true,
+		                format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+		                distance: -50,
+		                filter: {
+		                    property: 'percentage',
+		                    operator: '>',
+		                    value: 4
+		                }
+		            }
+		        }
+		    },
+		    series: [{
+		        name: 'Share',
+		        data: [
+		            { name: '자기관리역량', y: 74.03 },
+		            { name: '대인관계역량', y: 12.66 },
+		            { name: '시민역량', y: 4.96 },
+		            { name: '문제해결역량', y: 2.49 },
+		        ]
+		    }]
+		});
 	</script>
 </body>
 </html>

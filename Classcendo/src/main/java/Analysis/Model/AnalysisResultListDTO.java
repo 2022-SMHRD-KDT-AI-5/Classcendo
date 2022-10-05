@@ -9,31 +9,31 @@ public class AnalysisResultListDTO {
 	private int tendency2Rate;
 	private int tendency3Rate;
 	private int tendency4Rate;
-	private String arlGraphPath;
+	private String arlDate;
 	private String jobsSeq;
 
 	// 생성자 메소드 - 분석 결과 출력
 	public AnalysisResultListDTO(int arlSeq, int srSeq, int tendency1Rate, int tendency2Rate, int tendency3Rate,
-			int tendency4Rate, String arlGraphPath, String jobsSeq) {
+			int tendency4Rate, String arlDate, String jobsSeq) {
 		this.arlSeq = arlSeq;
 		this.srSeq = srSeq;
 		this.tendency1Rate = tendency1Rate;
 		this.tendency2Rate = tendency2Rate;
 		this.tendency3Rate = tendency3Rate;
 		this.tendency4Rate = tendency4Rate;
-		this.arlGraphPath = arlGraphPath;
+		this.arlDate = arlDate;
 		this.jobsSeq = jobsSeq;
 	}
 	
 	// 생성자 메소드 - 분석 결과 추가
 	public AnalysisResultListDTO(int srSeq, int tendency1Rate, int tendency2Rate, int tendency3Rate,
-			int tendency4Rate, String arlGraphPath, String jobsSeq) {
+			int tendency4Rate, String arlDate, String jobsSeq) {
 		this.srSeq = srSeq;
 		this.tendency1Rate = tendency1Rate;
 		this.tendency2Rate = tendency2Rate;
 		this.tendency3Rate = tendency3Rate;
 		this.tendency4Rate = tendency4Rate;
-		this.arlGraphPath = arlGraphPath;
+		this.arlDate = arlDate;
 		this.jobsSeq = jobsSeq;
 	}
 
@@ -85,12 +85,12 @@ public class AnalysisResultListDTO {
 		this.tendency4Rate = tendency4Rate;
 	}
 
-	public String getArlGraphPath() {
-		return arlGraphPath;
+	public String arlDate() {
+		return arlDate;
 	}
 
-	public void setArlGraphPath(String arlGraphPath) {
-		this.arlGraphPath = arlGraphPath;
+	public void setArlGraphPath(String arlDate) {
+		this.arlDate = arlDate;
 	}
 
 	public String getJobsSeq() {

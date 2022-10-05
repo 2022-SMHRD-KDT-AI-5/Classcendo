@@ -172,6 +172,12 @@
   	<description></description>
   	<servlet-class>Student.Controller.RevisePersonalStudentService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AnalysisService</servlet-name>
+  	<display-name>AnalysisService</display-name>
+  	<description></description>
+  	<servlet-class>Analysis.Controller.AnalysisService</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignInService</servlet-name>
   	<url-pattern>/SignInService</url-pattern>
@@ -283,5 +289,9 @@
   <servlet-mapping>
   	<servlet-name>RevisePersonalStudentService</servlet-name>
   	<url-pattern>/RevisePersonalStudentService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AnalysisService</servlet-name>
+  	<url-pattern>/AnalysisService</url-pattern>
   </servlet-mapping>
 </web-app>

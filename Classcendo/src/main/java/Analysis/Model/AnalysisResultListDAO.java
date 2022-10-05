@@ -35,21 +35,19 @@ public class AnalysisResultListDAO {
 		}
 	}
 	
-
 	// 학생 분석 결과 추가
 	public boolean addAnalysisResult(AnalysisResultListDTO dto) {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "insert into analysis_result_list(analysis_result_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into analysis_result_list(analysis_result_SEQ.nextval, ?, ?, ?, ?, ?, default, ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getSrSeq());
 			psmt.setInt(2, dto.getTendency1Rate());
 			psmt.setInt(3, dto.getTendency2Rate());
 			psmt.setInt(4, dto.getTendency3Rate());
 			psmt.setInt(5, dto.getTendency4Rate());
-			psmt.setString(6, dto.getArlGraphPath());
-			psmt.setString(7, dto.getJobsSeq());
+			psmt.setString(6, dto.getJobsSeq());
 
 			row = psmt.executeUpdate();
 			if (row > 0)
@@ -130,10 +128,10 @@ public class AnalysisResultListDAO {
 	}
 	
 	// 학생 분석 결과 불러오기
-	public AnalysisResultListDTO getAnalysisResult(int seq) {
+	public ArrayList<AnalysisResultListDTO> getAnalysisResult(int seq) {
 		changeDatabase.getConn();
 		result = false;
-		AnalysisResultListDTO dto = null;
+		ArrayList<AnalysisResultListDTO> list = null;
 		try {
 			sql = "select * from analysis_result_list where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);
@@ -150,18 +148,19 @@ public class AnalysisResultListDAO {
 				int tendency4Rate = rs.getInt(6);
 				String arlGraphPath = rs.getString(7);
 				String jobsSeq = rs.getString(8);
-				dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
+				AnalysisResultListDTO dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
 						tendency4Rate, arlGraphPath, jobsSeq);
+				list.add(dto);
 			}
 			if (!result) {
-				dto = null;
+				list = null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConn();
 		}
-		return dto;
+		return list;
 	}
 	
 	// 학생 분석 결과 유무 확인

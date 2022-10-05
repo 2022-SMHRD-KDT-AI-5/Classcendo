@@ -25,19 +25,15 @@ public class GetAnalysisResultService extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		// Parameter 호출
-		String srSeq = request.getParameter("srSeq"); 
+		int srSeq = Integer.parseInt(request.getParameter("srSeq")); 
 
 		// AnalysisResultListDTO, AnalysisResultListDAO 호출
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
-		AnalysisResultListDTO dto = dao.getAnalysisResult(Integer.parseInt(srSeq));
+		ArrayList<AnalysisResultListDTO> arlList = dao.getAnalysisResult(srSeq);
 		
-		// Gson 객체 불러오기
-		Gson gson = new Gson();
+		HttpSession session = request.getSession();
+		session.setAttribute("arlList", arlList);
 		
-		// list를 json 형식으로 바꿔주기
-		String json = gson.toJson(dto);
-		
-		PrintWriter out = response.getWriter();
-		out.print(json);
+		response.sendRedirect("Analysis/Analysis.jsp");
 	}
 }
