@@ -29,11 +29,11 @@ public class GetAnalysisResultListService extends HttpServlet {
 
 		// AnalysisResultListDTO, AnalysisResultListDAO 호출
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
-		ArrayList<AnalysisResultListDTO> arlList = dao.getAnalysisResult(srSeq);
+		ArrayList<AnalysisResultListDTO> arlList = dao.getAnalysisResultList(srSeq);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("arlList", arlList);
 		
-		response.sendRedirect("Analysis/Analysis.jsp");
+		response.sendRedirect("Analysis/Analysis.jsp?srSeq=" + srSeq);
 	}
 }

@@ -138,6 +138,7 @@
 		}
 	}
 	
+	// 학생 정보 삭제
 	function deleteStudent(srSeq, srlSeq){
 		$.ajax({
 			type : "post",

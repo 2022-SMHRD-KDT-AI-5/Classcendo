@@ -63,6 +63,36 @@ public class StudentRecordDAO {
 		return result;
 	}
 
+	// 학생 정보 불러오기
+	public StudentRecordDTO getStudentInfo(int seq) {
+		changeDatabase.getConn();
+		result = false;
+		StudentRecordDTO dto = null;
+		try {
+			sql = "select * from student_record where sr_seq = ? order by std_num";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				result = true;
+				int srSeq = rs.getInt(1);
+				int stdNum = rs.getInt(3);
+				String stdName = rs.getString(4);
+				String srDate = rs.getString(6);
+				dto = new StudentRecordDTO(srSeq, stdNum, stdName, srDate);
+			}
+			if (!result) {
+				dto = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn();
+		}
+		return dto;
+	}
+	
 	// 학생정보 수정
 	public boolean updateStudentInfo(StudentRecordDTO dto) {
 		changeDatabase.getConn();

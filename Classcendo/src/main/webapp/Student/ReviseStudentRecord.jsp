@@ -42,7 +42,7 @@
 						반 선택<br>
 					</tr>
 					<select id="srlNum" onchange="selectSrlSeq()">
-						<option value="0">학급선택</option>
+						<option value="0" selected disabled hidden>학급선택</option>
 						<%for(StudentRecordListDTO srl : srlList){ %>
 							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
 						<%} %>
@@ -101,7 +101,7 @@
 								+ data[i].stdNum + "번 " + data[i].stdName + " " + data[i].srDate.substring(0, 10)
 								+ "</div>"
 								+ "<div class='namebtn'>"
-								+ "<button class='inner_btn1' onclick=\"location.href='../GetAnalysisResultService?srSeq=" + data[i].srSeq + "'\">분석결과</button>"
+								+ "<button class='inner_btn1' onclick=\"location.href='../GetAnalysisResultListService?srSeq=" + data[i].srSeq + "'\">분석결과</button>"
 								+ "</div>"
 								+ "</div>"
 					});
@@ -171,10 +171,8 @@
 					'srSeq' : srSeq,
 					'srContent' : $('#srContent').val()
 				},
-				success : function(data) {
-					if(data == 'true') {
-						alert("저장 성공");
-					}
+				success : function(result) {
+					if(result == 'true') alert("저장 성공");
 					else alert("저장 실패");
 				},
 				error : function(e) {
@@ -194,7 +192,7 @@
 				},
 				success : function(result){
 					if(result == 'true'){
-						window.location.href = "Analysis/test.jsp";
+						window.location.href = "Analysis/test.jsp?srSeq=" + srSeq;
 					}
 				},
 				error : function(e) {
@@ -202,32 +200,7 @@
 				}
 			});
 		}
-		
-/* 		// 분석 하기
-		function getAnalysisResult(srSeq){
-			$.ajax({
-				type : "post",
-				url : "../GetAnalysisResultService",
-				data : {
-					'srSeq' : $("#srSeq").val()
-				},
-				dataType : "json",
-				success : function(data) {
-					var result = [ data.arlSeq, data.srSeq,
-						+ data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate,
-						+ data.arlGraphPath, data.jobsSeq ];
-					list.push(result);
-					var text = $('#test');
-					text.html("");
-					if (result != null) {
-						text.html(result);
-					}
-				},
-				error : function(e) {
-					alert("요청실패");
-				}
-			});
-		} */
+
 	</script>
 </body>
 </html>

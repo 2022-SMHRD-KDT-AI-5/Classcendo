@@ -95,12 +95,6 @@
 		<servlet-class>Student.Controller.UpdateStudentRecordService</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>SaveAnalysisResultService</servlet-name>
-		<display-name>SaveAnalysisResultService</display-name>
-		<description></description>
-		<servlet-class>Analysis.Controller.SaveAnalysisResultService</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>DeleteAnalysisResultService</servlet-name>
 		<display-name>DeleteAnalysisResultService</display-name>
 		<description></description>
@@ -178,6 +172,42 @@
 		<description></description>
 		<servlet-class>Analysis.Controller.AnalysisService</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetStudentInfoService</servlet-name>
+		<display-name>GetStudentInfoService</display-name>
+		<description></description>
+		<servlet-class>Student.Controller.GetStudentInfoService</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAnalysisResultService</servlet-name>
+		<display-name>GetAnalysisResultService</display-name>
+		<description></description>
+		<servlet-class>Analysis.Controller.GetAnalysisResultService</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetJobInfoService</servlet-name>
+		<display-name>GetJobInfoService</display-name>
+		<description></description>
+		<servlet-class>Job.Controller.GetJobInfoService</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetConsultingRecord</servlet-name>
+		<display-name>GetConsultingRecord</display-name>
+		<description></description>
+		<servlet-class>Consulting.Controller.GetConsultingRecord</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddConsultingRecord</servlet-name>
+		<display-name>AddConsultingRecord</display-name>
+		<description></description>
+		<servlet-class>Consulting.Controller.AddConsultingRecord</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateConsultingRecord</servlet-name>
+		<display-name>UpdateConsultingRecord</display-name>
+		<description></description>
+		<servlet-class>Consulting.Controller.UpdateConsultingRecord</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignInService</servlet-name>
 		<url-pattern>/SignInService</url-pattern>
@@ -239,10 +269,6 @@
 		<url-pattern>/UpdateStudentRecordService</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>SaveAnalysisResultService</servlet-name>
-		<url-pattern>/SaveAnalysisResultService</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>DeleteAnalysisResultService</servlet-name>
 		<url-pattern>/DeleteAnalysisResultService</url-pattern>
 	</servlet-mapping>
@@ -293,5 +319,29 @@
 	<servlet-mapping>
 		<servlet-name>AnalysisService</servlet-name>
 		<url-pattern>/AnalysisService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetStudentInfoService</servlet-name>
+		<url-pattern>/GetStudentInfoService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAnalysisResultService</servlet-name>
+		<url-pattern>/GetAnalysisResultService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetJobInfoService</servlet-name>
+		<url-pattern>/GetJobInfoService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetConsultingRecord</servlet-name>
+		<url-pattern>/GetConsultingRecord</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddConsultingRecord</servlet-name>
+		<url-pattern>/AddConsultingRecord</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateConsultingRecord</servlet-name>
+		<url-pattern>/UpdateConsultingRecord</url-pattern>
 	</servlet-mapping>
 </web-app>

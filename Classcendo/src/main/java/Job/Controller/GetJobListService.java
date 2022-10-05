@@ -24,11 +24,11 @@ public class GetJobListService extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		// Parameter 호출
-		String srSeq = request.getParameter("jobsSeq");
+		String jobsName = request.getParameter("jobsName");
 
 		// AnalysisResultListDTO, AnalysisResultListDAO 호출
 		JobListDAO dao = new JobListDAO();
-		ArrayList<JobListDTO> dto = dao.getJobList(srSeq);
+		ArrayList<JobListDTO> dto = dao.getJobList(jobsName);
 		
 		// Gson 객체 불러오기
 		Gson gson = new Gson();

@@ -23,10 +23,10 @@ public class AnalysisService extends HttpServlet {
 		
 		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
-		int rate1 = Integer.parseInt(request.getParameter("rate1")); 
-		int rate2 = Integer.parseInt(request.getParameter("rate2")); 
-		int rate3 = Integer.parseInt(request.getParameter("rate3")); 
-		int rate4 = Integer.parseInt(request.getParameter("rate4"));
+		double rate1 = Double.parseDouble(request.getParameter("rate1")); 
+		double rate2 = Double.parseDouble(request.getParameter("rate2")); 
+		double rate3 = Double.parseDouble(request.getParameter("rate3")); 
+		double rate4 = Double.parseDouble(request.getParameter("rate4")); 
 		String jobList = request.getParameter("jobList");
 		
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
