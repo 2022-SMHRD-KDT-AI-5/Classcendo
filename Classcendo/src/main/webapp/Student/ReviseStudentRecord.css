@@ -265,8 +265,10 @@ a {
 	display:flex;
 }
 .sbtn{
+	margin-left:450px;
 	flex:1;
 }
 .abtn{
+	margin-right:450px;
 	flex:1;
 }
