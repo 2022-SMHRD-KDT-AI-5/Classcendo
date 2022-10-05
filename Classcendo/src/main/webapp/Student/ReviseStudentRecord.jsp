@@ -115,10 +115,10 @@
 												+ "<div class='inner_text'>학생 행동특성 및 종합의견</div>"
 												+ "<div class='inner_textbox' id='srTextarea'>"
 												+ "</div>"
-												+ "<div>"
-												+ "<div id='stdSaveBtn'>
+												+ "<div class='bottombtn'>"
+												+ "<div id='stdSaveBtn' class='sbtn'>"
 												+ "</div>"
-												+ "<div id='stdAnalysisBtn'>
+												+ "<div id='stdAnalysisBtn' class='abtn'>"
 												+ "</div>"
 												+ "</div>"
 												+ "</table>");
@@ -153,7 +153,7 @@
 										+ "</textarea>"
 										+ "</center>"
 										);
-					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>")"
+					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>");
 					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='analysis(" + data.srSeq + ")'>분석</button>");
 				},
 				error : function(e) {
