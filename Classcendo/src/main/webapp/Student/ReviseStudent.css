@@ -46,9 +46,8 @@ a {
 }
 
 .firstline {
-	/* position:sticky; */
 	top: 0;
-	width: 350px;
+    width: 280px;
 	height: 50px;
 	font-size: 40px;
 	font-family: 'NanumABbaEuiYeonAePyeonJi';
@@ -56,10 +55,10 @@ a {
 }
 
 .secondline {
-	/* position:sticky; */
 	top: 0;
 	width: 200px;
 	height: 50px;
+    margin-right: 85px;
 }
 
 .Add_stu {
@@ -91,7 +90,12 @@ a {
 	font-size: 18px;
 	font-weight: bold;
 }
-
+.btn_dell {
+    width: 103px;
+    background: #133f12;
+    color: #133f12;
+    border: 0px;
+}
 .btn_del:hover {
 	color: #ffffff;
 	background-color: #9e1d00;
