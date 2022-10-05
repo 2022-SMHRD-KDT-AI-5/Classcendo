@@ -48,7 +48,7 @@
 	</header>
 	<div class="innerbox">
 		<div class="innersection">
-			<div id="studentList" class="headt">
+			<div class="headt">
 				<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
 					<option value="<%=srlSeq %>" selected disabled hidden><%=srlName %></option>
 					<%for(StudentRecordListDTO srl : srlList){ %>
@@ -62,9 +62,9 @@
 				<div class="secondline"><button name="Add_stu" class="Add_stu">추가</button></div>
 				<div class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo(<%=srlSeq %>)">저장</button></div>
 			</div>
+			<div class="ti" id="studentList">
 			<%if(stdList != null){
 	 			for(StudentRecordDTO std : stdList){ %>
-			<div class="ti">
 				<div class="tit">
 					<div class="titl"><input type="text" class="textbox" placeholder="번호" id="stdNum<%=std.getSrSeq() %>" value='<%=std.getStdNum() %>'></div>
 					<div class="titl"><input type="text" class="textbox" placeholder="이름" id="stdName<%=std.getSrSeq() %>" value='<%=std.getStdName() %>'></div>
@@ -73,8 +73,8 @@
 						<button class="btn_del" onclick='reviseStudent(<%=std.getSrSeq() %>)'>수정</button>
 					</div>
 				</div>
-			</div>
 			<%}} %>
+			</div>
 			<div class="imgg">
 				<img src="../Image/cha.png" width="600px" height="100px">
 			</div>
@@ -111,8 +111,8 @@
 								+ "<div><input type='text' class='textbox' placeholder='이름' name='stdName'></div>"
 								+ "<div><button class='btn_del' name='delStaff'>삭제</button></div>"
 								+ "</div>"
-				var trHtml = $("#studentList"); // last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
-				trHtml.append(addStaffText); // 마지막 trStaff명 뒤에 붙인다.
+				var trHtml = $("#studentList");
+				trHtml.append(addStaffText);
 			});
 
 		//삭제 버튼
