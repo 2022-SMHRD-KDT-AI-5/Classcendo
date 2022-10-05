@@ -27,13 +27,12 @@ public class AnalysisResultListDTO {
 	
 	// 생성자 메소드 - 분석 결과 추가
 	public AnalysisResultListDTO(int srSeq, int tendency1Rate, int tendency2Rate, int tendency3Rate,
-			int tendency4Rate, String arlDate, String jobsSeq) {
+			int tendency4Rate, String jobsSeq) {
 		this.srSeq = srSeq;
 		this.tendency1Rate = tendency1Rate;
 		this.tendency2Rate = tendency2Rate;
 		this.tendency3Rate = tendency3Rate;
 		this.tendency4Rate = tendency4Rate;
-		this.arlDate = arlDate;
 		this.jobsSeq = jobsSeq;
 	}
 

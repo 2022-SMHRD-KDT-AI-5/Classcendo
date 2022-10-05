@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import Analysis.Model.AnalysisResultListDAO;
+import Analysis.Model.AnalysisResultListDTO;
+
 public class AnalysisService extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,19 +22,22 @@ public class AnalysisService extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		// Parameter 호출
-		float rate1 = Integer.parseInt(request.getParameter("rate1")); 
-		float rate2 = Integer.parseInt(request.getParameter("rate2")); 
-		float rate3 = Integer.parseInt(request.getParameter("rate3")); 
-		float rate4 = Integer.parseInt(request.getParameter("rate4"));
+		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
+		int rate1 = Integer.parseInt(request.getParameter("rate1")); 
+		int rate2 = Integer.parseInt(request.getParameter("rate2")); 
+		int rate3 = Integer.parseInt(request.getParameter("rate3")); 
+		int rate4 = Integer.parseInt(request.getParameter("rate4"));
 		String jobList = request.getParameter("jobList");
 		
-		// Gson 객체 불러오기
-		Gson gson = new Gson();
-		
-		// list를 json 형식으로 바꿔주기
-		String json = gson.toJson(jobList);
-		
-		PrintWriter out = response.getWriter();
-		out.print(json);
+		AnalysisResultListDAO dao = new AnalysisResultListDAO();
+		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobList);
+		boolean result = dao.addAnalysisResult(dto);
+
+		if(result) {
+			response.sendRedirect("GetAnalysisResultListService?srSeq=" + srSeq);
+		}else {
+			PrintWriter out = response.getWriter();
+			out.print(result);
+		}
 	}
 }

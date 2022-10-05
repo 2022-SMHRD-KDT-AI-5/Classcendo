@@ -133,7 +133,7 @@ public class AnalysisResultListDAO {
 		result = false;
 		ArrayList<AnalysisResultListDTO> list = null;
 		try {
-			sql = "select * from analysis_result_list where sr_seq = ?";
+			sql = "select * from analysis_result_list where sr_seq = ? order by arl_date desc";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, seq);
 
@@ -146,10 +146,10 @@ public class AnalysisResultListDAO {
 				int tendency2Rate = rs.getInt(4);
 				int tendency3Rate = rs.getInt(5);
 				int tendency4Rate = rs.getInt(6);
-				String arlGraphPath = rs.getString(7);
+				String arlDate = rs.getString(7);
 				String jobsSeq = rs.getString(8);
 				AnalysisResultListDTO dto = new AnalysisResultListDTO(arlSeq, srSeq, tendency1Rate, tendency2Rate, tendency3Rate,
-						tendency4Rate, arlGraphPath, jobsSeq);
+						tendency4Rate, arlDate, jobsSeq);
 				list.add(dto);
 			}
 			if (!result) {

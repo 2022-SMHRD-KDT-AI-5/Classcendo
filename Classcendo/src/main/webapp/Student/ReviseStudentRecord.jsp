@@ -115,9 +115,11 @@
 												+ "<div class='inner_text'>학생 행동특성 및 종합의견</div>"
 												+ "<div class='inner_textbox' id='srTextarea'>"
 												+ "</div>"
-												+ "<div id='stdSaveBtn'>"
+												+ "<div>"
+												+ "<div id='stdSaveBtn'>
 												+ "</div>"
-												+ "<div id='stdAanalysisBtn'>"
+												+ "<div id='stdAnalysisBtn'>
+												+ "</div>"
 												+ "</div>"
 												+ "</table>");
 					}
@@ -151,8 +153,8 @@
 										+ "</textarea>"
 										+ "</center>"
 										);
-					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>");
-					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='analysis()'>분석</button>")
+					$('#stdSaveBtn').html("<button type='button' class='inner_btn' onclick='updateStudentRecord(" + data.srSeq + ")'>저장</button>")"
+					$('#stdAnalysisBtn').html("<button type='button' class='inner_btn' onclick='analysis(" + data.srSeq + ")'>분석</button>");
 				},
 				error : function(e) {
 					alert("요청실패");
@@ -182,12 +184,13 @@
 		}
 		
 		// 분석하기
-		function analysis(){
+		function analysis(srSeq){
 			$.ajax({
 				type : "post",
 				url : "http://localhost:9000/",
 				data : {
-					'record' : $('#srContent').val()
+					'record' : $('#srContent').val(),
+					'srSeq' : srSeq
 				},
 				success : function(result){
 					if(result == 'true'){

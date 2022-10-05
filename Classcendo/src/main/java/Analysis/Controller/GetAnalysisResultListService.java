@@ -17,7 +17,7 @@ import Analysis.Model.AnalysisResultListDTO;
 import Student.Model.StudentRecordDAO;
 import Student.Model.StudentRecordDTO;
 
-public class GetAnalysisResultService extends HttpServlet {
+public class GetAnalysisResultListService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
 		request.setCharacterEncoding("UTF-8");
