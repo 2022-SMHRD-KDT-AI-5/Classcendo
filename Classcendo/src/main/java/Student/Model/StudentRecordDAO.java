@@ -67,9 +67,6 @@ public class StudentRecordDAO {
 	public boolean updateStudentInfo(StudentRecordDTO dto) {
 		changeDatabase.getConn();
 		result = false;
-		System.out.println(dto.getStdNum());
-		System.out.println(dto.getStdName());
-		System.out.println(dto.getSrSeq());
 		try {
 			sql = "update student_record set std_num = ?, std_name = ? where sr_seq = ?";
 			psmt = conn.prepareStatement(sql);

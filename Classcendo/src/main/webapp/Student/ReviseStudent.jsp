@@ -109,7 +109,10 @@
 				var addStaffText = "<div class='tit'>"
 								+ "<div><input type='text' class='textbox' placeholder='번호' name='stdNum'></div>"
 								+ "<div><input type='text' class='textbox' placeholder='이름' name='stdName'></div>"
-								+ "<div><button class='btn_del' name='delStaff'>삭제</button><button class='btn_dell' name='delStaff'>수정</button></div>"
+								+ "<div>"
+								+ "<button class='btn_del' name='delStaff'>삭제</button>"
+								+ "<button class='btn_dell'></button>"
+								+ "</div>"						
 								+ "</div>"
 				var trHtml = $("#studentList");
 				trHtml.append(addStaffText);
