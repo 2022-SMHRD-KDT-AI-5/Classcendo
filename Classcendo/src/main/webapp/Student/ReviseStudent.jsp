@@ -47,58 +47,51 @@
 		<a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a>
 	</header>
 	<div class="innerbox">
-		<table id="studentList">
-			<tr>
-				<th colspan=4>
-					<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
-						<option value="<%=srlSeq %>" selected disabled hidden><%=srlName %></option>
-						<%for(StudentRecordListDTO srl : srlList){ %>
-							<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
-						<%} %>
-					</select>
-				</th>
-			</tr>
-			<tr name="trStaff" class="class_title">
-				<td class="firstline">번호</td>
-				<td class="firstline">이름</td>
-				<td class="secondline"><button name="Add_stu" class="Add_stu">추가</button></td>
-				<td class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo(<%=srlSeq %>)">저장</button></td>
-			</tr>
- 			<%if(stdList != null){
- 				for(StudentRecordDTO std : stdList){ %>
- 				<tr>
- 					<td><input type="text" class="textbox" placeholder="번호" id="stdNum<%=std.getSrSeq() %>" value='<%=std.getStdNum() %>'></td>
- 					<td><input type="text" class="textbox" placeholder="이름" id="stdName<%=std.getSrSeq() %>" value='<%=std.getStdName() %>'></td>
-					<td>
+		<div class="innersection">
+			<div id="studentList" class="headt">
+				<select class="select_class" id="srlNum" onchange="selectSrlSeq()">
+					<option value="<%=srlSeq %>" selected disabled hidden><%=srlName %></option>
+					<%for(StudentRecordListDTO srl : srlList){ %>
+						<option value=<%=srl.getSrlSeq() %>><%=srl.getSrlName() %></option>
+					<%} %>
+				</select>
+			</div>
+			<div name="trStaff" class="class_title">
+				<div class="firstline">번호</div>
+				<div class="firstline">이름</div>
+				<div class="secondline"><button name="Add_stu" class="Add_stu">추가</button></div>
+				<div class="secondline"><button name="save_stu" class="Add_stu" onclick="getStudentInfo(<%=srlSeq %>)">저장</button></div>
+			</div>
+			<%if(stdList != null){
+	 			for(StudentRecordDTO std : stdList){ %>
+			<div class="ti">
+				<div class="tit">
+					<div class="titl"><input type="text" class="textbox" placeholder="번호" id="stdNum<%=std.getSrSeq() %>" value='<%=std.getStdNum() %>'></div>
+					<div class="titl"><input type="text" class="textbox" placeholder="이름" id="stdName<%=std.getSrSeq() %>" value='<%=std.getStdName() %>'></div>
+					<div class="titl">
 						<button class="btn_del" name="<%=std.getSrSeq() %>" onclick='deletePop(<%=std.getSrSeq() %>, <%=srlSeq %>)'>삭제</button>
 						<button class="btn_del" onclick='reviseStudent(<%=std.getSrSeq() %>)'>수정</button>
-					</td>
-					<td></td>
-				</tr>
- 			<%}} %>
-			<tr style="display:none;">
-				<td><input type="text" class="textbox" placeholder="번호" name='stdNum'></td>
-				<td><input type="text" class="textbox" placeholder="이름" name='stdName'></td>
-				<td><button class="btn_del" name="delStaff">삭제</button></td>
-				<td></td>
-			</tr>
-		</table>
-		<table>
-			<th colspan="4"><img src="../Image/cha.png" width="600px" height="100px"></th>
-		</table>
-	</div>
-    <div id="popSignOut" class="pop_wrap" style="display:none;">
-		<div class="pop_inner">
-  			<p class="dsc">로그아웃 하시겠습니까?</p>
-  			<button type="button" class="btn_yes" onclick="location.href='../SignOutService'">예</button>
-  			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
-  		</div>
-	</div>
-	<div id="popDelete" class="pop_wrap" style="display: none;">
-		<div class="pop_inner">
-			<p class="dsc">삭제 하시겠습니까?</p>
-			<button type="button" class="btn_yes" onclick="closePop()">예</button>
-			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
+					</div>
+				</div>
+			</div>
+			<%}} %>
+			<div class="imgg">
+				<img src="../Image/cha.png" width="600px" height="100px">
+			</div>
+		</div>
+	    <div id="popSignOut" class="pop_wrap" style="display:none;">
+			<div class="pop_inner">
+	  			<p class="dsc">로그아웃 하시겠습니까?</p>
+	  			<button type="button" class="btn_yes" onclick="location.href='../SignOutService'">예</button>
+	  			<button type="button" class="btn_no" onclick="closePop()">아니오</button>
+	  		</div>
+		</div>
+		<div id="popDelete" class="pop_wrap" style="display: none;">
+			<div class="pop_inner">
+				<p class="dsc">삭제 하시겠습니까?</p>
+				<button type="button" class="btn_yes" onclick="closePop()">예</button>
+				<button type="button" class="btn_no" onclick="closePop()">아니오</button>
+			</div>
 		</div>
 	</div>
 	<script src="pop.js"></script>
@@ -113,12 +106,11 @@
 			"click",
 			"button[name=Add_stu]",
 			function() {
-				var addStaffText = "<tr>"
-								+ "<td><input type='text' class='textbox' placeholder='번호' name='stdNum'></td>"
-								+ "<td><input type='text' class='textbox' placeholder='이름' name='stdName'></td>"
-								+ "<td><button class='btn_del' name='delStaff'>삭제</button></td>"
-								+ "<td></td>"
-								+ "</tr>"
+				var addStaffText = "<div class='tit'>"
+								+ "<div><input type='text' class='textbox' placeholder='번호' name='stdNum'></div>"
+								+ "<div><input type='text' class='textbox' placeholder='이름' name='stdName'></div>"
+								+ "<div><button class='btn_del' name='delStaff'>삭제</button></div>"
+								+ "</div>"
 				var trHtml = $("#studentList"); // last를 사용하여 trStaff라는 명을 가진 마지막 태그 호출
 				trHtml.append(addStaffText); // 마지막 trStaff명 뒤에 붙인다.
 			});
