@@ -36,11 +36,6 @@ public class AddAnalysisService extends HttpServlet {
 				jobs += anaList[i] + ",";
 			}
 		}
-		System.out.println(rate1);
-		System.out.println(rate2);
-		System.out.println(rate3);
-		System.out.println(rate4);
-		System.out.println(jobs);
 		
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
 		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobs); boolean result = dao.addAnalysisResult(dto);

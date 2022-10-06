@@ -49,7 +49,7 @@ public class ConsultingRecordDAO {
 			
 			psmt.setInt(1, dto.getSrSeq());
 			psmt.setInt(2, dto.getArlSeq());
-			psmt.setString(3, dto.getScContent());
+			psmt.setString(3, dto.getCrContent());
 
 			row = psmt.executeUpdate();
 			if (row > 0)
@@ -67,9 +67,9 @@ public class ConsultingRecordDAO {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "update consulting_record set sc_content = ?, sc_date = default where arl_seq = ?";
+			sql = "update consulting_record set cr_content = ?, cr_date = default where arl_seq = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getScContent());
+			psmt.setString(1, dto.getCrContent());
 			psmt.setInt(2, dto.getArlSeq());
 
 			row = psmt.executeUpdate();
@@ -96,12 +96,12 @@ public class ConsultingRecordDAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				result = true;
-				int scSeq = rs.getInt(1);
+				int crSeq = rs.getInt(1);
 				int srSeq = rs.getInt(2);
 				int arlSeq = rs.getInt(3);
-				String scContent = rs.getString(4);
-				String scDate = rs.getString(5);
-				dto = new ConsultingRecordDTO(scSeq, srSeq, arlSeq, scContent, scDate);
+				String crContent = rs.getString(4);
+				String crDate = rs.getString(5);
+				dto = new ConsultingRecordDTO(crSeq, srSeq, arlSeq, crContent, crDate);
 			}
 			if (!result) {
 				dto = null;
@@ -119,9 +119,9 @@ public class ConsultingRecordDAO {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "delete from consulting_record where sc_seq = ?";
+			sql = "delete from consulting_record where cr_seq = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getScSeq());
+			psmt.setInt(1, dto.getCrSeq());
 
 			row = psmt.executeUpdate();
 			if(row > 0) result = true;

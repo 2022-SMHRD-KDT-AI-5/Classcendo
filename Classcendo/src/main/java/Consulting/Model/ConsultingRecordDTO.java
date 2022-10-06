@@ -3,40 +3,40 @@ package Consulting.Model;
 public class ConsultingRecordDTO {
 
 	// 상담 기록 관리 DTO
-	private int scSeq;
+	private int crSeq;
 	private int srSeq;
 	private int arlSeq;
-	private String scContent;
-	private String scDate;
+	private String crContent;
+	private String crDate;
 
 	// 생성자 메소드 - 상담기록 불러오기
-	public ConsultingRecordDTO(int scSeq, int srSeq, int arlSeq, String scContent, String scDate) {
-		this.scSeq = scSeq;
+	public ConsultingRecordDTO(int crSeq, int srSeq, int arlSeq, String crContent, String crDate) {
+		this.crSeq = crSeq;
 		this.srSeq = srSeq;
 		this.arlSeq = arlSeq;
-		this.scContent = scContent;
-		this.scDate = scDate;
+		this.crContent = crContent;
+		this.crDate = crDate;
 	}
 	
 	// 생성자 메소드 - 상담기록 추가하기
-	public ConsultingRecordDTO(int srSeq, int arlSeq, String scContent) {
+	public ConsultingRecordDTO(int srSeq, int arlSeq, String crContent) {
 		this.srSeq = srSeq;
 		this.arlSeq = arlSeq;
-		this.scContent = scContent;
+		this.crContent = crContent;
 	}
 
 	// 생성자 메소드 - 상담기록 수정하기
-	public ConsultingRecordDTO(int arlSeq, String scContent) {
+	public ConsultingRecordDTO(int arlSeq, String crContent) {
 		this.arlSeq = arlSeq;
-		this.scContent = scContent;
+		this.crContent = crContent;
 	}
 	
-	public int getScSeq() {
-		return scSeq;
+	public int getCrSeq() {
+		return crSeq;
 	}
 
-	public void setScSeq(int scSeq) {
-		this.scSeq = scSeq;
+	public void setCrSeq(int crSeq) {
+		this.crSeq = crSeq;
 	}
 
 	public int getSrSeq() {
@@ -55,20 +55,20 @@ public class ConsultingRecordDTO {
 		this.arlSeq = arlSeq;
 	}
 
-	public String getScContent() {
-		return scContent;
+	public String getCrContent() {
+		return crContent;
 	}
 
-	public void setScContent(String scContent) {
-		this.scContent = scContent;
+	public void setCrContent(String crContent) {
+		this.crContent = crContent;
 	}
 
-	public String getScDate() {
-		return scDate;
+	public String getCrDate() {
+		return crDate;
 	}
 
-	public void setScDate(String scDate) {
-		this.scDate = scDate;
+	public void setCrDate(String crDate) {
+		this.crDate = crDate;
 	}
 
 }
