@@ -23,12 +23,12 @@ public class AddAnalysisService extends HttpServlet {
 		
 		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
-		double rate1 = Double.parseDouble(request.getParameter("rate1")); 
-		double rate2 = Double.parseDouble(request.getParameter("rate2")); 
-		double rate3 = Double.parseDouble(request.getParameter("rate3")); 
-		double rate4 = Double.parseDouble(request.getParameter("rate4")); 
-		String[] jobList = request.getParameterValues("jobList");
-		String jobs = String.join(",", jobList);
+		String[] data = request.getParameterValues("data");
+		int rate1 = Integer.parseInt(data[0]);
+		int rate2 = Integer.parseInt(data[1]);
+		int rate3 = Integer.parseInt(data[2]);
+		int rate4 = Integer.parseInt(data[3]);
+		String jobs = data[4];
 		System.out.println(jobs);
 		
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
