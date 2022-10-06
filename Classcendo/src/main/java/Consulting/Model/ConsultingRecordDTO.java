@@ -48,7 +48,7 @@ public class ConsultingRecordDTO {
 	}
 	
 	public int getArlSeq() {
-		return srSeq;
+		return arlSeq;
 	}
 
 	public void setArlSeq(int arlSeq) {

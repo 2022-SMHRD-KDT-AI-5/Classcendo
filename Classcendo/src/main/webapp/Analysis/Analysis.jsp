@@ -60,7 +60,7 @@
                     </div>
                     <select class="first_sel" id="arlSeq" onchange="selectArlSeq()">
                     	<% if(arlList != null){ %>
-						<option value="<%=arlList.get(0).getArlSeq() %>" selected disabled hidden><%=arlList.get(0).getArlDate() %></option>
+						<option value="<%=arlList.get(0).getArlSeq() %>" selected disabled hidden><%=arlList.get(0).getArlDate().substring(0, 10) %></option>
 						<%for(AnalysisResultListDTO arl : arlList){ %>
 							<option value=<%=arl.getArlSeq() %>><%=arl.getArlDate() %></option>
 						<%}}else{ %>
@@ -90,20 +90,23 @@
 								<h3 id="jobsList">직업 추천</h3>
 								<p></p>
 							</div></li>
+						<div id="aboutJob">
 						<li><input type="radio" id="vert-2" name="vert-accordion" />
 							<label for="vert-2" id="job">&nbsp;</label>
 							<div class="content">
 								<h3 id="jobInfo"></h3>
-								<p></p>
 							</div>
 						</li>
+						</div>
 					</ul>
 				</div>
 				<div class="comm">
 					<div class="text">상담기록</div>
 					<div class="form-floating">
+						<div id="consultText">
 						<textarea class="form-control" placeholder="Leave a comment here"
 							style="height: 100px" id="consultRecord"></textarea>
+						</div>
 						<!-- <label for="floatingTextarea2">Comments</label> -->
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end" id="saveBtn">
 							<button class="btn btn-primary" type="button" onclick="saveCS(<%=srSeq%>)">저장</button>
@@ -128,12 +131,14 @@
 		// 화면 로딩 시 실행
 		window.onload = function() {
 			getStudentInfo();
+			getArlRate(<%=arlList.get(0).getArlSeq() %>);
 		}
 	
 		// pop 닫기
 		function closePop() {
 			$('#popSignOut').css("display", "none");
 		}
+		
 		var pieColors = (function() {
 			var colors = [], base = Highcharts.getOptions().colors[0], i;
 
@@ -146,7 +151,7 @@
 		}());
 
 		// Build the chart
-		function makeHighcharts(r1, r2, r3, r4){
+		function makeHighcharts(r1, r2, r3, r4, arlSeq){
 			Highcharts.chart('container', {
 			    chart: {
 			        plotBackgroundColor: null,
@@ -192,7 +197,7 @@
 			        ]
 			    }]
 			});
-			getConsultRecord($('#arlSeq').val());
+			getConsultingRecord(arlSeq);
 		}
 		
 		// 학생 정보 받아오기
@@ -210,14 +215,14 @@
 					text.html(data.stdNum + "번   " + data.stdName);
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("학생 정보 요청실패");
 				}
 			});
 		}
 		
 		// option 선택 시 변경사항
 		function selectArlSeq(){
-			var arlSeq = $('#arlSeq');
+			var arlSeq = $('#arlSeq').val();
 			getArlRate(arlSeq);
 		}
 		
@@ -227,10 +232,15 @@
 				type : "post",
 				url : "../GetAnalysisResultService",
 				data : {
-					'arlSeq' : arlSeq.val()
+					'arlSeq' : arlSeq
 				},
 				dataType : "json",
 				success : function(data){
+					$('#aboutJob').html("<li><input type='radio' id='vert-2' name='vert-accordion' />"
+							+ "<label for='vert-2' id='job'>&nbsp;</label>"
+							+ "<div class='content'>"
+							+ "<h3 id='jobInfo'></h3>"
+							+ "</div></li>");
 					var text = "";
 					var jobs = data.jobsName.split(',');
  					$.each(jobs, function(i) {
@@ -239,10 +249,10 @@
 					var jobsList = $('#jobsList');
 					jobsList.html("");
 					jobsList.html(text);
-					makeHighcharts(data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate);
+					makeHighcharts(data.tendency1Rate, data.tendency2Rate, data.tendency3Rate, data.tendency4Rate, arlSeq);
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("그래프 결과 요청실패");
 				}
 			});
 		}
@@ -272,7 +282,7 @@
 					$('#jobInfo').html(text);
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("직업 정보 요청실패");
 				}
 			});
  		}
@@ -285,24 +295,27 @@
 				data : {
 					'arlSeq' : arlSeq
 				},
-				dataType : json,
+				dataType : "json",
 				success : function(data){
+					$('#consultText').html("<textarea class='form-control' placeholder='Leave a comment here'"
+										+ "style='height: 100px' id='consultRecord'></textarea>");
 					var consultRecord = $('#consultRecord');
 					var saveBtn = $('#saveBtn');
-					if(data != 'null'){
-						consultRecord.html("");
-						saveBtn.html("<button class='btn btn-primary' type='button' onclick='reviseCS(" + arlSeq + ")'>저장</button>");
-					}else{
+					if(data != null){
 						consultRecord.html(data.scContent);
+						saveBtn.html("<button class='btn btn-primary' type='button' onclick='updateCS(" + arlSeq + ")'>저장</button>");
+					}else if (data == null){
+						consultRecord.html("");
 						saveBtn.html("<button class='btn btn-primary' type='button' onclick='addCS(" + arlSeq + ")'>저장</button>");
 					}
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("상담 기록 요청실패");
 				}
 			});
 		}
 		
+		// 상담 기록 저장하기
  		function addCS(arlSeq){
 			$.ajax({
 				type : "post",
@@ -317,24 +330,27 @@
 					else alert("저장 실패");
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("상담 기록 저장 요청실패");
 				}
 			});
  		}
  		
+ 	// 상담 기록 수정하기
  		function updateCS(arlSeq){
+ 			alert(arlSeq)
 			$.ajax({
 				type : "post",
 				url : "../UpdateConsultingRecord",
 				data : {
-					'arlSeq' : arlSeq
+					'arlSeq' : arlSeq,
+					'consultRecord' : $('#consultRecord').val()
 				},
 				success : function(result){
 					if(result == 'true') alert("저장 성공");
 					else alert("저장 실패");
 				},
 				error : function(e) {
-					alert("요청실패");
+					alert("상담 기록 업데이트 요청실패");
 				}
 			});
  		}

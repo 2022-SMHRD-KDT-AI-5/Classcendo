@@ -29,7 +29,9 @@ public class AddConsultingRecord extends HttpServlet {
 		ConsultingRecordDAO dao = new ConsultingRecordDAO();
 		ConsultingRecordDTO dto = new ConsultingRecordDTO(srSeq, arlSeq, consultRecord);
 
+		boolean result = dao.addConsultingRecord(dto);
+		
 		PrintWriter out = response.getWriter();
-		out.print(dao.addConsultingRecord(dto));
+		out.print(result);
 	}
 }

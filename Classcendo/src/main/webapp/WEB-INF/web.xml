@@ -167,10 +167,10 @@
 		<servlet-class>Student.Controller.RevisePersonalStudentService</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AnalysisService</servlet-name>
-		<display-name>AnalysisService</display-name>
+		<servlet-name>AddAnalysisService</servlet-name>
+		<display-name>AddAnalysisService</display-name>
 		<description></description>
-		<servlet-class>Analysis.Controller.AnalysisService</servlet-class>
+		<servlet-class>Analysis.Controller.AddAnalysisService</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetStudentInfoService</servlet-name>
@@ -317,8 +317,8 @@
 		<url-pattern>/RevisePersonalStudentService</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AnalysisService</servlet-name>
-		<url-pattern>/AnalysisService</url-pattern>
+		<servlet-name>AddAnalysisService</servlet-name>
+		<url-pattern>/AddAnalysisService</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetStudentInfoService</servlet-name>

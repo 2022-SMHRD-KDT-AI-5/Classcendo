@@ -44,9 +44,9 @@ public class ConsultingRecordDAO {
 		changeDatabase.getConn();
 		result = false;
 		try {
-			sql = "insert into consulting_record values(consulting_record_SEQ.nextval, ?, ?, default)";
+			sql = "insert into consulting_record values(consulting_record_SEQ.nextval, ?, ?, ?, default)";
 			psmt = conn.prepareStatement(sql);
-
+			
 			psmt.setInt(1, dto.getSrSeq());
 			psmt.setInt(2, dto.getArlSeq());
 			psmt.setString(3, dto.getScContent());

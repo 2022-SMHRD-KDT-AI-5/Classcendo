@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import Analysis.Model.AnalysisResultListDAO;
 import Analysis.Model.AnalysisResultListDTO;
 
-public class AnalysisService extends HttpServlet {
+public class AddAnalysisService extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 인코딩
@@ -27,17 +27,15 @@ public class AnalysisService extends HttpServlet {
 		double rate2 = Double.parseDouble(request.getParameter("rate2")); 
 		double rate3 = Double.parseDouble(request.getParameter("rate3")); 
 		double rate4 = Double.parseDouble(request.getParameter("rate4")); 
-		String jobList = request.getParameter("jobList");
+		String[] jobList = request.getParameterValues("jobList");
+		String jobs = String.join(",", jobList);
+		System.out.println(jobs);
 		
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
-		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobList);
+		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobs);
 		boolean result = dao.addAnalysisResult(dto);
 
-		if(result) {
-			response.sendRedirect("GetAnalysisResultListService?srSeq=" + srSeq);
-		}else {
-			PrintWriter out = response.getWriter();
-			out.print(result);
-		}
+		PrintWriter out = response.getWriter();
+		out.print(result);
 	}
 }

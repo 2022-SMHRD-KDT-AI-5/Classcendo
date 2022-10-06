@@ -187,20 +187,35 @@
 				type : "post",
 				url : "http://localhost:9000/",
 				data : {
-					'record' : $('#srContent').val(),
-					'srSeq' : srSeq
+					'record' : $('#srContent').val()
 				},
-				success : function(result){
-					if(result == 'true'){
-						window.location.href = "Analysis/test.jsp?srSeq=" + srSeq;
-					}
+				success : function(data){
+					addAnalysisService(data, srSeq);
 				},
 				error : function(e) {
 					alert("요청실패");
 				}
 			});
 		}
-
+		
+		// 분석결과 저장하기
+		function addAnalysisService(data, srSeq){
+			$.ajax({
+				type : "post",
+				url : "../AddAnalysisService",
+				data : {
+					'data' : data,
+					'srSeq' : srSeq
+				},
+				success : function(result){
+					if(result == 'true') window.location.href = "../GetAnalysisResultListService?srSeq=" + srSeq;
+					else alert('분석 실패');
+				},
+				error : function(e) {
+					alert("요청실패");
+				}
+			});
+		}
 	</script>
 </body>
 </html>
