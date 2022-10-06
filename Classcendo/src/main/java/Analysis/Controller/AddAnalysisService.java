@@ -23,19 +23,29 @@ public class AddAnalysisService extends HttpServlet {
 		
 		// Parameter 호출
 		int srSeq = Integer.parseInt(request.getParameter("srSeq"));
-		String[] data = request.getParameterValues("data");
-		int rate1 = Integer.parseInt(data[0]);
-		int rate2 = Integer.parseInt(data[1]);
-		int rate3 = Integer.parseInt(data[2]);
-		int rate4 = Integer.parseInt(data[3]);
-		String jobs = data[4];
+		String anaData = request.getParameter("anaData");
+		String[] anaList = anaData.split(",");
+		
+		double rate1 = Double.parseDouble(anaList[0]);
+		double rate2 = Double.parseDouble(anaList[1]);
+		double rate3 = Double.parseDouble(anaList[2]);
+		double rate4 = Double.parseDouble(anaList[3]);
+		String jobs = "";
+		for(int i = 4; i < anaList.length; i++) {
+			if(!anaList[i].equals("")) {
+				jobs += anaList[i] + ",";
+			}
+		}
+		System.out.println(rate1);
+		System.out.println(rate2);
+		System.out.println(rate3);
+		System.out.println(rate4);
 		System.out.println(jobs);
 		
 		AnalysisResultListDAO dao = new AnalysisResultListDAO();
-		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobs);
-		boolean result = dao.addAnalysisResult(dto);
-
-		PrintWriter out = response.getWriter();
-		out.print(result);
+		AnalysisResultListDTO dto = new AnalysisResultListDTO(srSeq, rate1, rate2, rate3, rate4, jobs); boolean result = dao.addAnalysisResult(dto);
+		 
+		PrintWriter out = response.getWriter(); out.print(result);
+		 
 	}
 }

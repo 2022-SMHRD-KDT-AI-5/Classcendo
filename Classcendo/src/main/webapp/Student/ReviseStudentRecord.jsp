@@ -189,8 +189,8 @@
 				data : {
 					'record' : $('#srContent').val()
 				},
-				success : function(data){
-					addAnalysisService(data, srSeq);
+				success : function(anaData){
+					makeAnaData(anaData, srSeq);
 				},
 				error : function(e) {
 					alert("요청실패");
@@ -198,13 +198,21 @@
 			});
 		}
 		
+		function makeAnaData(anaData, srSeq){
+			var strData = "";
+			$.each(anaData, function(i) {
+				strData += anaData[i] + ",";
+			});
+			addAnalysisService(strData, srSeq);
+		}
+		
 		// 분석결과 저장하기
-		function addAnalysisService(data, srSeq){
+		function addAnalysisService(strData, srSeq){
 			$.ajax({
 				type : "post",
 				url : "../AddAnalysisService",
 				data : {
-					'data' : data,
+					'anaData' : strData,
 					'srSeq' : srSeq
 				},
 				success : function(result){
