@@ -16,11 +16,11 @@ public class JobListDTO {
 		this.relationCert = relationCert;
 	}
 
-	public int getJouSeq() {
+	public int getJobSeq() {
 		return jobSeq;
 	}
 
-	public void setJouSeq(int jobSeq) {
+	public void setJobSeq(int jobSeq) {
 		this.jobSeq = jobSeq;
 	}
 

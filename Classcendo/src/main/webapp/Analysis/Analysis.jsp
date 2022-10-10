@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="Analysis.Model.AnalysisResultListDTO"%>
 <%@page import="Student.Model.StudentRecordListDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -34,6 +36,9 @@
 	UserInfoDTO info = (UserInfoDTO) session.getAttribute("info");
 	ArrayList<AnalysisResultListDTO> arlList = (ArrayList<AnalysisResultListDTO>)session.getAttribute("arlList");
 	String srSeq = request.getParameter("srSeq");
+	LocalDate now = LocalDate.now();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+	String formatedNow = now.format(formatter);
 	%>
 	<header class="navbar">
 		<div class="navbar__logo">
@@ -67,7 +72,7 @@
 						<option selected disabled hidden>분석 결과 없음</option>
 						<%} %>
                     </select>
-                    <div class="first_date">2022년 10월 05일</div>
+                    <div class="first_date"><%=formatedNow %></div>
                 </div>
 				<div class="ana">
 					<div class="anatext">성향 분석 결과</div>
@@ -244,7 +249,7 @@
 					var text = "";
 					var jobs = data.jobsName.split(',');
  					$.each(jobs, function(i) {
-						text += "<p onclick='getJobInfo(" + jobs[i] + ")'>" + jobs[i] + "</p>";
+						text += "<p onclick='getJobInfo(\"" + jobs[i] + "\")'>" + jobs[i] + "</p>";
 					});
 					var jobsList = $('#jobsList');
 					jobsList.html("");
@@ -257,7 +262,9 @@
 			});
 		}
 		
-		// 직업 정보 받아오기
+ 		
+		
+ 		// 직업 정보 받아오기
  		function getJobInfo(jobName){
 			$.ajax({
 				type : "post",
@@ -268,14 +275,14 @@
 				dataType : "json",
 				success : function(data){
 					var text = "";
-/* 					text += "<b><u>관련 학과</u></b><br>"
+ 					text += "<b><u>관련 학과</u></b><br>"
 						+ "<div>" + data.relationDept + "</div><br><br>"
 						+ "<b><u>관련 자격증</u></b><br>"
-						+ "<div>" + data.relationCert + "</div><br><br>"; */
-					text += "<b><u>관련 학과</u></b><br>"
-						+ "<div>ㅎㅎㅎ</div><br><br>"
-						+ "<b><u>관련 자격증</u></b><br>"
-						+ "<div>ㅗㅗㅗ</div><br><br>";
+						+ "<div>" + data.relationCert + "</div>"; 
+// 					text += "<b><u>관련 학과</u></b><br>"
+// 						+ "<div>ㅎㅎㅎ</div><br><br>"
+// 						+ "<b><u>관련 자격증</u></b><br>"
+// 						+ "<div>ㅗㅗㅗ</div><br><br>";
 					$('#job').html("");
 					$('#job').html(jobName);
 					$('#jobInfo').html("");
@@ -285,7 +292,7 @@
 					alert("직업 정보 요청실패");
 				}
 			});
- 		}
+ 		} 
 		
 		// 상담 기록 불러오기
 		function getConsultingRecord(arlSeq){
@@ -302,7 +309,7 @@
 					var consultRecord = $('#consultRecord');
 					var saveBtn = $('#saveBtn');
 					if(data != null){
-						consultRecord.html(data.scContent);
+						consultRecord.html(data.crContent);
 						saveBtn.html("<button class='btn btn-primary' type='button' onclick='updateCS(" + arlSeq + ")'>저장</button>");
 					}else if (data == null){
 						consultRecord.html("");
